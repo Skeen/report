@@ -1,0 +1,364 @@
+% **************************************************************************************************************
+% A Classic Thesis Style
+% An Homage to The Elements of Typographic Style
+%
+% Copyright (C) 2015 André Miede http://www.miede.de
+%
+% If you like the style then I would appreciate a postcard. My address 
+% can be found in the file ClassicThesis.pdf. A collection of the 
+% postcards I received so far is available online at 
+% http://postcards.miede.de
+%
+% License:
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program; see the file COPYING.  If not, write to
+% the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+%
+% **************************************************************************************************************
+\RequirePackage{fix-cm} % fix some latex issues see: http://texdoc.net/texmf-dist/doc/latex/base/fixltx2e.pdf
+\documentclass[ twoside,openright,titlepage,numbers=noenddot,headinclude,%1headlines,% letterpaper a4paper
+                footinclude=true,cleardoublepage=empty,abstractoff, % <--- obsolete, remove (todo)
+                BCOR=5mm,paper=a4,fontsize=11pt,%11pt,a4paper,%
+                ngerman,american,%
+                ]{scrreprt}
+
+%********************************************************************
+% Note: Make all your adjustments in here
+%*******************************************************
+\input{classicthesis-config}
+
+%********************************************************************
+% Bibliographies
+%*******************************************************
+\addbibresource{Bibliography.bib}
+\addbibresource[label=ownpubs]{AMiede_Publications.bib}
+
+%********************************************************************
+% Hyphenation
+%*******************************************************
+%\hyphenation{put special hyphenation here}
+
+% ********************************************************************
+% GO!GO!GO! MOVE IT!
+%*******************************************************
+\begin{document}
+\frenchspacing
+\raggedbottom
+\selectlanguage{american} % american ngerman
+%\renewcommand*{\bibname}{new name}
+%\setbibpreamble{}
+\pagenumbering{roman}
+\pagestyle{plain}
+%********************************************************************
+% Frontmatter
+%*******************************************************
+\include{FrontBackmatter/DirtyTitlepage}
+\include{FrontBackmatter/Titlepage}
+\include{FrontBackmatter/Titleback}
+\cleardoublepage\include{FrontBackmatter/Dedication}
+%\cleardoublepage\include{FrontBackmatter/Foreword}
+\cleardoublepage\include{FrontBackmatter/Abstract}
+\cleardoublepage\include{FrontBackmatter/Publications}
+\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+\pagestyle{scrheadings}
+\cleardoublepage\include{FrontBackmatter/Contents}
+%********************************************************************
+% Mainmatter
+%*******************************************************
+\cleardoublepage\pagenumbering{arabic}
+%\setcounter{page}{90}
+% use \cleardoublepage here to avoid problems with pdfbookmark
+\cleardoublepage
+% What should a thesis contain:
+
+\ctparttext{The following reflects what I believe to be a good structure
+  for a report or a thesis in experimental computer science. 
+It contains a natural progression from the general to the specific, and
+from the work of others to the work by the authors, each chapter
+forming the foundation of the next.}
+\part{The Proper Structure of a Thesis}
+\label{part:prop-struct-thes}
+\cleardoublepage
+
+\chapter{Introduction}
+\label{cha:introduction}
+
+The purpose of the Introduction is make a short (2--6 pages) argument
+that should cover
+\begin{itemize}
+\item What this thesis is about
+\item Why it is interesting or important
+\item What are the central hypotheses that will be investigated 
+\item How will the work be done
+\end{itemize}
+
+This is the place where the reader (who will be a computer scientist,
+but might not be a domain expert) should be convinced that not only is
+the topic interesting and important, the authors have also identified
+central questions/hypotheses pertaining the topic, and have a clear
+plan and methodology to address it.
+
+\section{What makes a good hypothesis?}
+\label{sec:what-makes-good}
+
+For the purposes of a report or thesis, it is wise to concentrate on
+research questions and hypotheses that are quantifiable. \Eg, it is
+better to state that ``method A is better than method B under
+circumstances C'' or ``combining method A with architecture B improves
+on standard approach C'' than ``we can build a system that do X''.
+This is why it is always a good idea to include baselines in your
+work, \ie, established methods or architectural choices that can used
+for comparison. If you do not have baselines yourself, you should at
+least be ready and able to compare your results with the published
+results of others.
+
+The hypotheses should also address central aspects of the work, so
+that \emph{if} these hypotheses are met, the overall work gains in
+credibility, or alternatively (and just as valid), if the hypothesis
+\emph{cannot} be confirmed, it illustrates, why and how the
+assumptions behind the work were flawed, and, hopefully, how they can
+be improved.
+
+\section{Writing a thesis for reading}
+\label{sec:writ-thes-read}
+
+The purpose of the thesis is to be read as a whole, and as such it
+should be written, even if, in reality, it is authored over a period
+of months.  The reader does not naturally understand the flow and
+process of the work involved (this understanding belongs to the
+authors, and upon the authors lies the sole responsibility of
+communicating the work done), and must therefore be guided through the
+work.  In order to accomplish this, the reader should at
+all times have a ready answer in their mind to these questions:
+
+\begin{itemize}
+\item Why am I reading this?
+\item What comes next?
+\item How does this build upon what I just read?
+\end{itemize}
+
+So, why is something there? What is its purpose? How will it used
+later? Vice versa, later in the text, refer back to things established
+earlier (this also supports readers that do not necessarily read
+linearly). While a text grow piecemeal, it is most often read as a
+whole, and should appear as such, lest the reader loses interest.
+
+To that end, it is a good idea to finish the introduction with a
+description of how the hypotheses are to be investigated, and how this
+is reflected in the structure of the thesis.
+
+\chapter{Related Work}
+\label{cha:related-work}
+
+Whereas the purpose of the Introduction chapter was to entice and
+convince the reader that work reported is interesting, that the author
+is asking the right questions about it, and reading about it will be
+worthwhile, the purpose of the Related Work chapter is to
+demonstrate that the author possesses a fine overview and keen
+understanding of the topic of the work.  Note that while the title of
+the chapter is ``Related Work'', it might as well be called
+``\emph{Relevant} Work'' in that you should only include work that are
+useful or relevant to your purpose. 
+
+Writing about others' work can be challenging---it is easy to succumb
+to just writing condensed summaries, which is just as tedious to read
+as they are to write. A better method is to gain an overview over the
+field of inquiry, and then establish in the first section what aspects
+or dimensions are crucial to systems or methodologies such as the ones
+described. This demonstrates to the reader that the author has
+understanding and judgement. Having done this, every paper or work can
+then be described in those established terms. This makes for easier
+and much more structured writing, and it also helps the reader
+differentiate the systems and works reported on. If there are multiple
+works that cover approximately the same area (\eg, using the same
+technique), you may mention several, but only go into detail with the
+most significant or representative one.
+
+The chapter can then be concluded with a table summarising all the
+work reported on using the aspects defined in the introduction of the
+chapter.
+
+A crucial element of this chapter is that it concerns the work of
+others and \emph{only} that. While the selection of aspects or
+dimensions described above invariantly will reflect your own focus,
+that should be the extend of which your own work and plans influence
+this chapter.  Your own judgement comes in the next chapter.
+
+\section{Frameworks and Technologies}
+\label{sec:fram-techn}
+
+Related work need not be only published academic work. In many cases,
+it is also relevant to describe crucial frameworks and technologies
+that will be used or are relevant for the thesis.  This does not mean
+that all employed technologies should be described in detail, but
+frameworks and technologies that are unusual (for lack of a better
+word) could be described here. \Eg, there is no need to describe an
+ordinary network stack, but if the work involves GPU programming, a
+description of the chosen architecture might well be relevant, as it
+informs all the following chapters.
+
+
+
+\chapter{Analysis}
+\label{cha:analysis}
+
+This is where the author can answer the question of what use we can
+derive from all the works described in the previous chapter. Ideally,
+the summary of the related work will show that there is room
+unexplored for what the authors have in mind. If there are differences
+between the included works on key aspects in the approach to be taken,
+this is where this should be identified, and a decision reached.
+
+Having written the analysis, the author has all the tools needed to
+complete the next chapter.
+
+
+\chapter{Design}
+\label{cha:design}
+
+Many of the other natural sciences have labs with equipment that has
+to be configured correctly to experimentally test stated hypotheses.
+Such experiments must be planned and designed in advance to work
+properly and provide valid and trustworthy results.
+
+As computer scientists, we usually do not work in labs, and our
+experiments do not live in petri dishes. Still, we have hypotheses to
+test, and thus, experiments to plan. This planning phase is the
+design, where the authors describe the system intended to test the
+hypotheses posed in the introduction.
+
+A luxury of the design chapter is that the design may well go further
+than solely the confirmation or refutation of the hypotheses.  If you
+are building a system, this is where you show that you know how to
+design one, even if you will actually not be implementing all of it.
+If you had sufficient time and resources, this is how you would make
+your system.
+
+However, before we come to that, it is necessary to investigate
+whether the required hypotheses are valid. If they are not, the design
+must be reconsidered, and there is only one way to test them, namely
+through implementation, and subsequent evaluation.
+
+
+\chapter{Implementation}
+\label{cha:implementation}
+
+Where the design chapter concerned itself with the overall plan, this
+is where the actual experiment in the form of an implementation is
+taking form.  It is not the purpose of the implementation to fully
+realise the design described in the previous chapter. It is the
+exclusive purpose of the implementation (a subset of the design) to
+either validate or refute the hypotheses put forth in the
+introduction. This, and nothing else. If it does less, you have posed
+questions you are not prepared to answer; if it does more, you should
+be coding less or asking more questions.
+
+If it illustrates core aspects, \eg, the inner working of a particular
+important algorithm or function, code segments are welcome in this
+chapter, as long as they are short, to the point, well-commented and
+-formatted.  It is also a good idea to provide the reader with a
+general overview of the structure of the code, as well as how
+communication between various parts take place.  The complete code (as
+well as your data) should be included separately with your report in
+the form of a zip-file or USB-stick.
+
+Overall, the implementation is the computer scientist's equivalent of
+lab equipment carefully arranged into a experimental setup, and just
+as the validity of an experimental investigation will be judged in
+part on the craftsmanship of the setup, so will the quality of your
+implementation. It is therefore important to clearly communicate how
+your system works, so that the reader may have confidence in your
+evaluation and conclusions.
+
+
+\chapter{Evaluation}
+\label{cha:evaluation}
+
+Having built the equivalent of a experimental setup, it is time to use
+the implementation to test the hypotheses.
+
+This is usually broken down in stages and subquestions.
+
+A structured approach to performing and reporting on experiments is
+to follow this pattern for every single experiment:
+
+\begin{enumerate}
+\item What is the purpose of the experiment?
+\item What is the expected outcome?
+\item What are the parameters under which the experiment takes place?
+\item What are the results?
+\item How do the results align with the expected outcome? If they do
+  not align, why is that so?
+\end{enumerate}
+
+Results should be presented summarised in tables and graphs.  Remember
+to note the number of times experiments were repeated, as well as
+averages, and standard deviations (in percent of the mean).  There is
+much more to the proper evaluation of experimental data than can be
+expounded upon here, but I turn the reader's attention to
+\citep{Downey2011:TSPASFP2011}, which is freely available.
+
+
+\chapter{Conclusion}
+\label{cha:conclusion}
+
+This, then is the grand summary of what you have accomplished.  You
+may well imagine that many readers will read your Introduction, and
+then skip to the Conclusion, and if, and only if, those two parts are
+interesting, might be tempted to read the rest. A consequence is that
+you should ensure that the reader will gain a good overall
+understanding of what you have done by reading only the conclusion.
+Thus, this is a place to summarise all that has gone before, before
+finally concluding on the results of your experiments and the validity
+of your hypotheses. It is also important to ensure that the
+Introduction (which in all likelihood was written first) still aligns
+closely with the conclusions reached.
+
+If you so desire, this is also where you might add a section on Future
+Work, where you point in the directions that should be followed to
+complete the work you have already accomplished.
+
+
+
+\part{Some Kind of Manual}
+\include{Chapters/Chapter01}
+\cleardoublepage
+
+\part{The Showcase}
+\include{Chapters/Chapter02}
+%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
+\include{Chapters/Chapter03}
+
+
+
+%\include{multiToC} % <--- just debug stuff, ignore for your documents
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\appendix
+%\renewcommand{\thechapter}{\alph{chapter}}
+\cleardoublepage
+\part{Appendix}
+\include{Chapters/Chapter0A}
+%********************************************************************
+% Other Stuff in the Back
+%*******************************************************
+\cleardoublepage\include{FrontBackmatter/Bibliography}
+\cleardoublepage\include{FrontBackmatter/Declaration}
+\cleardoublepage\include{FrontBackmatter/Colophon}
+% ********************************************************************
+% Game Over: Restore, Restart, or Quit?
+%*******************************************************
+\end{document}
+% ********************************************************************
