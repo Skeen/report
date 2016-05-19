@@ -1,8 +1,9 @@
+RAPPORT=ClassicThesis.tex
+OUTPUT_DIR=output
+
 assignment.pdf: *.tex Bibliography.bib
-	latexmk -pdf ClassicThesis.tex
+	latexmk -jobname=$(OUTPUT_DIR) -pdf $(RAPPORT)
 pvc-force:
-	latexmk --pvc --synctex=1 -f --quiet ClassicThesis.tex -pdf
-clear:
-	rm *.aux *.bbl *.blg *.fls *.dvi *.fdb_latexmk *.log *.out *.synctex.gz ClassicThesis.pdf
+	latexmk -jobname=$(OUTPUT_DIR) --pvc --synctex=1 -f --quiet $(RAPPORT) -pdf
 clean:
-	rm *.aux *.bbl *.blg *.fls *.dvi *.fdb_latexmk *.log *.out *.synctex.gz ClassicThesis.pdf
+	rm *.aux *.bbl *.blg *.fls *.dvi *.fdb_latexmk *.log *.out *.synctex.gz $(RAPPORT)
