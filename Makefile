@@ -11,4 +11,5 @@ report.pdf: *.tex Bibliography.bib output_dir
 pvc-force:
 	latexmk -jobname=$(OUTPUT_DIR)/$(OUTPUT_NAME) --pvc --synctex=1 -f --quiet $(RAPPORT) -pdf
 clean:
-	rm *.aux *.bbl *.blg *.fls *.dvi *.fdb_latexmk *.log *.out *.synctex.gz $(RAPPORT)
+	rm -rf $(OUTPUT_DIR)
+	find . -name "*.aux" -exec rm {} \;
