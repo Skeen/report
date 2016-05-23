@@ -1,2 +1,6 @@
 output/
 *.aux
+
+*.swp
+*.swo
+*~
