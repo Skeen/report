@@ -52,6 +52,8 @@
 % ********************************************************************
 % GO!GO!GO! MOVE IT!
 %*******************************************************
+\usepackage[final]{pdfpages}
+
 \begin{document}
 \frenchspacing
 \raggedbottom
@@ -69,7 +71,7 @@
 \cleardoublepage\include{FrontBackmatter/Dedication}
 %\cleardoublepage\include{FrontBackmatter/Foreword}
 \cleardoublepage\include{FrontBackmatter/Abstract}
-\cleardoublepage\include{FrontBackmatter/Publications}
+%\cleardoublepage\include{FrontBackmatter/Publications}
 \cleardoublepage\include{FrontBackmatter/Acknowledgments}
 \pagestyle{scrheadings}
 \cleardoublepage\include{FrontBackmatter/Contents}
@@ -91,72 +93,8 @@ forming the foundation of the next.}
 \label{part:prop-struct-thes}
 \cleardoublepage
 
-\chapter{Introduction}
-\label{cha:introduction}
-
-The purpose of the Introduction is make a short (2--6 pages) argument
-that should cover
-\begin{itemize}
-\item What this thesis is about
-\item Why it is interesting or important
-\item What are the central hypotheses that will be investigated 
-\item How will the work be done
-\end{itemize}
-
-This is the place where the reader (who will be a computer scientist,
-but might not be a domain expert) should be convinced that not only is
-the topic interesting and important, the authors have also identified
-central questions/hypotheses pertaining the topic, and have a clear
-plan and methodology to address it.
-
-\section{What makes a good hypothesis?}
-\label{sec:what-makes-good}
-
-For the purposes of a report or thesis, it is wise to concentrate on
-research questions and hypotheses that are quantifiable. \Eg, it is
-better to state that ``method A is better than method B under
-circumstances C'' or ``combining method A with architecture B improves
-on standard approach C'' than ``we can build a system that do X''.
-This is why it is always a good idea to include baselines in your
-work, \ie, established methods or architectural choices that can used
-for comparison. If you do not have baselines yourself, you should at
-least be ready and able to compare your results with the published
-results of others.
-
-The hypotheses should also address central aspects of the work, so
-that \emph{if} these hypotheses are met, the overall work gains in
-credibility, or alternatively (and just as valid), if the hypothesis
-\emph{cannot} be confirmed, it illustrates, why and how the
-assumptions behind the work were flawed, and, hopefully, how they can
-be improved.
-
-\section{Writing a thesis for reading}
-\label{sec:writ-thes-read}
-
-The purpose of the thesis is to be read as a whole, and as such it
-should be written, even if, in reality, it is authored over a period
-of months.  The reader does not naturally understand the flow and
-process of the work involved (this understanding belongs to the
-authors, and upon the authors lies the sole responsibility of
-communicating the work done), and must therefore be guided through the
-work.  In order to accomplish this, the reader should at
-all times have a ready answer in their mind to these questions:
-
-\begin{itemize}
-\item Why am I reading this?
-\item What comes next?
-\item How does this build upon what I just read?
-\end{itemize}
-
-So, why is something there? What is its purpose? How will it used
-later? Vice versa, later in the text, refer back to things established
-earlier (this also supports readers that do not necessarily read
-linearly). While a text grow piecemeal, it is most often read as a
-whole, and should appear as such, lest the reader loses interest.
-
-To that end, it is a good idea to finish the introduction with a
-description of how the hypotheses are to be investigated, and how this
-is reflected in the structure of the thesis.
+\chapter{Introduction}\label{ch:introduction}
+\input{Chapters/Chapter01.tex}
 
 \chapter{Related Work}
 \label{cha:related-work}
@@ -230,59 +168,63 @@ complete the next chapter.
 \chapter{Design}
 \label{cha:design}
 
-Many of the other natural sciences have labs with equipment that has
-to be configured correctly to experimentally test stated hypotheses.
-Such experiments must be planned and designed in advance to work
-properly and provide valid and trustworthy results.
+%\include{Chapters/design}
+%
+%Many of the other natural sciences have labs with equipment that has
+%to be configured correctly to experimentally test stated hypotheses.
+%Such experiments must be planned and designed in advance to work
+%properly and provide valid and trustworthy results.
 
-As computer scientists, we usually do not work in labs, and our
-experiments do not live in petri dishes. Still, we have hypotheses to
-test, and thus, experiments to plan. This planning phase is the
-design, where the authors describe the system intended to test the
-hypotheses posed in the introduction.
+%As computer scientists, we usually do not work in labs, and our
+%experiments do not live in petri dishes. Still, we have hypotheses to
+%test, and thus, experiments to plan. This planning phase is the
+%design, where the authors describe the system intended to test the
+%hypotheses posed in the introduction.
 
-A luxury of the design chapter is that the design may well go further
-than solely the confirmation or refutation of the hypotheses.  If you
-are building a system, this is where you show that you know how to
-design one, even if you will actually not be implementing all of it.
-If you had sufficient time and resources, this is how you would make
-your system.
+%A luxury of the design chapter is that the design may well go further
+%than solely the confirmation or refutation of the hypotheses.  If you
+%are building a system, this is where you show that you know how to
+%design one, even if you will actually not be implementing all of it.
+%If you had sufficient time and resources, this is how you would make
+%your system.
 
-However, before we come to that, it is necessary to investigate
-whether the required hypotheses are valid. If they are not, the design
-must be reconsidered, and there is only one way to test them, namely
-through implementation, and subsequent evaluation.
+%However, before we come to that, it is necessary to investigate
+%whether the required hypotheses are valid. If they are not, the design
+%must be reconsidered, and there is only one way to test them, namely
+%through implementation, and subsequent evaluation.
 
 
 \chapter{Implementation}
 \label{cha:implementation}
 
-Where the design chapter concerned itself with the overall plan, this
-is where the actual experiment in the form of an implementation is
-taking form.  It is not the purpose of the implementation to fully
-realise the design described in the previous chapter. It is the
-exclusive purpose of the implementation (a subset of the design) to
-either validate or refute the hypotheses put forth in the
-introduction. This, and nothing else. If it does less, you have posed
-questions you are not prepared to answer; if it does more, you should
-be coding less or asking more questions.
+\include{Chapters/implementation}
 
-If it illustrates core aspects, \eg, the inner working of a particular
-important algorithm or function, code segments are welcome in this
-chapter, as long as they are short, to the point, well-commented and
--formatted.  It is also a good idea to provide the reader with a
-general overview of the structure of the code, as well as how
-communication between various parts take place.  The complete code (as
-well as your data) should be included separately with your report in
-the form of a zip-file or USB-stick.
-
-Overall, the implementation is the computer scientist's equivalent of
-lab equipment carefully arranged into a experimental setup, and just
-as the validity of an experimental investigation will be judged in
-part on the craftsmanship of the setup, so will the quality of your
-implementation. It is therefore important to clearly communicate how
-your system works, so that the reader may have confidence in your
-evaluation and conclusions.
+%Where the design chapter concerned itself with the overall plan, this
+%is where the actual experiment in the form of an implementation is
+%taking form.  It is not the purpose of the implementation to fully
+%realise the design described in the previous chapter. It is the
+%exclusive purpose of the implementation (a subset of the design) to
+%either validate or refute the hypotheses put forth in the
+%introduction. This, and nothing else. If it does less, you have posed
+%questions you are not prepared to answer; if it does more, you should
+%be coding less or asking more questions.
+%
+%If it illustrates core aspects, \eg, the inner working of a particular
+%important algorithm or function, code segments are welcome in this
+%chapter, as long as they are short, to the point, well-commented and
+%-formatted.  It is also a good idea to provide the reader with a
+%general overview of the structure of the code, as well as how
+%communication between various parts take place.  The complete code (as
+%well as your data) should be included separately with your report in
+%the form of a zip-file or USB-stick.
+%
+%Overall, the implementation is the computer scientist's equivalent of
+%lab equipment carefully arranged into a experimental setup, and just
+%as the validity of an experimental investigation will be judged in
+%part on the craftsmanship of the setup, so will the quality of your
+%implementation. It is therefore important to clearly communicate how
+%your system works, so that the reader may have confidence in your
+%evaluation and conclusions.
 
 
 \chapter{Evaluation}

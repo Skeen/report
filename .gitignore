@@ -1,3 +1,6 @@
 output/
 *.aux
-*.log
+
+*.swp
+*.swo
+*~
