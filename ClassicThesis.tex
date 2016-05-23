@@ -93,75 +93,14 @@ forming the foundation of the next.}
 \label{part:prop-struct-thes}
 \cleardoublepage
 
-\chapter{Introduction}
-\label{cha:introduction}
-
-The purpose of the Introduction is make a short (2--6 pages) argument
-that should cover
-\begin{itemize}
-\item What this thesis is about
-\item Why it is interesting or important
-\item What are the central hypotheses that will be investigated 
-\item How will the work be done
-\end{itemize}
-
-This is the place where the reader (who will be a computer scientist,
-but might not be a domain expert) should be convinced that not only is
-the topic interesting and important, the authors have also identified
-central questions/hypotheses pertaining the topic, and have a clear
-plan and methodology to address it.
-
-\section{What makes a good hypothesis?}
-\label{sec:what-makes-good}
-
-For the purposes of a report or thesis, it is wise to concentrate on
-research questions and hypotheses that are quantifiable. \Eg, it is
-better to state that ``method A is better than method B under
-circumstances C'' or ``combining method A with architecture B improves
-on standard approach C'' than ``we can build a system that do X''.
-This is why it is always a good idea to include baselines in your
-work, \ie, established methods or architectural choices that can used
-for comparison. If you do not have baselines yourself, you should at
-least be ready and able to compare your results with the published
-results of others.
-
-The hypotheses should also address central aspects of the work, so
-that \emph{if} these hypotheses are met, the overall work gains in
-credibility, or alternatively (and just as valid), if the hypothesis
-\emph{cannot} be confirmed, it illustrates, why and how the
-assumptions behind the work were flawed, and, hopefully, how they can
-be improved.
-
-\section{Writing a thesis for reading}
-\label{sec:writ-thes-read}
-
-The purpose of the thesis is to be read as a whole, and as such it
-should be written, even if, in reality, it is authored over a period
-of months.  The reader does not naturally understand the flow and
-process of the work involved (this understanding belongs to the
-authors, and upon the authors lies the sole responsibility of
-communicating the work done), and must therefore be guided through the
-work.  In order to accomplish this, the reader should at
-all times have a ready answer in their mind to these questions:
-
-\begin{itemize}
-\item Why am I reading this?
-\item What comes next?
-\item How does this build upon what I just read?
-\end{itemize}
-
-So, why is something there? What is its purpose? How will it used
-later? Vice versa, later in the text, refer back to things established
-earlier (this also supports readers that do not necessarily read
-linearly). While a text grow piecemeal, it is most often read as a
-whole, and should appear as such, lest the reader loses interest.
-
-To that end, it is a good idea to finish the introduction with a
-description of how the hypotheses are to be investigated, and how this
-is reflected in the structure of the thesis.
+\chapter{Introduction}\label{ch:introduction}
+\input{Chapters/Chapter01.tex}
 
 \chapter{Related Work}
 \label{cha:related-work}
+Bittorrent enhencement proposals is a place where users of bittorrent can come with proposals to improve the protocol.
+One of these proposals focuses on http seeding \citep{httpSeed}.
+This is relevant in our work, because we focus on how we can make streaming work in the browser. The proposal is about changing the metadata file to include a field that contains
 
 Whereas the purpose of the Introduction chapter was to entice and
 convince the reader that work reported is interesting, that the author
@@ -337,7 +276,8 @@ complete the work you have already accomplished.
 
 
 \part{Some Kind of Manual}
-\include{Chapters/Chapter01}
+\label{part:manual}
+\include{Chapters/Manual}
 \cleardoublepage
 
 \part{The Showcase}
