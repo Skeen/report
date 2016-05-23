@@ -29,8 +29,12 @@ and makes use of the best available storage method.
 We found through experiments,
 that localForage has issues saving javascript objects to disk when these objects contain large binary blobs, 
 these could consume as much as 4 gigabytes of space.
-Music could be saved efficiently when first seperating our generated metadataobject and song binary and then placing the in storage.
+Seperating the generated metadata object and song binary before placing the in storage, 
+seemed to solve this issue.
 
-
+The object-blob seperation behavior and use of localforage,
+needed to be constistent throughout the project, 
+so we created a Storage class which uses localforage and handles the data seperation implicitly, 
+and disallowed the direct use of localforage anywhere else: all other sections of the project should save and get data through using the Storage class.
 
 % Section for Song
