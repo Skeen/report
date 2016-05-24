@@ -4,12 +4,12 @@ Abstract
 
 * overall of project, write last
 
-Intro
+Intro - What is this shit?
 
 * Motivation
 * Well documented case problem
 
-Related Works
+Related Works - All the stuff we found and looked at
 
 * BitTorrent
 * WebRTC
@@ -37,12 +37,13 @@ Related Works
  	- Netflix (transitioning to bittorrent)
 	- File-sharing via torrents (sharing is caring)
 
-Frameworks
+Frameworks - Indepth about unusual libraries we used
 
 * WebTorrent
 * Browser vs desktop based (what is the difference?) 
 
-Analysis
+Analysis - What we learned from looking at related works, 
+	why were some were excluded?
 
 * audio tag support and capabilities
 * Why we use browser torrents
@@ -56,36 +57,54 @@ Analysis
 	- Why not IndexedDB/mysql
 * DHT
 	- Mocking vs fake-dht
+	- Tested DHT systems
+	- WebRTC-Explorer (issues with)
+	- WebRTC-chord (issues with, unmaintained for 2 years)
+	- Kad-WebRTC (issues with)
+		+ bad support for < 3 nodes
+		+ Resynchronization of key value paies (eventual constistency)
 
-Design
+Design - About issues we ran into and how we got around them
+
+* How should project demonstrate a solution/improvement to problem case?
+
+* WebTorrent
+	- How does WebTorrent decide who gets its bandwidth?
 
 * Song encodings and metadata
+* Audio tag limitations and workarounds
 * LocalForage vs LocalStorage
 	- LocalStorage limitations
 	- Issues with LocalForage (blob vs buffer vs arraybuffer)
 	- Workaround for localForage (save seperately)
 * DHT
 	- Issues with DHT on WebRTC
-	- Tested DHT systems
-	- WebRTC-Explorer (issues with)
-	- WebRTC-chord (issues with)
-	- Kad-WebRTC (issues with)
-	
+	- Why was it necessary to use faked dht?
+		
 * Granularity of torrents
 	- download song, album or discography?
 
-Implementation
+Implementation - About actual current codebase
 
-* How we handle music and music metadata
 * Browserify and why we use it.
+* How we handle music and music metadata
+	- Hidden audio-tag
+* WebTorrent
+	- When download?
+	- When seed?
+	- How is 
 * Code Architecture
 	- flow diagrams
 	- file responsibility overview
 	- Block Diagram
 	- Seperation of concerns?
+* Content Management System (Fake DHT implementation)
+	- How we store songs (sha1 hash)
+	- How we store other things (sha1:name)
+	- How we maintain DHT content
 * User Interface (Angular)
 
-Evaluation
+Evaluation - what did we learn from our project
 
 * Analysis results
 	- Capabilities compared to existing systems
@@ -110,9 +129,9 @@ Evaluation
 	- Reported traffic by webtorrent
 		Is it correct+complete?
 
-Conclusion
+Conclusion - what can the content of this report be used for?
 
-* 
+*
 
 Manual
 
@@ -122,11 +141,11 @@ Manual
 * How to run
 * How to use
 
-The Showcase
+The Showcase - Show the project
 
 * Video Demo
-* 
+* Screenshots
 
 Appendix
 
-* DONE Project Proposal
+* Project Proposal - DONE
