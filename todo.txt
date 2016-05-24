@@ -1,0 +1,94 @@
+Streamy
+
+Intro
+
+* Motivation
+* Well documented problem
+
+Related Works
+
+* Netflix transitioning to bittorrent
+* BitTorrent
+* WebRTC
+* WebSockets
+* Browserify/NodeJS (less important)
+* HTML5
+	- LocalStorage
+	- audio tag
+* DHT
+	- Different DHT systems found
+		(WebRTC-explorer, WebRTC-chord, Kad-WebRTC)
+* Spotify
+* Napster
+* Popcorn-time
+* File-sharing via torrents
+
+Frameworks
+
+* WebTorrent
+* 
+
+Analysis
+
+* Song information
+* WebRTC
+* Tracker vs Trackerless
+* BitTorrent BEPs (BEP9, 17, 19, 27, 44)
+* Scraping
+* LocalStorage
+	- Why not cookies
+	- Why not IndexedDB/mysql
+* DHT
+	- Mocking vs fake-dht
+	-  
+
+Design
+* Song metadata
+* LocalForage vs LocalStorage
+	- LocalStorage limitations
+	- Issues with LocalForage (blob vs buffer vs arraybuffer)
+	- Workaround for localForage (save seperately)
+* DHT
+	- Issues with DHT on WebRTC
+	- Tested DHT systems
+	- WebRTC-Explorer (issues with)
+	- WebRTC-chord (issues with)
+	- Kad-WebRTC (issues with)
+	
+* Granularity of torrents
+	- download song, album or discography?
+
+Implementation
+
+* Code Architecture
+	- flow diagrams
+	- file responsibility overview
+	- Block Diagram
+* User Interface (Angular)
+	- 
+Evaluation
+
+* Quantifiable Tests
+	- Reproducible
+* Analysis results
+
+Conclusion
+
+* 
+
+Manual
+
+* Running remote (digitalocean server)
+* Running local (docker, src)
+* How to install
+* How to run
+* How to use
+
+The Showcase
+
+* Video Demo
+* 
+
+Appendix
+
+* DONE Project Proposal

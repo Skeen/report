@@ -102,53 +102,54 @@ Bittorrent enhencement proposals is a place where users of bittorrent can come w
 One of these proposals focuses on http seeding \citep{httpSeed}.
 This is relevant in our work, because we focus on how we can make streaming work in the browser. The proposal is about changing the metadata file to include a field that contains
 
-Whereas the purpose of the Introduction chapter was to entice and
-convince the reader that work reported is interesting, that the author
-is asking the right questions about it, and reading about it will be
-worthwhile, the purpose of the Related Work chapter is to
-demonstrate that the author possesses a fine overview and keen
-understanding of the topic of the work.  Note that while the title of
-the chapter is ``Related Work'', it might as well be called
-``\emph{Relevant} Work'' in that you should only include work that are
-useful or relevant to your purpose. 
-
-Writing about others' work can be challenging---it is easy to succumb
-to just writing condensed summaries, which is just as tedious to read
-as they are to write. A better method is to gain an overview over the
-field of inquiry, and then establish in the first section what aspects
-or dimensions are crucial to systems or methodologies such as the ones
-described. This demonstrates to the reader that the author has
-understanding and judgement. Having done this, every paper or work can
-then be described in those established terms. This makes for easier
-and much more structured writing, and it also helps the reader
-differentiate the systems and works reported on. If there are multiple
-works that cover approximately the same area (\eg, using the same
-technique), you may mention several, but only go into detail with the
-most significant or representative one.
-
-The chapter can then be concluded with a table summarising all the
-work reported on using the aspects defined in the introduction of the
-chapter.
-
-A crucial element of this chapter is that it concerns the work of
-others and \emph{only} that. While the selection of aspects or
-dimensions described above invariantly will reflect your own focus,
-that should be the extend of which your own work and plans influence
-this chapter.  Your own judgement comes in the next chapter.
+%Whereas the purpose of the Introduction chapter was to entice and
+%convince the reader that work reported is interesting, that the author
+%is asking the right questions about it, and reading about it will be
+%worthwhile, the purpose of the Related Work chapter is to
+%demonstrate that the author possesses a fine overview and keen
+%understanding of the topic of the work.  Note that while the title of
+%the chapter is ``Related Work'', it might as well be called
+%``\emph{Relevant} Work'' in that you should only include work that are
+%useful or relevant to your purpose. 
+%
+%Writing about others' work can be challenging---it is easy to succumb
+%to just writing condensed summaries, which is just as tedious to read
+%as they are to write. A better method is to gain an overview over the
+%field of inquiry, and then establish in the first section what aspects
+%or dimensions are crucial to systems or methodologies such as the ones
+%described. This demonstrates to the reader that the author has
+%understanding and judgement. Having done this, every paper or work can
+%then be described in those established terms. This makes for easier
+%and much more structured writing, and it also helps the reader
+%differentiate the systems and works reported on. If there are multiple
+%works that cover approximately the same area (\eg, using the same
+%technique), you may mention several, but only go into detail with the
+%most significant or representative one.
+%
+%The chapter can then be concluded with a table summarising all the
+%work reported on using the aspects defined in the introduction of the
+%chapter.
+%
+%A crucial element of this chapter is that it concerns the work of
+%others and \emph{only} that. While the selection of aspects or
+%dimensions described above invariantly will reflect your own focus,
+%that should be the extend of which your own work and plans influence
+%this chapter.  Your own judgement comes in the next chapter.
 
 \section{Frameworks and Technologies}
 \label{sec:fram-techn}
 
-Related work need not be only published academic work. In many cases,
-it is also relevant to describe crucial frameworks and technologies
-that will be used or are relevant for the thesis.  This does not mean
-that all employed technologies should be described in detail, but
-frameworks and technologies that are unusual (for lack of a better
-word) could be described here. \Eg, there is no need to describe an
-ordinary network stack, but if the work involves GPU programming, a
-description of the chosen architecture might well be relevant, as it
-informs all the following chapters.
+\input{Chapter/Framework}
 
+%Related work need not be only published academic work. In many cases,
+%it is also relevant to describe crucial frameworks and technologies
+%that will be used or are relevant for the thesis.  This does not mean
+%that all employed technologies should be described in detail, but
+%frameworks and technologies that are unusual (for lack of a better
+%word) could be described here. \Eg, there is no need to describe an
+%ordinary network stack, but if the work involves GPU programming, a
+%description of the chosen architecture might well be relevant, as it
+%informs all the following chapters.
 
 
 \chapter{Analysis}
@@ -166,7 +167,6 @@ informs all the following chapters.
 %Having written the analysis, the author has all the tools needed to
 %complete the next chapter.
 
-
 \chapter{Design}
 \label{cha:design}
 
@@ -176,20 +176,20 @@ informs all the following chapters.
 %to be configured correctly to experimentally test stated hypotheses.
 %Such experiments must be planned and designed in advance to work
 %properly and provide valid and trustworthy results.
-
+%
 %As computer scientists, we usually do not work in labs, and our
 %experiments do not live in petri dishes. Still, we have hypotheses to
 %test, and thus, experiments to plan. This planning phase is the
 %design, where the authors describe the system intended to test the
 %hypotheses posed in the introduction.
-
+%
 %A luxury of the design chapter is that the design may well go further
 %than solely the confirmation or refutation of the hypotheses.  If you
 %are building a system, this is where you show that you know how to
 %design one, even if you will actually not be implementing all of it.
 %If you had sufficient time and resources, this is how you would make
 %your system.
-
+%
 %However, before we come to that, it is necessary to investigate
 %whether the required hypotheses are valid. If they are not, the design
 %must be reconsidered, and there is only one way to test them, namely
