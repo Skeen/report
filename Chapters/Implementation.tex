@@ -1,0 +1,48 @@
+Due to the size of the projects codebase and large number of libraries, it was necessary to create a maintainable architecture.
+
+
+% Section for Torrent
+
+% Section for Storage
+To have persistency in user sessions, we needed a way of storing data to the disk. There are several standard ways to store data in web browsers, but all of these have their own drawbacks.
+
+Traditional browser cookies can store up to 4KB of data, 
+not enough to save even one song. 
+To store a song in cookies, 
+we would need to create thousands of cookies, 
+and store parts of a song in each one, 
+this seemed like a difficult and inelegant solution.
+
+Seeing the need for larger storage spaces, 
+industry concerns have added LocalStorage to the HTML 5 standard,
+which allows websites to store arbitrarily large amounts of data,
+but this again suffers significant drawbacks: 
+implementation varies greatly between browsers, 
+and can in some cases be wiped after reaching only 5 megabytes, 
+hardly enough for our purposes.
+
+Some browsers have also added support for database storage, via IndexedDB and mysql, but this is not supported in every browser.
+
+To overcome these challenges, we use a library called localForage, 
+which checks what the host browser supports,
+and makes use of the best available storage method.
+We found through experiments,
+that localForage has issues saving javascript objects to disk when these objects contain large binary blobs, 
+these could consume as much as 4 gigabytes of space.
+Seperating the generated metadata object and song binary before placing the in storage, 
+seemed to solve this issue.
+
+The object-blob seperation behavior and use of localforage,
+needed to be constistent throughout the project, 
+so we created a Storage class which uses localforage and handles the data seperation implicitly, 
+and disallowed the direct use of localforage anywhere else: all other sections of the project should save and get data through using the Storage class.
+
+As local content should also be playable, 
+seeded and be capable of being added to the playlist, 
+we created another class called localcontent,
+which retrieves all songs from the disk at startup,
+begins to seed them, making them available for other users in the network to dowbload,
+and presents a GUI element to the user.
+
+% Section for Song
+
