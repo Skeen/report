@@ -18,14 +18,24 @@ Related Works
 * HTML5
 	- LocalStorage
 	- audio tag
+* Libraries
+	- render-media (create audio tag from code)
+	- music-metadata
+	- localforage
+	- request (easily send over http)
+	- express (defines endpoints)
+	- readable-blob-stream
+	- magnet-uri
+	- GUI elements (angular2, font-awesome, bootstrap, dragdrop)
 * DHT
 	- Different DHT systems found
 		(WebRTC-explorer, WebRTC-chord, Kad-WebRTC)
-* Spotify
-* Napster
-* Popcorn-time
-* Netflix (transitioning to bittorrent)
-* File-sharing via torrents
+* Popular music/media distribution systems
+	- Spotify
+	- Napster
+	- Popcorn-time
+ 	- Netflix (transitioning to bittorrent)
+	- File-sharing via torrents (sharing is caring)
 
 Frameworks
 
@@ -49,7 +59,7 @@ Analysis
 
 Design
 
-* Song metadata
+* Song encodings and metadata
 * LocalForage vs LocalStorage
 	- LocalStorage limitations
 	- Issues with LocalForage (blob vs buffer vs arraybuffer)
@@ -66,6 +76,7 @@ Design
 
 Implementation
 
+* How we handle music and music metadata
 * Browserify and why we use it.
 * Code Architecture
 	- flow diagrams
