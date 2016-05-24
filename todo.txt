@@ -1,13 +1,16 @@
 Streamy
 
+Abstract
+
+* overall of project, write last
+
 Intro
 
 * Motivation
-* Well documented problem
+* Well documented case problem
 
 Related Works
 
-* Netflix transitioning to bittorrent
 * BitTorrent
 * WebRTC
 * WebSockets
@@ -21,15 +24,18 @@ Related Works
 * Spotify
 * Napster
 * Popcorn-time
+* Netflix (transitioning to bittorrent)
 * File-sharing via torrents
 
 Frameworks
 
 * WebTorrent
-* 
+* Browser vs desktop based (what is the difference?) 
 
 Analysis
 
+* audio tag support and capabilities
+* Why we use browser torrents
 * Song information
 * WebRTC
 * Tracker vs Trackerless
@@ -40,9 +46,9 @@ Analysis
 	- Why not IndexedDB/mysql
 * DHT
 	- Mocking vs fake-dht
-	-  
 
 Design
+
 * Song metadata
 * LocalForage vs LocalStorage
 	- LocalStorage limitations
@@ -60,17 +66,38 @@ Design
 
 Implementation
 
+* Browserify and why we use it.
 * Code Architecture
 	- flow diagrams
 	- file responsibility overview
 	- Block Diagram
+	- Seperation of concerns?
 * User Interface (Angular)
-	- 
+
 Evaluation
 
-* Quantifiable Tests
-	- Reproducible
 * Analysis results
+	- Capabilities compared to existing systems
+	- Is it useful/not useful?
+	- What does our system prove from research standpoint?
+
+* What did we not implement?
+	- Seeder eviction
+	- Eviction strategies
+	- Resource limitations
+	- Bad Health supported properly?
+	- Missing features on GUI (why there are unused GUI source code)
+	- Fake DHT impl, what problems it causes
+	- Missing trackerless feature
+	- Could DHT and trackerless be implemented with more work?
+
+* Quantifiable Tests (Reproducible) (performance, robustness)
+	- CPU utilization when using/not using parts of project?
+	- LocalStorage performance degredation?
+	- Memory use?
+	- Comparison with spotify/others
+	- Reported traffic by webtorrent
+		Is it correct+complete?
 
 Conclusion
 
