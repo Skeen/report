@@ -1,0 +1,159 @@
+Streamy
+
+Abstract
+
+* overall of project, write last
+
+Intro - What is this shit? - Emil
+
+* Motivation
+* Well documented case problem
+
+Related Works - All the stuff we found and looked at
+
+* BitTorrent - Morten
+* WebRTC - Rasmus
+* WebSockets - Emil
+* Browserify/NodeJS (less important) - Morten
+* HTML5 - Morten
+	- Only relevant parts
+	- LocalStorage
+	- audio tag
+* Libraries - Emil
+	- render-media (create audio tag from code)
+	- music-metadata
+	- localforage
+	- request (easily send over http)
+	- express (defines endpoints)
+	- readable-blob-stream
+	- magnet-uri
+	- GUI elements (angular2, font-awesome, bootstrap, dragdrop)
+* DHT - Emil
+	- Different DHT systems found
+		(WebRTC-explorer, WebRTC-chord, Kad-WebRTC)
+* Popular music/media distribution systems - Morten
+	- Spotify
+	- Napster
+	- Popcorn-time
+ 	- Netflix (transitioning to bittorrent)
+	- File-sharing via torrents (sharing is caring)
+
+Frameworks - Indepth about unusual libraries we used
+
+* WebTorrent - Emil
+* Browser vs desktop based (what is the difference?) - Morten
+
+Analysis - What we learned from looking at related works, 
+	why were some were excluded?
+
+* audio tag support and capabilities - Rasmus
+* Why we use browser torrents - Morten
+	- Compared to other technologies?
+* Song information - Rasmus
+* WebRTC limitations - Rasmus
+* Tracker vs Trackerless - Emil
+* BitTorrent BEPs (BEP9, 17, 19, 27, 44) - Morten
+* Scraping - Morten
+* LocalStorage - Rasmus
+	- Why not cookies
+	- Why not IndexedDB/mysql
+* DHT - Emil
+	- Mocking vs fake-dht
+	- Tested DHT systems
+	- WebRTC-Explorer (issues with)
+	- WebRTC-chord (issues with, unmaintained for 2 years)
+	- Kad-WebRTC (issues with)
+		+ bad support for < 3 nodes
+		+ Resynchronization of key value paies (eventual constistency)
+
+Design - About issues we ran into and how we got around them
+
+* How should project demonstrate a solution/improvement to problem case?
+
+* WebTorrent - Rasmus
+	- Is it standard?
+	- Can use TCP, WebRTC or utp connections
+* Libraries - Emil
+	- Problems?
+	- Patches, fixes?
+* Song encodings and metadata - Rasmus
+* Audio tag limitations and workarounds - Rasmus
+* LocalForage vs LocalStorage - Rasmus
+	- LocalStorage limitations
+	- Issues with LocalForage (blob vs buffer vs arraybuffer)
+	- Workaround for localForage (save seperately)
+* DHT - Emil
+	- Issues with DHT on WebRTC
+	- Why was it necessary to use faked dht?
+		
+* Granularity of torrents - Rasmus
+	- download song, album or discography?
+
+Implementation - About actual current codebase
+
+* Browserify and why we use it. - Rasmus
+	- Creates bundles
+	- Pack nodejs and browser modules (unifies nodejs and browser)
+* How we handle music and music metadata - Rasmus
+	- Hidden audio-tag
+* WebTorrent - Rasmus
+	- When download?
+	- When seed?
+	- How is 
+* Code Architecture - Rasmus
+	- flow diagrams
+	- file responsibility overview
+	- Block Diagram
+	- Seperation of concerns?
+* Content Management System (Fake DHT implementation) - Emil
+	- How we store songs (sha1 hash)
+	- How we store other things (sha1:name)
+	- How we maintain DHT content
+* User Interface (Angular) - Rasmus
+
+Evaluation - what did we learn from our project
+
+* Analysis results - Morten
+	- Capabilities compared to existing systems
+	- Is it useful/not useful?
+	- What does our system prove from research standpoint?
+
+* What did we not implement? - Morten
+	- Seeder eviction
+	- Eviction strategies
+	- Resource limitations
+	- Bad Health supported properly?
+	- Missing features on GUI (why there are unused GUI source code)
+	- Fake DHT impl, what problems it causes
+	- Missing trackerless feature
+	- Could DHT and trackerless be implemented with more work?
+
+* Quantifiable Tests (Reproducible) (performance, robustness) - Morten
+	- CPU utilization when using/not using parts of project?
+	- LocalStorage performance degredation?
+	- Memory use?
+	- Comparison with spotify/others
+	- Reported traffic by webtorrent
+		Is it correct+complete?
+
+Conclusion - what can the content of this report be used for?
+
+*
+
+Manual - Emil
+
+* Running remote (digitalocean server)
+* Running local (docker, src)
+* How to install
+* How to run
+* How to use
+
+The Showcase - Show the project - Morten
+
+* Video Demo
+* Screenshots
+
+Appendix
+
+* Contributions - Emil
+* Project Proposal - Emil: DONE
