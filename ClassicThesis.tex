@@ -108,7 +108,7 @@ forming the foundation of the next.}
 %the chapter is ``Related Work'', it might as well be called
 %``\emph{Relevant} Work'' in that you should only include work that are
 %useful or relevant to your purpose. 
-
+%
 %Writing about others' work can be challenging---it is easy to succumb
 %to just writing condensed summaries, which is just as tedious to read
 %as they are to write. A better method is to gain an overview over the
@@ -122,11 +122,11 @@ forming the foundation of the next.}
 %works that cover approximately the same area (\eg, using the same
 %technique), you may mention several, but only go into detail with the
 %most significant or representative one.
-
+%
 %The chapter can then be concluded with a table summarising all the
 %work reported on using the aspects defined in the introduction of the
 %chapter.
-
+%
 %A crucial element of this chapter is that it concerns the work of
 %others and \emph{only} that. While the selection of aspects or
 %dimensions described above invariantly will reflect your own focus,
@@ -135,6 +135,8 @@ forming the foundation of the next.}
 
 %\section{Frameworks and Technologies}
 %\label{sec:fram-techn}
+
+\input{Chapter/Framework}
 
 %Related work need not be only published academic work. In many cases,
 %it is also relevant to describe crucial frameworks and technologies
@@ -147,44 +149,44 @@ forming the foundation of the next.}
 %informs all the following chapters.
 
 
-
 \chapter{Analysis}
 \label{cha:analysis}
 
-This is where the author can answer the question of what use we can
-derive from all the works described in the previous chapter. Ideally,
-the summary of the related work will show that there is room
-unexplored for what the authors have in mind. If there are differences
-between the included works on key aspects in the approach to be taken,
-this is where this should be identified, and a decision reached.
+\input{Chapters/Analysis}
 
-Having written the analysis, the author has all the tools needed to
-complete the next chapter.
+%This is where the author can answer the question of what use we can
+%derive from all the works described in the previous chapter. Ideally,
+%the summary of the related work will show that there is room
+%unexplored for what the authors have in mind. If there are differences
+%between the included works on key aspects in the approach to be taken,
+%this is where this should be identified, and a decision reached.
 
+%Having written the analysis, the author has all the tools needed to
+%complete the next chapter.
 
 \chapter{Design}
 \label{cha:design}
 
-%\include{Chapters/design}
+\input{Chapters/Design}
 %
 %Many of the other natural sciences have labs with equipment that has
 %to be configured correctly to experimentally test stated hypotheses.
 %Such experiments must be planned and designed in advance to work
 %properly and provide valid and trustworthy results.
-
+%
 %As computer scientists, we usually do not work in labs, and our
 %experiments do not live in petri dishes. Still, we have hypotheses to
 %test, and thus, experiments to plan. This planning phase is the
 %design, where the authors describe the system intended to test the
 %hypotheses posed in the introduction.
-
+%
 %A luxury of the design chapter is that the design may well go further
 %than solely the confirmation or refutation of the hypotheses.  If you
 %are building a system, this is where you show that you know how to
 %design one, even if you will actually not be implementing all of it.
 %If you had sufficient time and resources, this is how you would make
 %your system.
-
+%
 %However, before we come to that, it is necessary to investigate
 %whether the required hypotheses are valid. If they are not, the design
 %must be reconsidered, and there is only one way to test them, namely
@@ -193,8 +195,7 @@ complete the next chapter.
 
 \chapter{Implementation}
 \label{cha:implementation}
-
-\include{Chapters/implementation}
+\input{Chapters/implementation}
 
 %Where the design chapter concerned itself with the overall plan, this
 %is where the actual experiment in the form of an implementation is
@@ -275,7 +276,7 @@ complete the work you have already accomplished.
 
 \part{Some Kind of Manual}
 \label{part:manual}
-\include{Chapters/Manual}
+\input{Chapters/Manual}
 \cleardoublepage
 
 \part{The Showcase}
@@ -293,7 +294,7 @@ complete the work you have already accomplished.
 %\renewcommand{\thechapter}{\alph{chapter}}
 \cleardoublepage
 \part{Appendix}
-\include{Chapters/Chapter0A}
+\input{Chapters/Chapter0A}
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************
