@@ -1,10 +1,11 @@
 % WebTorrent
 
+% Audio Tag and limitations
+Modern browsers already support native playback of audio files through the Audio HTML5 tag, 
+this capability comes with some significant limitations however; 
+
+
 % Songs and Metadata
-Adding support for music file types not already supported by the browser 
-would be an major undertaking, 
-and would not contribute much towards the goals of this project, 
-so we have decided to make use of existing browser capabilities.
 The supported music filetypes differ greatly from eachother internally; 
 their audio codings can be different, their metadata can be different,
 and even the way they are rendered and treated by the browsers can differ.
@@ -12,8 +13,6 @@ To make matters even worse,
 creators of music files are free to exclude or falsify metadata, and can even leave it out entirely.
 Clearly, some kind of common abstraction is needed to encapsulate the uncertain terrain of music.
 
-% Audio Tag and limitations
-Modern browsers already support native playback of audio files through the Audio HTML5 tag, 
 
 % LocalStorage vs LocalForage
 To have persistency in user sessions, we needed a way of storing data to the disk. There are several standard ways to store data in web browsers, but all of these have their own drawbacks.
