@@ -1,36 +1,23 @@
 Due to the size of the projects codebase and large number of libraries, it was necessary to create a maintainable architecture.
 
+% Browserify and why we use it
+The project contains a large amount of NodeJS module libraries, 
+many of which are designed for NodeJS and not for use in browsers.
+We needed some way to use these libraries, and to insure that they are properly loaded.
+In NodeJS, modules are loaded and made available by calling the require method 
+and assigning the result to a field variable, which can then be used to access the libraries functions.
+This capability is not supported natively in browsers, so a tool was needed to provide it.
+The Browserify compile tool takes NodeJS code and emits a bundle.js, 
+which includes all the input code and needed libraries. 
 
-% Section for Torrent
 
-% Section for Storage
-To have persistency in user sessions, we needed a way of storing data to the disk. There are several standard ways to store data in web browsers, but all of these have their own drawbacks.
+% How we handle music and music metadata
 
-Traditional browser cookies can store up to 4KB of data, 
-not enough to save even one song. 
-To store a song in cookies, 
-we would need to create thousands of cookies, 
-and store parts of a song in each one, 
-this seemed like a difficult and inelegant solution.
+% WebTorrent
 
-Seeing the need for larger storage spaces, 
-industry concerns have added LocalStorage to the HTML 5 standard,
-which allows websites to store arbitrarily large amounts of data,
-but this again suffers significant drawbacks: 
-implementation varies greatly between browsers, 
-and can in some cases be wiped after reaching only 5 megabytes, 
-hardly enough for our purposes.
+% Code Architecture
 
-Some browsers have also added support for database storage, via IndexedDB and mysql, but this is not supported in every browser.
-
-To overcome these challenges, we use a library called localForage, 
-which checks what the host browser supports,
-and makes use of the best available storage method.
-We found through experiments,
-that localForage has issues saving javascript objects to disk when these objects contain large binary blobs, 
-these could consume as much as 4 gigabytes of space.
-Seperating the generated metadata object and song binary before placing the in storage, 
-seemed to solve this issue.
+% Storage
 
 The object-blob seperation behavior and use of localforage,
 needed to be constistent throughout the project, 
@@ -44,5 +31,5 @@ which retrieves all songs from the disk at startup,
 begins to seed them, making them available for other users in the network to dowbload,
 and presents a GUI element to the user.
 
-% Section for Song
+% GUI (Angular)
 
