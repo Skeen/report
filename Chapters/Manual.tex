@@ -7,9 +7,9 @@ and then give an introduction to the easier remotely case.
 \subsection{Locally}
 We've developed a docker image for our project, as such one can start the 
 fake-dht backend server, and the http-server (serving our webinterface), using:
-\begin{“erbatim}
+\begin{verbatim}
 docker run -it -p 80:1987 -p 3000:3000 skeen/streamy
-\end{verbatin}
+\end{verbatim}
 % TODO: Fix href
 After which the webinterface will be hosted on port 80, while the fake-dht,
 will be running on port 3000. Assuming the docker instance is running locally,
