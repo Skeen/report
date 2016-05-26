@@ -7,11 +7,25 @@ We needed some way to use these libraries, and to insure that they are properly 
 In NodeJS, modules are loaded and made available by calling the require method 
 and assigning the result to a field variable, which can then be used to access the libraries functions.
 This capability is not supported natively in browsers, so a tool was needed to provide it.
-The Browserify compile tool takes NodeJS code and emits a bundle.js, 
-which includes all the input code and needed libraries. 
-
+The Browserify tool takes javascript code written for NodeJS, 
+transforms it into regular javascript code, 
+handles all the requires, 
+and emits the new javascript code as a single easily distributed file called Bundle.js.
+Browserify allows our projects end result to consist only of a html page and one javascript file, 
+so this seems like an ideal setup, and is what we make use of.
 
 % How we handle music and music metadata
+The program encapsulates the highly inconsistant music files using a Song object,
+which contains optional fields corresponding to commonly used metadata, 
+such as title, name of artist, genre and album. 
+The Song object also contains information relevant for the bittorrent system; 
+it contains the magnetURI it was retrieved from or is being seeded to, 
+it holds the binary file once it is fully available, 
+or a reference to the music stream when it is still being downloaded.
+This Song object presents all other sections of the project with a uniform way to access metadata and audio, 
+while retaining relational information about which albums or artists the song belongs to. In addition to this, 
+we have also created objects to hold information about an album or an artist, 
+so we can more easily search for related works in the DHT.
 
 % WebTorrent
 
@@ -21,14 +35,15 @@ which includes all the input code and needed libraries.
 
 The object-blob seperation behavior and use of localforage,
 needed to be constistent throughout the project, 
-so we created a Storage class which uses localforage and handles the data seperation implicitly, 
-and disallowed the direct use of localforage anywhere else: all other sections of the project should save and get data through using the Storage class.
+so we created a Storage class which uses localforage and handles the data seperation implicitly when its storage methods are called.
+We have also disallowed the direct use of localforage anywhere else: all other sections of the project should save and get data through using the Storage class to ensure consistent behavior. 
+This was done by removing any inclusion of the localforage library outside of the Storage class file.
 
-As local content should also be playable, 
-seeded and be capable of being added to the playlist, 
-we created another class called localcontent,
+As local content should also be visible in the GUI, 
+be seeded and be capable of being added to the playing,
+we created another class called LocalContent,
 which retrieves all songs from the disk at startup,
-begins to seed them, making them available for other users in the network to dowbload,
+begins to seed them, making them available for other users in the network to download,
 and presents a GUI element to the user.
 
 % GUI (Angular)
