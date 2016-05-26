@@ -1,0 +1,75 @@
+% TODO: This goes after an introduction to the architecture of the system.
+
+In our implementation we've utilized serveral third-party libraries, primarily
+provided by the node package mananger \verb|npm|. The lists below are excluding
+polyfill libraries (i.e. libraries which enable running our code on older
+platforms).
+
+For our webinterface, we've utilized;
+\begin{itemize}
+\item render-media: Which takes \verb|node| audio and video streams, and
+        creates / renders to HTML5 audio/video tags.
+\item music-metadata: Which takes \verb|node| audio streams, and extracts
+        meta-data, such as, but not limited to; artist information, ablum 
+        information and song title.
+\item express: A HTTP web-server framework, which enabled rapid prototyping and
+        development, by easing the definition and implementation of HTTP endpoints.
+\item body-parser: A middleware plugin to the express framework, which enables 
+        easy access to POST endcoded information.
+\item triejs: A pure javascript implementation of a trie datastructure, which 
+        enables easy substring lookups.
+\item A varity of GUI libraries, in summary:
+\begin{itemize}
+\item Angular 2: A framework for writing modern web-apps.
+\item Font-awesome: A library of glyps and icons.
+\item ng2-bootstrap: An Angular 2 wrapper around the css project Bootstrap 3.
+\item dragdrop: A smart drag-and-drop element for files, which eases getting
+        the HTML5 File object.
+\end{itemize}
+\end{itemize}
+% TODO: Fix these refs
+Of these libraries, we've developed patches for 'music-metadata' to add support
+for node streams (see \ref{}), and for localforage to add support for node (see
+\ref{}).
+
+% TODO: Fix link here
+Additionally our webinterface utilizes our own library 'music-streamer-library',
+which has been uploaded to the npm repository (see \href{}).
+
+For our music-streamer-library, we've utilized;
+\begin{itemize}
+\item bittorrent-tracker: A sub-project of WebTorrent, which enables querying 
+        the (WebSocket) tracker for seeder and leecher count.
+\item localforage: Which is a unified adapter ontop of the varying HTML5
+        storage backends, such as: LocalStorage, IndexedDB and WebSQL.
+\item magnet-uri: Which parses magnet URIs and output JSON objects containing
+        the information from within the magnet URI.
+\item request: A small library that simplifies sending XHR (HTTP requests).
+\item readable-blob-stream: Which generates node streams from HTML5 Blob objects.
+\item WebTorrent: A full BitTorrent client, implemented using WebRTC as the 
+        transport layer. This is used for the actual data transfer.
+\item Additionally; Our library utilizes some of the same libraries as our
+        webinterface, namely: musicmetadata and render-media.
+\end{itemize}
+
+% TODO: Fix this ref
+Our music-streamer-library, contains an interface for a distributed hash table,
+for which we have worked on creating multiple implementations. Our intial one,
+was a simple centralized lookup table server, utilized to get the rest of the 
+project going. For more information about the DHT implementations we've 
+investigated, please refer to \ref{}.
+
+% TODO: Fix this ref
+% TODO: Better word than richer
+The DHT implementation utilized in the demo (see \ref{}), is a richer version
+of our initial lookup table server implementation, we've named this; 'fake-dht'.
+
+For our fake-dht centralized lookup / searching server, we've utilized;
+\begin{itemize}
+\item express: A HTTP web-server framework, which enabled rapid prototyping and
+        development, by easing the definition and implementation of HTTP endpoints.
+\item body-parser: A middleware plugin to the express framework, which enables 
+        easy access to POST endcoded information.
+\item triejs: A pure javascript implementation of a trie datastructure, which 
+        enables easy substring lookups.
+\end{itemize}
