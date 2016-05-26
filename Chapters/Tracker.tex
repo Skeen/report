@@ -1,0 +1,58 @@
+% I have no idea when this fits in
+
+When running the BitTorrent protocol, we need a bootstrap mechanism, to get in
+contact with peers within the network. Several bootstrap mechanisms are exist;
+\begin{itemize}
+\item Manual peer input
+\item Tracker-based peer-lists
+\item Trackerless peer-lists
+\end{itemize}
+% TODO: ref = Peer Exchange BEP
+The simplest model is that the user provide a number of peers, which are
+already within the overlay network. These peers can then by used to further
+bootstrap the network (see \ref{}). These already know peers can either be
+peers connected in the last session (and initially provided by the software),
+or found outside the network.
+
+The tracker-based model utilizes a centralized component for acquire the
+initial list of peers to connect to. The flow is simply, a client asks the
+tracker for a list of peers given a specific topic (aka. hash), after which the
+client is able to contact the peers.
+
+The trackerless model utilizes a DHT network for acquiring the initial list of 
+peers. The client joins the DHT network (by knowing a peer within the network),
+and once inside the DHT network, it can lookup topics (aka. hashes), and ask
+the node responsable for the topic for the peer list.
+\newline
+% TODO: Check urls
+- Known peers for the trackerless DHT are usually bittorrent.com and utorrrent.com
+
+\subsection{Result}
+In our implementation, we've disregarded the manual peer input model, as it is
+not user friendly. As such we're left with tracker-based and trackerless, as 
+we've limited ourselves to the context of the browser, we're bound to using 
+WebRTC, and by extension we need a centralized component to bootstrap these
+connections. 
+
+We are however, in theory, free to pick whether we want to use a tracker, or 
+utilize a trackerless DHT for bootstrapping peers, but only in theory as our
+WebRTC-based BitTorrent implementation (as previously mentioned here) does
+indeed not support trackerless, and as the provided WebSocket tracker for 
+WebTorrent fulfills both the role of bootstrapping WebRTC connections, and the
+role of the BitTorrent tracker.
+
+As previously mentioned, had we been able to utilize trackerless, we've been
+able to use the trackerless DHT as our searching DHT, however utilizing a
+tracker provides other unique capabilities, namely; centralized control of the
+swarm. 
+\newline
+- A content distributor might like to have this capability, to do data
+processing on popular content, or otherwise track the swarm.
+
+While a tracker-based solution utilizes a centralized compontents, it is not
+limited to just using one. Our solution utilizes the 4 default trackers
+provided by WebTorrent, but it's trivial to run your own tracker and add it to
+the resources in the network.
+\newline
+- A content provider may want to track how often it's content is downloaded,
+and could add the content to the network with just one tracker being their own.

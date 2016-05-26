@@ -1,3 +1,71 @@
-\section{Alfa}
-Here's a nice manual
+%% TODO: Billeder
+
+There are two ways to demo our application, namely remotely or locally, we'll
+start out explaining the difficult case, namely running the project locally,
+and then give an introduction to the easier remotely case.
+
+\subsection{Locally}
+We've developed a docker image for our project, as such one can start the 
+fake-dht backend server, and the http-server (serving our webinterface), using:
+\begin{“erbatim}
+docker run -it -p 80:1987 -p 3000:3000 skeen/streamy
+\end{verbatin}
+% TODO: Fix href
+After which the webinterface will be hosted on port 80, while the fake-dht,
+will be running on port 3000. Assuming the docker instance is running locally,
+one should be able to access the webinterface at: \href{http://localhost}.
+
+\subsection{Remotely}
+% TODO: Check href
+% TODO: Setup DNS for skeen.info
+We're running above mentioned docker image on a digital ocean server, as such
+one can access the site by going to \href{http://46.101.226.102}.
+
+\subsection{Using the application}
+At this point it's assumed that the network is up and running. If one is using 
+the local setup, the dht will be empty, and no results will be found by
+searching, while two results should pop up using the remote setup, namely;
+\begin{itemize}
+\item 'The Start': A chiptunes song by Tiasu
+\item 'Pixelland': A chiptunes song by Kevin MacLeod
+\end{itemize}
+Both of these songs are used with permission, and we've setup a node which will
+be seeding them continously.
+
+More songs can be added to the system, by dropping them within the drag-and-drop
+field on the bottom of the page. When a song is uploaded it is added to the DHT,
+saved to local storage, and then seeded by the browser.
+% TODO: Fix the issue, that the song isn't added to local before reload
+At this point, it should be possible to search for it (using the title), and by
+extension downloading them from one browser tab to another.
+\newline
+- It's preferable to use incognito mode, or different browsers for testing this,
+as local storage is shared between tab, and may otherwise interfer.
+
+At this point it's assumed that the dht is populated, and that a seed for the
+content is available (note, that the dht does not clear out dead content, or
+otherwise decay entries). One should now be able to search for the title of a 
+song, clicking it will provide information about the searched content, along 
+with the provided information there'll be a button to start downloading the 
+content.
+
+Clicking download, will intialize the download and add an entry to the download
+tab, which will continously update with information on the download process.
+
+Once the content is fully downloaded it'll move to the local tab, from which it
+will be seeded and updated with seeding information. In both the downloading 
+and seeding tab, there's a 'add to playlist' button, which appends the song to
+the current playlist.
+
+Double-clicking an entry in the playlist starts the playback on the player at
+the top of the page. Playing back from the downloads tab setups the torrent in
+streaming mode, such that pieces are download in the order they're needed,
+rather than in the typical rarest-first order. Note that not all file formats
+can be streamed; streamability of different file formats is browser dependent,
+and given by the specific implementation of the HTML5 audio tag.
+
+The player contains a varity of buttons, these are annotated on the image below,
+but most of these are through to be self explainatory for anyone whom has used
+a media player before;
+% TODO: Annotated image here.
 

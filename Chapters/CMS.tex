@@ -1,0 +1,48 @@
+As previously stated we utilize a DHT overlay network for searching. While it's
+currently faked, we do still add content as we would assuming we were utilizing
+a non-faked implementation.
+
+Whenever a song is uploaded, the following take place:
+\begin{itemize}
+\item We parse out the meta-data, and create a Song object from it.
+\item We add the song to the DHT, with the key being the sha1 hash of it's title.
+\item We check if the songs album is already within the DHT;
+\begin{itemize}
+\item If it is, we check if the artists are in correspondance, i.e. between
+    this song, and the DHT content, if it is not, we update the information.
+    Additionally, we add this song to the list of songs for the album.
+\item If it is not, we add a new entry in the DHt, with the artists of this
+    song, and add this song as the only song of the album.
+\end{itemize}
+\item We check if each of the artist(s) from the song, exists in the DHT.
+\begin{itemize}
+% TODO: Spell nessicary
+\item If they do, we update their album information (if nessicary)
+\item If they do not, we add them to the DHT.
+\end{itemize}
+\end{itemize}
+In the above, we say that we add a X to Y, say a song to an album. The actual 
+operation which takes place, is that we pull in the current JSON representation
+of the album, then we add the song's title and it's hash (key into the DHT),
+before pushing the modified JSON representation back into DHT.
+
+In the faked implementation this is somewhat easy, while in a real DHT one
+would have to implement a smarter updating scheme, i.e. to avoid race conditions.
+\newline
+% TODO: pattern name?
+- A common scheme for databases is the transactional pattern, in which an update
+either completely succeeds or fails without side-effects. We have not experimented
+with implementing this sort of feature on top of a DHT network, but we envision
+that a sub-protocol could be executed by the involved peers (i.e. the peers
+responsible for the song, album and artists respectively).
+
+Additionally the network would have to be protected against malicious updates.
+We deem this outside the scope of our implementation, and as such we do not
+provide a solution to this, but point towards assymmetric cryptography for a 
+solutions.
+
+A disclaimer has to be made; we (as previosly mentioned) currently fake the 
+prefix hash trie implementation, as such we actually do some lookups which
+bypasses the DHT interface. In order to utilize the same interface, we've
+prefixed all sha1 hashes in the network with 'sha1:', and all queries that does
+not have this prefix are supposed to be implemented on the prefix hash trie.
