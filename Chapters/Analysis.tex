@@ -3,25 +3,72 @@ Adding support for music file types not already supported by the browser
 would be an major undertaking, 
 and would not contribute much towards the goals of this project, 
 so we have decided to make use of existing browser capabilities.
+\newline
 
-Most modern browsers support the HTML5 standard Audio tag, 
+Most modern browsers support the HTML5 standard Audio tag,
+also called HTML5 Audio and WebAudio,
 which presents a simple GUI and audio playback to the user.
 Browsers also support a similar Video tag, 
 which could also be used for audio playback purposes.
 The audio and video tags support both files and streams, 
 allowing playback while a file is still being downloaded.
+\newline
 Supported audio codings differ greatly between browsers:
 Firefox and Opera do not support the proprietary formats Mp3, Mp4 or ADTS
 without additional software on the machine.
 Safari does not support the free open source formats WebM or Ogg,
 and Internet Explorer and Microsoft Edge does not support anything other than Mp3 and Mp4.
 Google chrome notably supports all the above formats.
+\newline
 
 The audio tag itself offers a very simplistic yet very inflexible GUI to the user, 
-it includes the usual progress bar, volume, play+pause buttons.
+it includes the usual progress bar, volume, play+pause buttons in its interface, 
+these elements cannot be easily changed, but can be disabled entirely, 
+which lets the audio playback be controlled by javascript code instead.
+\newline
 
 % Song Information
 
+
 % WebRTC limitations
 
+
 % LocalStorage
+Ensuring availability of content and robustness in a bittorrent network requires persistant offline data storage:
+without persistant data storage, if all users were to leave the network and return later, all content on the 
+network would be lost.
+\newline
+
+Until recently the only way to have data persistency through browsers has been cookies, 
+which allows saving up to 4KB in each cookie, and can hold at least 50 cookies per domain, 
+which allows for a total of 200KB of garaunteed available storage, possibly more depending on the browser.
+\newline
+
+Seeing the need for larger amounts of persistant data, browsers now implement Web Storage 
+(also known as DOM storage),
+a new standard by W3C
+TODO: ref w3.org/TR/webstorage 
+which consists of sessionStorage and localStorage.
+
+Mozilla also defines a globalStorage for their Firefox browser, 
+but this is not supported by any other major browsers, so we will disregard it for this project.
+
+SessionStorage is intended to be wiped whenever the current session ends, 
+even if the user agent has not requested it, making it also unsuited for this project.
+
+Data stored using LocalStorage is only wiped when explicitly requested by the user agent or 
+by some security policy specified by the user agent beforehand.
+\newline
+
+The current Web Storage specification draft is somewhat ambiguous, 
+it suggests that browsers implement support for at least 5MB of storage of each kind per domain,
+but the actual support varies wildly even between versions of the same browser:
+Google chrome originally supported unlimited localstorage in version 18, dropped to 1MB in version 19, 
+5MB in version 36 and 4.75MB in version 46. 
+Internet Explorer allows 10MB, 
+and Firefox allows by default 5MB, but can be set to anything including 0 by the user agent.
+\newline
+
+In addition to the Web Storage standard, W3C is also working on a standard for IndexedDB in browsers, 
+which allows browser-side javascript to access a local database on the host machine.
+\newline
