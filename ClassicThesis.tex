@@ -43,7 +43,9 @@
 %*******************************************************
 \addbibresource{Bibliography.bib}
 \addbibresource[label=ownpubs]{AMiede_Publications.bib}
-
+\makeatletter
+\def\blx@maxline{77}
+\makeatother
 %********************************************************************
 % Hyphenation
 %*******************************************************
@@ -280,9 +282,7 @@ complete the work you have already accomplished.
 \cleardoublepage
 
 \part{The Showcase}
-\include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
-\include{Chapters/Chapter03}
 
 
 
