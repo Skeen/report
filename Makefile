@@ -6,7 +6,7 @@ all: report.pdf
 
 output_dir:
 	mkdir -p $(OUTPUT_DIR)
-report.pdf: *.tex Bibliography.bib output_dir
+report.pdf: *.tex Chapters/*.tex Bibliography.bib output_dir
 	latexmk -jobname=$(OUTPUT_DIR)/$(OUTPUT_NAME) -pdf $(RAPPORT)
 pvc-force:
 	latexmk -jobname=$(OUTPUT_DIR)/$(OUTPUT_NAME) --pvc --synctex=1 -f --quiet $(RAPPORT) -pdf
