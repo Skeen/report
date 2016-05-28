@@ -1,9 +1,11 @@
+
 % WebTorrent
+
 
 % Audio Tag and limitations
 Modern browsers already support native playback of audio files through the Audio HTML5 tag, 
 this capability comes with some significant limitations however; 
-
+\newline
 
 % Songs and Metadata
 The supported music filetypes differ greatly from eachother internally; 
@@ -12,7 +14,7 @@ and even the way they are rendered and treated by the browsers can differ.
 To make matters even worse, 
 creators of music files are free to exclude or falsify metadata, and can even leave it out entirely.
 Clearly, some kind of common abstraction is needed to encapsulate the uncertain terrain of music.
-
+\newline
 
 % LocalStorage vs LocalForage
 To have persistency in user sessions, we needed a way of storing data to the disk. There are several standard ways to store data in web browsers, but all of these have their own drawbacks.
@@ -31,15 +33,31 @@ implementation varies greatly between browsers,
 and can in some cases be wiped after reaching only 5 megabytes, 
 hardly enough for our purposes.
 
-Some browsers have also added support for database storage, via IndexedDB and mysql, but this is not supported in every browser.
+Some browsers have also added support for database storage, via IndexedDB and MySQL, 
+but this is not supported in every browser. 
+For the sake of not excluding any browser that might work with WebTorrent, but not with IndexedDB,
+it seemed like we needed a better solution.
+\newline
 
 To overcome these challenges, we use a library called localForage, 
 which checks what the host browser supports,
 and makes use of the best available storage method.
-We found through experiments,
-that localForage has issues saving javascript objects to disk when these objects contain large binary blobs, 
-these could consume as much as 4 gigabytes of space.
-Seperating the generated metadata object and song binary before placing the in storage, 
+We found through experiments
+that localForage has issues storing javascript objects to disk when these objects contain large binary blobs, 
+these could consume as much as 4 gigabytes of space for an originally 5MB music file.
+Seperating the generated metadata object and song binary before placing the in storage
 seemed to solve this issue.
+\newline
 
 % Granularity of torrents
+A torrent is capable of containing one or many files of any format, 
+it could contain single music files, whole albums or an artists entire discography.
+Our system does not make use of existing torrents made by other applications,
+so we are free to choose any granularity best suited for our purposes.
+Most music services focus on individual songs, 
+as users rarely wish to listen to multiple songs concurrently.
+This seems to be the best choice for our project aswell, 
+but the practicality of what to include in each of our torrents 
+could also consider the performance of WebTorrent,
+whether it can more efficiently make use of fewer torrents with more included files, 
+or if this makes no difference.
