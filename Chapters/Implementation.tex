@@ -1,4 +1,35 @@
-Due to the size of the projects codebase and large number of libraries, it was necessary to create a maintainable architecture.
+% Code Architecture
+Due to the size of the projects codebase and large number of libraries with different APIs, 
+it was necessary to create different object classes with seperated concerns,
+and a consistent way to use them.
+\newline
+
+The code base is seperated into a backend with code parts that are not visible to the user,
+and a front end with each class having an associated GUI element.
+We also needed main classes to coordinate these responsibilies, handle overall flow,
+and serve as a container for anything we did not have time to place in a seperate class:
+these classes are lib.ts in the backend,
+and app.component.ts in the frontend to hold GUI elements.
+
+Many of the libraries used have slow, non-blocking IO operations
+and make use of callbacks to execute code after the IO operations complete.
+
+Most GUI actions result in an event rather than an immediate code execution, 
+these events are then caught by app.component
+which performs the necessary functionality, through the other classes when relevant.
+\newline
+
+% GUI (Angular)
+The GUI needed databindings to show torrent information, allow changing songs
+and implement a music player GUI. 
+Angular 2 lets us create GUI elements as new HTML tags, 
+and bootstrap provides generic GUI elements and stylesheets for angular, 
+they were the easiest way to fill our needs for the GUI,
+so that is what we have used.
+
+Our GUI elements consist of a music player interface, a playlist, downloading information 
+and show information about local content and seeding.
+\newline
 
 % Browserify and why we use it
 The project contains a large amount of NodeJS module libraries, 
@@ -13,6 +44,7 @@ handles all the requires,
 and emits the new javascript code as a single easily distributed file called Bundle.js.
 Browserify allows our projects end result to consist only of a html page and one javascript file, 
 so this seems like an ideal setup, and is what we make use of.
+\newline
 
 % How we handle music and music metadata
 The program encapsulates the highly inconsistant music files using a Song object,
@@ -26,13 +58,14 @@ This Song object presents all other sections of the project with a uniform way t
 while retaining relational information about which albums or artists the song belongs to. In addition to this, 
 we have also created objects to hold information about an album or an artist, 
 so we can more easily search for related works in the DHT.
+\newline
 
 % WebTorrent
-
-% Code Architecture
+WebTorrent provides seed and download methods using MagnetURI,
+and also contains a torrent object that makes relevant information available about active torrents
+\newline
 
 % Storage
-
 The object-blob seperation behavior and use of localforage,
 needed to be constistent throughout the project, 
 so we created a Storage class which uses localforage and handles the data seperation implicitly when its storage methods are called.
@@ -45,6 +78,3 @@ we created another class called LocalContent,
 which retrieves all songs from the disk at startup,
 begins to seed them, making them available for other users in the network to download,
 and presents a GUI element to the user.
-
-% GUI (Angular)
-
