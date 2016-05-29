@@ -15,6 +15,29 @@ Html 5 is the latest markup language for writing web applications is was relaese
 Html5 also implements local storage. This makes it possible to store content locally in the browsers rather than use cookies, to store the data.
 The storage limit it larger than when using cookies (at least 5mb) and the data is stored locally so it does not need to be sent to a server.
 
+\section{WebRTC}
+WebRTC is an API drafted by W3C that supports browser-to-browser connections,
+which focuses on peer-to-peer connections instead of traditional
+client-server networks like WebSockets, AJAx and Server Sent Events.
+Traditional networks suffer from high latencies and require dedicated servers to do the heavy lifting, 
+as browsers cannot listen for connections with WebSockets.
+
+Before WebRTC, establishing direct peer-to-peer connections in the browser required
+additional plugins in the browser such as Flash or Java, which would then download and
+execute the networking code.
+
+% TODO: write about peerconnection requiring central server to establish connection
+\label{webrtc-connection-server}
+WebRTC does not allow directly creating a connection between two browsers, 
+the connection has to be established by a central server.
+Browser clients establish a WebSocket connection the server, 
+asks to have peer-to-peer connections established,
+and then receives an established connection to other peers.
+As the server only establised the peer-to-peer connection, 
+it does not have to bear much workload on its perhaps limited resources,
+and is much less likely to become a bottleneck of the system.
+Peers can continue their connection even if the server is shut down later.
+
 \section{browserify}
 Browserify is a tool that makes it possible to use modules created to node.js in the browser. It also includes the 'require' functionallity in the browser code. That means code like this:
 %\begin{verbatim}
