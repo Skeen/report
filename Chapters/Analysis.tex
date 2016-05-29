@@ -80,9 +80,18 @@ and both of these do support IndexedDB.
 
 %bep
 BitTorrent enhencement proposals is a place where users of BitTorrent can come with proposals to improve the protocol.
-One of these proposals focuses on http seeding \citep{httpSeed}.
+One of these proposals focuses on http seeding \citep{bittorrent:bep17}.
 This is relevant in our work, because we focus on how we can make streaming work in the browser. The proposal is about changing the metadata file to include a httpseeds key. This key would refer to a list of web adresses where the torrent data can be downloaded from.
 If support for http seeds would be added to the Bittorrent protocol it would mean that there is more uptime of seeds because the ftp and http server would always be up.
 
-In another proposal \citep{metadata} it is proposed to make it possible for clients to join a swarm and complete a download without having to download a .torrent file first, from an info hash contained in magnet links. The gains from using magnet links over torrents are that informations about the torrent can be downloaded directly from other peers. Regular torrent files needs to be placed upon a webserver where it takes up space. The server must be up and running for the users to get information about the torrent, and that is not needed with using magnet links.
-Now users can just share a link instead of sharing a file on a server. 
+In another proposal \citep{bittorrent:bep09} it is proposed to make it possible for clients to join a swarm and complete a download without having to download a .torrent file first, from an info hash contained in magnet links. The gains from using magnet links over torrents are that informations about the torrent can be downloaded directly from other peers. Regular torrent files needs to be placed upon a webserver where it takes up space. The server must be up and running for the users to get information about the torrent, and that is not needed with using magnet links.
+Now users can just share a link instead of sharing a file on a server.
+
+Private torrents is another feature in Bittorrent \citep{bittorrent:bep27}. They idea is that users can define a torrent to be private by setting 'private=1' in the metainfo (.torrent) file. Private trackers can be used to control what users are allowed to download a torrent. The tracker is a server with a list of the peers that contain pieces of the torrent and a list of users allowed to get the specific torrent.
+The tracker will refuse to provide a seedlist to those not allowed to get that torrent.
+
+%Storing arbitrary data in the DHT
+In a proposal \citep{bittorrent:bep44} it is suggested that the DHT of Bittorrent is extended with the possibility of storing arbitrary data instead of just storing valuespairs with hashes and associated ip-addresses.
+With this change the DHT could be used to store infomation about the torrent e.g. song length, author, file size, ect.
+
+
