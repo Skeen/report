@@ -24,15 +24,20 @@ as browsers cannot listen for connections with WebSockets.
 
 Before WebRTC, establishing direct peer-to-peer connections in the browser required
 additional plugins in the browser such as Flash or Java, which would then download and
-execute the networking code.
+execute the networking code,
+these plugins did not come with most browsers,
+which means many users did not have them available.
 
 % TODO: write about peerconnection requiring central server to establish connection
 \label{webrtc-connection-server}
-WebRTC does not allow directly creating a connection between two browsers, 
-the connection has to be established by a central server.
+When using WebRTC, we must first notify the remote peer of our intention
+to open a peer-to-peer connection, so it can start listening for incoming packet,
+we also have to establish the necessary routing paths to each other peer on both sides,
+and relay this information,
+and finally establish the intended parameters: protocols, encoding used, and so on.
 Browser clients establish a WebSocket connection the server, 
 asks to have peer-to-peer connections established,
-and then receives an established connection to other peers.
+and then receives established connections to other peers.
 As the server only establised the peer-to-peer connection, 
 it does not have to bear much workload on its perhaps limited resources,
 and is much less likely to become a bottleneck of the system.

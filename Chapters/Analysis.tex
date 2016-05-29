@@ -47,7 +47,12 @@ Clearly, some kind of common abstraction is needed to encapsulate the uncertain 
 \newline
 
 % WebRTC limitations
+WebTorrent relies heavily on WebRTC and particularely on WebRTCs dataChannels.
+DataChannels are not supported in the Internet Explorer and Safari browsers, 
+so these cannot support WebTorrent either.
 
+Creating a data channel is a performance intensive task, 
+unlike websockets that make use of well defined HTTP handshake mechanisms, 
 
 % LocalStorage
 \section{Storage}
@@ -84,6 +89,9 @@ Google chrome originally supported unlimited localstorage in version 18, dropped
 5MB in version 36 and 4.75MB in version 46. 
 Internet Explorer allows 10MB, 
 and Firefox allows by default 5MB, but can be set to anything including 0 by the user agent.
+Google have attempted to implement a 'qouta api', 
+which allows websites to ask user agents to increase localstorage limitations, 
+this has not been adopted by the other browsers, so we had to look for something else.
 \newline
 
 In addition to the Web Storage standard, W3C is also working on a standard for IndexedDB in browsers, 
