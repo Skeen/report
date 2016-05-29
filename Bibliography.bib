@@ -474,6 +474,13 @@
   url = {http://www.bittorrent.org/beps/bep_0005.html}
 }
 
+@online{bittorrent:bep09,
+  author = {Greg Hazel, Arvid Norberg},
+  title = {Extension for Peers to Send Metadata Files},
+  year = 2008,
+  url = {http://www.bittorrent.org/beps/bep_0009.html}
+}
+
 @online{bittorrent:bep11,
   author = {The 8472 <the8472.bep@infinite-source.de>},
   title = {Peer Exchange (PEX)},
@@ -540,7 +547,7 @@
 
 @online{kadtools:kad-webrtc,
     author = {Gordon Hall and Emil 'Skeen' Madsen and 'omphalos'},
-    title = {Kad-WebRTC: WebRTC transport for kad Kademlia implementation.},
+    title = {Kad-WebRTC: WebRTC transport for 'kad' the Kademlia implementation.},
     year = {2015-->},
     url = {https://github.com/kadtools/kad-webrtc}
 }
@@ -581,6 +588,42 @@
  address = {London, UK, UK},
 }
 
+@inproceedings{Chawathe:Gia,
+ author = {Chawathe, Yatin and Ratnasamy, Sylvia and Breslau, Lee and Lanham, Nick and Shenker, Scott},
+ title = {Making Gnutella-like P2P Systems Scalable},
+ booktitle = {Proceedings of the 2003 Conference on Applications, Technologies, Architectures, and Protocols for Computer Communications},
+ series = {SIGCOMM '03},
+ year = {2003},
+ isbn = {1-58113-735-4},
+ location = {Karlsruhe, Germany},
+ pages = {407--418},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/863955.864000},
+ doi = {10.1145/863955.864000},
+ acmid = {864000},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Gnutella, distributed hash tables, peer-to-peer},
+} 
+
+@inproceedings{Lv:Searching,
+ author = {Lv, Qin and Cao, Pei and Cohen, Edith and Li, Kai and Shenker, Scott},
+ title = {Search and Replication in Unstructured Peer-to-peer Networks},
+ booktitle = {Proceedings of the 16th International Conference on Supercomputing},
+ series = {ICS '02},
+ year = {2002},
+ isbn = {1-58113-483-5},
+ location = {New York, New York, USA},
+ pages = {84--95},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/514191.514206},
+ doi = {10.1145/514191.514206},
+ acmid = {514206},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {peer-to-peer, replication, search, unstructured},
+} 
+
 @online{netflix,
   author = {Ernesto Van der Sar},
   title = {Netflix Needs BitTorrent Expert to Implement P2P Streaming},
@@ -588,9 +631,20 @@
   url = {https://torrentfreak.com/netflix-needs-bittorrent-expert-to-implement-p2p-streaming-150520/},
 }
 
-@online{metadata,
-  author = {Greg Hazel, Arvid Norberg},
-  title = {Extension for Peers to Send Metadata Files},
-  year = 2008,
-  url = {http://www.bittorrent.org/beps/bep_0009.html}
-  }
+@TECHREPORT{Ramabhadran:PHT,
+    author = {Sriram Ramabhadran and Sylvia Ratnasamy and Joseph M. Hellerstein and Scott Shenker},
+    title = {Prefix Hash Tree: An Indexing Data Structure over Distributed Hash Tables},
+    institution = {},
+    year = {2004}
+}
+
+@INPROCEEDINGS{Tang:LHT, 
+    author={Y. Tang and S. Zhou}, 
+    booktitle={Distributed Computing Systems, 2008. ICDCS '08. The 28th International Conference on}, 
+    title={LHT: A Low-Maintenance Indexing Scheme over DHTs}, 
+    year={2008}, 
+    pages={141-151}, 
+    doi={10.1109/ICDCS.2008.61}, 
+    ISSN={1063-6927}, 
+    month={June},
+}
