@@ -1,3 +1,4 @@
+\section{Content Management System}
 As previously stated we utilize a DHT overlay network for searching. While it's
 currently faked, we do still add content as we would assuming we were utilizing
 a non-faked implementation.
@@ -16,8 +17,7 @@ Whenever a song is uploaded, the following take place:
 \end{itemize}
 \item We check if each of the artist(s) from the song, exists in the DHT.
 \begin{itemize}
-% TODO: Spell nessicary
-\item If they do, we update their album information (if nessicary)
+\item If they do, we update their album information (if necessary)
 \item If they do not, we add them to the DHT.
 \end{itemize}
 \end{itemize}
@@ -29,7 +29,6 @@ before pushing the modified JSON representation back into DHT.
 In the faked implementation this is somewhat easy, while in a real DHT one
 would have to implement a smarter updating scheme, i.e. to avoid race conditions.
 \newline
-% TODO: pattern name?
 - A common scheme for databases is the transactional pattern, in which an update
 either completely succeeds or fails without side-effects. We have not experimented
 with implementing this sort of feature on top of a DHT network, but we envision

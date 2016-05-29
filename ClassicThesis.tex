@@ -51,11 +51,6 @@
 %*******************************************************
 %\hyphenation{put special hyphenation here}
 
-% ********************************************************************
-% GO!GO!GO! MOVE IT!
-%*******************************************************
-\usepackage[final]{pdfpages}
-
 \begin{document}
 \frenchspacing
 \raggedbottom
@@ -156,6 +151,13 @@ forming the foundation of the next.}
 
 \input{Chapters/Analysis}
 
+%% TODO: Move this about
+\input{Chapters/WebSockets.tex}
+%% TODO: Move this about
+\input{Chapters/WebTorrent.tex}
+%% TODO: Move this about, but after WebTorrent
+\input{Chapters/Tracker.tex}
+
 %This is where the author can answer the question of what use we can
 %derive from all the works described in the previous chapter. Ideally,
 %the summary of the related work will show that there is room
@@ -170,6 +172,12 @@ forming the foundation of the next.}
 \label{cha:design}
 
 \input{Chapters/Design}
+
+%% TODO: Move this about
+\input{Chapters/Libraries}
+%% TODO: Move this about, but after Libraries
+\input{Chapters/DHT}
+
 %
 %Many of the other natural sciences have labs with equipment that has
 %to be configured correctly to experimentally test stated hypotheses.
@@ -198,6 +206,9 @@ forming the foundation of the next.}
 \chapter{Implementation}
 \label{cha:implementation}
 \input{Chapters/Implementation}
+
+%% TODO: Move this about
+\input{Chapters/CMS}
 
 %Where the design chapter concerned itself with the overall plan, this
 %is where the actual experiment in the form of an implementation is
