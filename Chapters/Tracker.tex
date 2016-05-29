@@ -8,25 +8,26 @@ contact with peers within the network. Several bootstrap mechanisms are exist;
 \item Tracker-based peer-lists
 \item Trackerless peer-lists
 \end{itemize}
-% TODO: ref = Peer Exchange BEP
 The simplest model is that the user provide a number of peers, which are
 already within the overlay network. These peers can then by used to further
-bootstrap the network (see \ref{}). These already know peers can either be
-peers connected in the last session (and initially provided by the software),
-or found outside the network.
+bootstrap the network (see \citep{bittorrent:bep11}). These preknown peers
+can either be peers connected in the last session (and initially provided by
+the software), or found by some means outside the network.
 
-The tracker-based model utilizes a centralized component for acquire the
+The tracker-based model utilizes a centralized component for acquiring the
 initial list of peers to connect to. The flow is simply, a client asks the
 tracker for a list of peers given a specific topic (aka. hash), after which the
 client is able to contact the peers.
 
 The trackerless model utilizes a DHT network for acquiring the initial list of 
-peers. The client joins the DHT network (by knowing a peer within the network),
+peers. The client joins the DHT network (by knowing a peer(s) within the network),
 and once inside the DHT network, it can lookup topics (aka. hashes), and ask
 the node responsable for the topic for the peer list.
 \newline
-% TODO: Check urls
-- Known peers for the trackerless DHT are usually bittorrent.com and utorrrent.com
+- The known peer(s) required to join the DHT network, are usually provided by
+the \verb|.torrent| file for the download. A reference join node is presented
+by bittorrent, at \url{router.bittorrent.com}, but they recommand running your
+own \citep{bittorrent:bep05}.
 
 \subsection{Result}
 In our implementation, we've disregarded the manual peer input model, as it is
