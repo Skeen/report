@@ -33,8 +33,8 @@ as it allows arbitrary application data to be sent betweeen browsers,
 allowing a myriad of peer-to-peer techniques to be implemented as WebRTC code for browsers.
 
 Before WebRTC, establishing direct peer-to-peer connections in the browser required
-additional plugins in the browser such as Flash or Java, which would then download and
-execute the networking code,
+additional plugins in the browser such as Flash or Java, which would then download the necessary networking code
+from a server and execute it locally,
 these plugins did not come with most browsers,
 which means many users did not have them available.
 \newline
@@ -46,13 +46,12 @@ to open a peer-to-peer connection, so it can start listening for incoming packet
 we also have to establish the necessary routing paths to each other peer on both sides,
 and relay this information,
 and finally establish the intended parameters: protocols, encoding used, and so on.
-Browser clients establish a WebSocket connection the server, 
-asks to have peer-to-peer connections established,
-and then receives established connections to other peers.
-As the server only establised the peer-to-peer connection, 
-it does not have to bear much workload on its perhaps limited resources,
-and is much less likely to become a bottleneck of the system.
-Peers can continue their connection even if the server is shut down later.
+
+For the purposes of notifying the remote peer, a signaling service is necessary,
+this means having a centralized server that the browser contacts and asks to have a connection created.
+The signaling service does not need to be involved after the connection has been established,
+it can free up its resources to focus on signaling for new peers, 
+while the already established connections can continue regardless of whether the signalling service has quit.
 
 \section{browserify}
 Browserify is a tool that makes it possible to use modules created to node.js in the browser. It also includes the 'require' functionallity in the browser code. That means code like this:
@@ -67,7 +66,7 @@ The are many music-streamers already reseased and we will let us get inspired by
 \section{spotify}
 Spotify is the most popular online music streamer. The program was released in 2006 and was developed in Sweeden Stockholm by Daniel Ek and Martin Lorentzon. Now their main office is placed in Luxemborg and they have devisions in Stockholm and Göteborg. Their buisness model is that customers can listen to music in exchange for listening to commercials between tracks, or they can pay a monthly fee to be premium members.
 The music is placed on servers controlled by spotify in contrast to the peer-to-peer music streamer we will develop.
-\begin{figure}[p]
+\begin{figure}[h]
   \centering
     \includegraphics[width=0.9\textwidth]{gfx/Spotify_desktop.jpg}
   \caption{A picture of the GUI in the Spotify desktop application}
