@@ -89,11 +89,9 @@ forming the foundation of the next.}
 \label{part:prop-struct-thes}
 \cleardoublepage
 
-\chapter{Introduction}\label{ch:introduction}
-\input{Chapters/Introduction.tex}
-
-\chapter{Related Work}\label{cha:related-work}
-\input{Chapters/RelatedWork.tex}
+\chapter{Introduction}
+\label{ch:introduction}
+\input{Chapters/Introduction}
 
 %Whereas the purpose of the Introduction chapter was to entice and
 %convince the reader that work reported is interesting, that the author
@@ -132,6 +130,10 @@ forming the foundation of the next.}
 %\section{Frameworks and Technologies}
 %\label{sec:fram-techn}
 
+\chapter{Related Work}
+\label{cha:related-work}
+\input{Chapters/RelatedWork}
+
 \input{Chapters/Framework}
 
 %Related work need not be only published academic work. In many cases,
@@ -144,17 +146,16 @@ forming the foundation of the next.}
 %description of the chosen architecture might well be relevant, as it
 %informs all the following chapters.
 
-
 \chapter{Analysis}
 \label{cha:analysis}
 \input{Chapters/Analysis}
 
 %% TODO: Move this about
-\input{Chapters/WebSockets.tex}
+\input{Chapters/WebSockets}
 %% TODO: Move this about
-\input{Chapters/WebTorrent.tex}
+\input{Chapters/WebTorrent}
 %% TODO: Move this about, but after WebTorrent
-\input{Chapters/Tracker.tex}
+\input{Chapters/Tracker}
 
 %This is where the author can answer the question of what use we can
 %derive from all the works described in the previous chapter. Ideally,
@@ -169,12 +170,6 @@ forming the foundation of the next.}
 \chapter{Design}
 \label{cha:design}
 \input{Chapters/Design}
-
-%% TODO: Move this about
-\input{Chapters/Libraries}
-%% TODO: Move this about, but after Libraries
-\input{Chapters/DHT}
-
 %
 %Many of the other natural sciences have labs with equipment that has
 %to be configured correctly to experimentally test stated hypotheses.
@@ -236,7 +231,9 @@ forming the foundation of the next.}
 
 \chapter{Evaluation}
 \label{cha:evaluation}
-% TODO: Write evalaution
+\include{Chapters/Evaluation}
+%Having built the equivalent of a experimental setup, it is time to use
+%the implementation to test the hypotheses.
 
 \chapter{Conclusion}
 \label{cha:conclusion}
@@ -249,16 +246,15 @@ forming the foundation of the next.}
 \cleardoublepage
 
 \chapter{Showcase}
-%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
+Our project can be seen at \footnote{\url{https://youtu.be/X0lIZpOK1Qk}}.
+It is a description of where the music streamer can be accessed (for more
+information see the manual \ref{part:manual} for more information) and how to
+use it.
 
-
-
-%\include{multiToC} % <--- just debug stuff, ignore for your documents
 % ********************************************************************
 % Backmatter
 %*******************************************************
 \appendix
-%\renewcommand{\thechapter}{\alph{chapter}}
 \cleardoublepage
 \part{Appendix}
 \chapter{Contributions}
@@ -274,8 +270,4 @@ forming the foundation of the next.}
 %*******************************************************
 \cleardoublepage\include{FrontBackmatter/Bibliography}
 \cleardoublepage\include{FrontBackmatter/Declaration}
-% ********************************************************************
-% Game Over: Restore, Restart, or Quit?
-%*******************************************************
 \end{document}
-% ********************************************************************

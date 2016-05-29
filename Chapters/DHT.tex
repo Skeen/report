@@ -116,7 +116,7 @@ implement our lookup / searching;
 \begin{itemize}
 \item Centralized searching
 \item Searching in unstructured networks
-\item Continue searching for DHTs, or write our own?
+\item Continue searching for DHTs
 \end{itemize}
 
 \subsubsection{Centralized searching}
@@ -128,37 +128,80 @@ proven rigiously before, by the common adaptation of BitTorrent.
 As such we abandoned this idea again quite quickly.
 
 \subsubsection{Searching in unstructured networks}
+We looked into searching in unstructured peer-2-peer networks, there are
+several options for implementing this, amongst the first ones is flooding
+popularized by the Gnutella network (see \ref{sec:gnutella}).
 
-% TODO: Cite gnutella
-% TODO: inscalable??
-We looked into searching in unstructured peer-2-peer networks, but most
-literature seems to point towards using some sort of structure for lookup and 
-searching. If we were to pick this model we'd have implemented a unstructued 
-network utilizing $k$-random-walkers for searching, as broadcasting would be 
-inscalable \citep{}
+Flooding does ensure that if a piece of informating is contained within the 
+network it will be found, however it does not scale well and searching 
+generates a lot of traffic (see \citep{Lv:Searching}).
+\newline
+There are however ways to improve upon flooding, such as described by Gia 
+(see \citep{Chawathe:Gia}), where the developers claim to have improved upon
+the naive flooding of Gnutella, by three to five orders of magnitude.
+They achieve this improvement by the synergy of different modifications,
+including flow control, topology adaptation, replication and attention to node
+heterogeneity.
+\newline\newline
+An alternative to flooding, is the $k$-random-walkers algorithm, in which a 
+node initiates a search by querying $k$ random neighbours for it, these
+neighbours then forward the request to a single of their neighbours, until a 
+match is found or a TTL (time to live) variable dries out.
 
-While searching for alternative DHTs, we came across the BitTorrent BEP44 (see
-\ref{}). In summary, this allows using the trackerless BitTorrent DHT for 
-storing arbitrary data. While WebTorrent does implement this protocol on 
-desktop (i.e. in node using UDP/TCP), it does not implement the protocol using
-WebRTC, and as such cannot be used within the context of the web browser.
+The random-walker approach reduces network usage by two orders of magnitude,
+compared to the naive flooding (see \citep{Lv:Searching}), and therefore it is
+a lot more scalable, and could be a feasible solution; indeed if it was
+combined with replication.
+\newline\newline
+Due to time constaints we decided against looking further into using an
+unstructured peer-2-peer network for searching. In retrospective, we should
+have been more open-minded towards different network structures before deciding
+upon using a distributed hash table interface.
 
-\subsection{Result}
-As there does not seem to be a WebRTC DHT implementation, which fulfills our 
-requirements, and since we're unable to implement one ourselves within the 
-timeframe of the project, we've decided to continue utilizing our dht-fake,
-under a few specific limitations.
+The Gia paper (see \citep{Chawathe:Gia}) contains an excellent discussion about
+unstructured peer-2-peer network vs. structured ones in regards to searching,
+the main points being; DHTs generally have a harder time in regards to dealing
+with churn and handling keyword seaches (DHTs generally implement exact match
+lookup only).
 
-The centralized component cannot have a richer interface than a normal
-distributed hash table, and everything the fake does, should be implementable
-using a WebRTC-based DHT.
+\subsubsection{Continue searching for DHTs}
+As we rejected the idea of using an unstructured peer-2-peer network for
+searching, we decided to continue our search for WebRTC enabled DHTs. Which
+brought us to BitTorrent BEP44 (see \citep{bittorrent:bep44}). In summary, this
+protocol extension enables using the trackerless BitTorrent DHT for storing
+arbitrary data. While WebTorrent does implement this protocol on desktop (i.e.
+in node using UDP/TCP), it does not implement the protocol using WebRTC, and as
+such cannot be used within the context of the web browser, and by extension
+within our application.
+\newline\newline
+Within the given time constaints we have not been able to find a WebRTC enabled
+DHT implementation, which fulfills our requirements and expectations, and since
+this very same time-frame limits us from implementing one ourselves, we've been
+forced to stick with our fake implementation.
 
-% TODO: PHT paper
-This meant that throughout the most of our project, we did exact-match
-searching, that is until we found \citep{}, which described implementing
-substring searching directly on top an arbitary distributed hash table.
+\subsection{DHT-/PHT-fake}
+As mentioned in the previos section, we've been forced to stick with our faked
+implementation, that is we've been forced to use a centralized server component,
+to justify this in regards to our hypothesis; we've limited ourselves by the 
+following rules;
+\begin{itemize}
+\item The centralized server component cannot have a richer interface than a 
+    normal distributed hash table.
+\item Everything our fake does, should be implmentable using a WebRTC-based DHT.
+\end{itemize}
+As such, throughout most of our project, we've been relying solely on
+exact-match lookup, i.e. as described as a limitation of DHTs by the Gia paper
+(see \citep{Chawathe:Gia}). We did however stuble upon a paper implementing 
+sub-string searching on top of DHTs, by implementing a hash-based trie (PHT)
+(see \citep{Ramabhadran:PHT}).
 
-% TODO: Verify claim
-The publisher of this paper does not release their implementation, and as such
-we've not been able to verify the claims they make, but if the claims hold, it
-seems fit for our use-case.
+During our continued investigation of the literature within the domain, we 
+found another paper, which claims to have improved upon the PHT paper, by 
+minimizing the maintainance cost of the trie structure by up to 75\%. Their
+paper introduces a new data structure called LHT (low maintainance hash tree),
+which alike the PHT is built ontop of DHTs (see \citep{Tang:LHT}).
+
+The publishers of these papers does not release their implementation, and as
+such we've not been able to verify their claims, but assuming they do hold the
+PHT / LHT seems fit for our use-case. As such we've expanded our \verb|dht-fake|,
+to become a \verb|pht-fake|, i.e. to support substring searching.
