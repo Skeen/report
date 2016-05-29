@@ -2,7 +2,7 @@ Throughout the project, we have developed in total 3 sub-projects;
 \begin{itemize}
 \item Angular2-interface: Our graphic user interface
 \item music-streamer-library: A library utilized by our interface
-\item fake-dht: A fake implementation of a DHT network
+\item fake-dht: A fake implementation of a \acs{DHT} network
 \end{itemize}
 Below is a list of contributions to each of these projects, by group member;
 As the lists contain aliases, we provide a mapping below:
@@ -20,11 +20,13 @@ hackathon event (May 14-15).
 % TODO: Update LOC
 The repository contains 2477 lines of code, at handin time, and has undergone 
 several refactoring during and after the hackathon.
-\newline\newline
-Below is a graph from Github laying out contributions in terms of additions and
-removals by group members.
 
-\includegraphics[width=\linewidth]{gfx/Angular-interface}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{gfx/Angular-interface}
+  \caption{A graph from Github laying out contributions by group members. - Angular2-interface}
+  \label{fig:angular-interface}
+\end{figure}
 
 \section{music-streamer-library}
 \label{sec:appendix-music-streamer-library}
@@ -37,34 +39,38 @@ web-interface client and a node.js client.
 To version of the library exists; the stripped version and the unstripped
 version. The stripped version contains 949 lines of code, at handin time, while
 the unstripped version contains 1942 lines of code.
-\newline\newline
-Below is a graph from Github laying out contributions in terms of additions and
-removals by group members (for the stripped version).
 
-\includegraphics[width=\linewidth]{gfx/Music-streamer-library}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{gfx/Music-streamer-library}
+    \caption{A graph from Github laying out contributions by group members. - Music-streamer-library (stripped version)}
+  \label{fig:music-stramer-library}
+\end{figure}
 
 \section{fake-dht}
-This repository contains our faked dht implementation, which fulfills the DHT
+This repository contains our faked dht implementation, which fulfills the \acs{DHT}
 interface within our music-streamer-library by utilizing a centralized server.
 \newline
-% TODO: Reference PHT
-Two different version have been developed, one which fakes a traditional DHT
-and one which fakes a PHT running on top of a DHT.
+Two different version have been developed, one which fakes a traditional \acs{DHT}
+and one which fakes a \acs{PHT} running on top of a \acs{DHT}.
 \newline\newline
 % TODO: Update LOC
-THe DHT fake contains 101 lines of code, at handin time, while the PHT fake 
+The \acs{DHT} fake contains 101 lines of code, at handin time, while the \acs{PHT} fake 
 contains 99 lines of code. The two versions utilize different libraries.
-\newline\newline
-Below is a graph from Github laying out contributions in terms of additions and
-removals by group members;
 
-\begin{itemize}
-\item dht-fake: \\
-\includegraphics[width=\linewidth]{gfx/dht-fake}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{gfx/dht-fake}
+    \caption{A graph from Github laying out contributions by group members. - dht-fake}
+  \label{fig:music-stramer-library}
+\end{figure}
 
-\item pht-fake: \\
-\includegraphics[width=\linewidth]{gfx/pht-fake}
-\end{itemize}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{gfx/pht-fake}
+    \caption{A graph from Github laying out contributions by group members. - pht-fake}
+  \label{fig:music-stramer-library}
+\end{figure}
 
 \section{Other contributions}
 In addition to these contributions, we've made several pull requests for the

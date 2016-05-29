@@ -36,27 +36,27 @@ searching, while two results should pop up using the remote setup, namely;
 {\em Both of these songs are used with permission, and we've setup a node which will
 be seeding them continously, until the exams are complete.}
 
-\subsection{Uploading songs / Populating the DHT}
-In order to add songs to the DHT, they must be uploaded to the network, by 
+\subsection{Uploading songs / Populating the \acs{DHT}}
+In order to add songs to the \acs{DHT}, they must be uploaded to the network, by 
 dropping them over within the drag-and-drop field on the bottom of the page.
-When a song is dropped here; it is added to the DHT, saved to local storage,
+When a song is dropped here; it is added to the \acs{DHT}, saved to local storage,
 and then it's seeded by the browser for others to download.
 
 \subsection{Acquiring content}
-At this point it's assumed that the DHT is populated, and that a seed for the
-content is available. It's worth noting that the DHT does not clear out dead
-content, or otherwise decay entries, as DHTs usually do, as such the DHT can 
-somewhat easily be brought to an inconsistant state, i.e. where the DHT
+At this point it's assumed that the \acs{DHT} is populated, and that a seed for the
+content is available. It's worth noting that the \acs{DHT} does not clear out dead
+content, or otherwise decay entries, as \acs{DHT}s usually do, as such the \acs{DHT} can 
+somewhat easily be brought to an inconsistant state, i.e. where the \acs{DHT}
 contains content which does not have any seeds.
 \newline\newline
 At this point, one should be able to acquire information about a song from the
-DHT, by entering the title of a song in the search field (top right corner).
+\acs{DHT}, by entering the title of a song in the search field (top right corner).
 The search field features typeahead, and whenever a suggestion is clicked,
 detailed information about that content is displayed;
 
 \includegraphics{gfx/search-info}
 \newline
-Clicking the artist or album, will look up their entries in the DHT, and thus
+Clicking the artist or album, will look up their entries in the \acs{DHT}, and thus
 provide detailed information about these. Clicking the 'Download Song' button,
 will initialize the download, and add an entry to the download tab, which will
 continously update with information on the download process;
@@ -85,7 +85,7 @@ are download in the order they're needed, rather than in the typical
 rarest-first order.
 {\em Note that not all file formats can be streamed; streamability and playback
 of different file formats is browser dependent, and given by the specific
-implementation of the HTML5 audio tag.}
+implementation of the \acs{HTML}5 audio tag.}
 \newline\newline
 The player contains a varity of buttons, these are considered to be self
 explainatory for anyone whom has used a media player before. Below is a full

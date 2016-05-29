@@ -17,12 +17,12 @@ initial list of peers to connect to. The flow is simply, a client asks the
 tracker for a list of peers given a specific topic (aka. hash), after which the
 client is able to contact the peers.
 
-The trackerless model utilizes a DHT network for acquiring the initial list of 
-peers. The client joins the DHT network (by knowing a peer(s) within the network),
-and once inside the DHT network, it can lookup topics (aka. hashes), and ask
+The trackerless model utilizes a \acs{DHT} network for acquiring the initial list of 
+peers. The client joins the \acs{DHT} network (by knowing a peer(s) within the network),
+and once inside the \acs{DHT} network, it can lookup topics (aka. hashes), and ask
 the node responsable for the topic for the peer list.
 \newline
-- The known peer(s) required to join the DHT network, are usually provided by
+- The known peer(s) required to join the \acs{DHT} network, are usually provided by
 the \verb|.torrent| file for the download. A reference join node is presented
 by bittorrent, at \url{router.bittorrent.com}, but they recommand running your
 own \citep{bittorrent:bep05}.
@@ -35,14 +35,14 @@ WebRTC, and by extension we need a centralized component to bootstrap these
 connections. 
 
 We are however, in theory, free to pick whether we want to use a tracker, or 
-utilize a trackerless DHT for bootstrapping peers, but only in theory as our
+utilize a trackerless \acs{DHT} for bootstrapping peers, but only in theory as our
 WebRTC-based BitTorrent implementation (as previously mentioned here) does
 indeed not support trackerless, and as the provided WebSocket tracker for 
 WebTorrent fulfills both the role of bootstrapping WebRTC connections, and the
 role of the BitTorrent tracker.
 
 As previously mentioned, had we been able to utilize trackerless, we've been
-able to use the trackerless DHT as our searching DHT, however utilizing a
+able to use the trackerless \acs{DHT} as our searching \acs{DHT}, however utilizing a
 tracker provides other unique capabilities, namely; centralized control of the
 swarm. 
 \newline

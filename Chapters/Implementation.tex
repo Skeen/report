@@ -1,33 +1,33 @@
 % Code Architecture
-Due to the size of the projects codebase and large number of libraries with different APIs, 
+Due to the size of the projects codebase and large number of libraries with different \acs{API}s, 
 it was necessary to create different object classes with seperated concerns,
 and a consistent way to use them.
 \newline
 
 The code base is seperated into a backend with code parts that are not visible to the user,
-and a front end with each class having an associated GUI element.
+and a front end with each class having an associated \acs{GUI} element.
 We also needed main classes to coordinate these responsibilies, handle overall flow,
 and serve as a container for anything we did not have time to place in a seperate class:
 these classes are lib.ts in the backend,
-and app.component.ts in the frontend to hold GUI elements.
+and app.component.ts in the frontend to hold \acs{GUI} elements.
 
 Many of the libraries used have slow, non-blocking IO operations
 and make use of callbacks to execute code after the IO operations complete.
 
-Most GUI actions result in an event rather than an immediate code execution, 
+Most \acs{GUI} actions result in an event rather than an immediate code execution, 
 these events are then caught by app.component
 which performs the necessary functionality, through the other classes when relevant.
 \newline
 
-% GUI (Angular)
-The GUI needed databindings to show torrent information, allow changing songs
-and implement a music player GUI. 
-Angular 2 lets us create GUI elements as new HTML tags, 
-and bootstrap provides generic GUI elements and stylesheets for angular, 
-they were the easiest way to fill our needs for the GUI,
+% \acs{GUI} (Angular)
+The \acs{GUI} needed databindings to show torrent information, allow changing songs
+and implement a music player \acs{GUI}. 
+Angular 2 lets us create \acs{GUI} elements as new \acs{HTML} tags, 
+and bootstrap provides generic \acs{GUI} elements and stylesheets for angular, 
+they were the easiest way to fill our needs for the \acs{GUI},
 so that is what we have used.
 
-Our GUI elements consist of a music player interface, a playlist, downloading information 
+Our \acs{GUI} elements consist of a music player interface, a playlist, downloading information 
 and show information about local content and seeding.
 \newline
 
@@ -57,7 +57,7 @@ or a reference to the music stream when it is still being downloaded.
 This Song object presents all other sections of the project with a uniform way to access metadata and audio, 
 while retaining relational information about which albums or artists the song belongs to. In addition to this, 
 we have also created objects to hold information about an album or an artist, 
-so we can more easily search for related works in the DHT.
+so we can more easily search for related works in the \acs{DHT}.
 \newline
 
 % WebTorrent
@@ -80,9 +80,9 @@ so we created a Storage class which uses localforage and handles the data sepera
 We have also disallowed the direct use of localforage anywhere else: all other sections of the project should save and get data through using the Storage class to ensure consistent behavior. 
 This was done by removing any inclusion of the localforage library outside of the Storage class file.
 
-As local content should also be visible in the GUI, 
+As local content should also be visible in the \acs{GUI}, 
 be seeded and be capable of being added to the playing,
 we created another class called LocalContent,
 which retrieves all songs from the disk at startup,
 begins to seed them, making them available for other users in the network to download,
-and presents a GUI element to the user.
+and presents a \acs{GUI} element to the user.
