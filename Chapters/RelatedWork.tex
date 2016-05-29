@@ -68,7 +68,7 @@ The are many music-streamers already reseased and we will let us get inspired by
 \subsection{spotify}
 Spotify is the most popular online music streamer. The program was released in 2006 and was developed in Sweeden Stockholm by Daniel Ek and Martin Lorentzon. Now their main office is placed in Luxemborg and they have devisions in Stockholm and Göteborg. Their buisness model is that customers can listen to music in exchange for listening to commercials between tracks, or they can pay a monthly fee to be premium members.
 The music is placed on servers controlled by spotify in contrast to the peer-to-peer music streamer we will develop.
-\begin{figure}[p]
+\begin{figure}[h]
   \centering
     \includegraphics[width=0.9\textwidth]{gfx/Spotify_desktop.jpg}
   \caption{A picture of the GUI in the Spotify desktop application}
@@ -90,3 +90,15 @@ Popcorn-time is a multi-platform bittorrent client for streaming videos. The pop
 
 \section{Netflix}
 Netflix is the largest streaming company. As seen in \citep{netflix} they were looking into the possibilities of using webtorrent in their company. At the time of the article Netflix had a job application for a peer-to-peer senior developer. Netflix is not using any peer-to-peer protocol today so the project was not a huge success.
+
+\label{sec:gnutella}
+\section{gnutella}
+Gnutella is a purely decentrilized peer-to-peer network from 2000 it was developed by Justin Frankel and Tom Pepper of Nullsoft. Gnutella was removed from the servers the day after because of legal conserns, but the protocol was reversed engineered by the community and open source clones began to appear.
+The users in Gnutella is called servants, and the protocol consists of a set of descriptors for communication between servants:
+\begin{enummerate}
+\item Ping: This is used to actively discover hosts on the network. A servent recieving a ping descriptor is expected to respond with one or more Pong descriptors.
+\item Pong: This is a response to a Ping. It includes the IP address and port number of the reponding host and information of how much data it is making available to the network (number and size of the files being shared).
+\item Query: The primary tool to search for information in the network. A servent recieving a Query will respond with a QueryHit if a match is found in its local dataset. It contains a search string and the minimum speed requirements of the responding host.
+\item QueryHit: It is a response to a query. It contains the IP adress and port, and bandwidth speed of the responding host. It also contains the number of matching files found and their indexed result set.
+\item Push: This mechanism allows a firewalled servant to push file-based data to the network.
+\end{enummerate}
