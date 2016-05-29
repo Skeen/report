@@ -94,12 +94,21 @@ by some security policy specified by the user agent beforehand.
 The current Web Storage specification draft is somewhat ambiguous, 
 it suggests that browsers implement support for at least 5MB of storage of each kind per domain,
 but the actual support varies wildly even between versions of the same browser:
-Google chrome originally supported unlimited localstorage in version 18, dropped to 1MB in version 19, 
-5MB in version 36 and 4.75MB in version 46. 
-Internet Explorer allows 10MB, 
-and Firefox allows by default 5MB, but can be set to anything including 0 by the user agent.
+
+\begin{figure}[h]
+	\begin{tabular}{l | r}
+		Chrome 18 & unlimited \\
+		Chrome 19 & 1    MB   \\
+		Chrome 36 & 5    MB   \\
+		Chrome 46 & 4.75 MB   \\
+		Firefox   & 5    MB   \\
+		IE        & 10   MB   \\
+	\end{tabular}
+\end{figure}
+
+Additionally, Firefox allows the user to specify any LocalStorage maximum size, even zero. 
 Google have attempted to implement a 'qouta api', 
-which allows websites to ask user agents to increase localstorage limitations, 
+which allows websites to ask user agents to increase localstorage limitations,
 this has not been adopted by the other browsers, so we had to look for something else.
 \newline
 
