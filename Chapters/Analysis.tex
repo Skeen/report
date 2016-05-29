@@ -30,8 +30,19 @@ which lets the audio playback be controlled by javascript code instead.
 % Song Information
 
 
+\section{WebRTC limitations}
 % WebRTC limitations
 
+Creating a data channel is a performance intensive task:
+Peers have to contact a signaling service to inform a remote peer of its intention
+to make a peer-to-peer connection, both peers have to perform NAT traversal to establish routing information 
+and create necessary firewall arrangements, share their routing information,
+and finally agree on protocols, encodings and so on.
+RTC datachannels have a large overhead when being established,
+but can perform low latency communications once established, 
+thus we would like to retain datachannels for as long as possible to avoid this overhead.
+Many DHT, like kademlia, will establish and discard connections frequently,
+and might suffer major overhead when implemented in WebRTC over the datachannel.`
 
 % LocalStorage
 Ensuring availability of content and robustness in a bittorrent network requires persistant offline data storage:
@@ -78,6 +89,7 @@ only officially supports Firefox and Chrome
 and both of these do support IndexedDB.
 \newline
 
+\section{BEP - Bittorrent Enhancement Proposals}
 %bep
 BitTorrent enhencement proposals is a place where users of BitTorrent can come with proposals to improve the protocol.
 One of these proposals focuses on http seeding \citep{bittorrent:bep17}.

@@ -74,26 +74,25 @@
 %********************************************************************
 % Mainmatter
 %*******************************************************
-\cleardoublepage\pagenumbering{arabic}
+%\cleardoublepage
+\pagenumbering{arabic}
 %\setcounter{page}{90}
 % use \cleardoublepage here to avoid problems with pdfbookmark
-\cleardoublepage
+%\cleardoublepage
 % What should a thesis contain:
 
-\ctparttext{The following reflects what I believe to be a good structure
-  for a report or a thesis in experimental computer science. 
-It contains a natural progression from the general to the specific, and
-from the work of others to the work by the authors, each chapter
-forming the foundation of the next.}
-\part{The Proper Structure of a Thesis}
-\label{part:prop-struct-thes}
-\cleardoublepage
+%\ctparttext{The following reflects what I believe to be a good structure
+%  for a report or a thesis in experimental computer science. 
+%It contains a natural progression from the general to the specific, and
+%from the work of others to the work by the authors, each chapter
+%forming the foundation of the next.}
+%\part{The Proper Structure of a Thesis}
+%\label{part:prop-struct-thes}
+%\cleardoublepage
 
-\chapter{Introduction}\label{ch:introduction}
+\chapter{Introduction}
+\label{ch:introduction}
 \input{Chapters/Introduction}
-
-\chapter{Related Work}\label{cha:related-work}
-\input{Chapters/RelatedWork}
 
 %Whereas the purpose of the Introduction chapter was to entice and
 %convince the reader that work reported is interesting, that the author
@@ -132,7 +131,9 @@ forming the foundation of the next.}
 %\section{Frameworks and Technologies}
 %\label{sec:fram-techn}
 
-\input{Chapters/Framework}
+\chapter{Related Work}
+\label{cha:related-work}
+\input{Chapters/RelatedWork}
 
 %Related work need not be only published academic work. In many cases,
 %it is also relevant to describe crucial frameworks and technologies
@@ -144,17 +145,9 @@ forming the foundation of the next.}
 %description of the chosen architecture might well be relevant, as it
 %informs all the following chapters.
 
-
 \chapter{Analysis}
 \label{cha:analysis}
 \input{Chapters/Analysis}
-
-%% TODO: Move this about
-\input{Chapters/WebSockets.tex}
-%% TODO: Move this about
-\input{Chapters/WebTorrent.tex}
-%% TODO: Move this about, but after WebTorrent
-\input{Chapters/Tracker.tex}
 
 %This is where the author can answer the question of what use we can
 %derive from all the works described in the previous chapter. Ideally,
@@ -169,12 +162,6 @@ forming the foundation of the next.}
 \chapter{Design}
 \label{cha:design}
 \input{Chapters/Design}
-
-%% TODO: Move this about
-\input{Chapters/Libraries}
-%% TODO: Move this about, but after Libraries
-\input{Chapters/DHT}
-
 %
 %Many of the other natural sciences have labs with equipment that has
 %to be configured correctly to experimentally test stated hypotheses.
@@ -236,7 +223,7 @@ forming the foundation of the next.}
 
 \chapter{Evaluation}
 \label{cha:evaluation}
-\include{Chapters/Evaluation}
+\input{Chapters/Evaluation}
 %Having built the equivalent of a experimental setup, it is time to use
 %the implementation to test the hypotheses.
 
@@ -245,23 +232,23 @@ forming the foundation of the next.}
 % TODO: Write conclusion
 
 \part{Demo}
-\label{part:manual}
+\label{part:demo}
 \chapter{Manual}
+\label{cha:manual}
 \input{Chapters/Manual}
 \cleardoublepage
 
 \chapter{Showcase}
-Our project can be seen at \footnote{\url{https://youtu.be/X0lIZpOK1Qk}}. It is a description of where the music streamer can be accessed (for more information see the manual \ref{part:manual} for more information) and how to use it.
-%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
+Our project can be seen at: \url{https://youtu.be/X0lIZpOK1Qk}.
+\newline
+It is a description of where the music streamer can be accessed (for more
+information see the manual (\ref{cha:manual}) for more information) and how to
+use it.
 
-
-
-%\include{multiToC} % <--- just debug stuff, ignore for your documents
 % ********************************************************************
 % Backmatter
 %*******************************************************
 \appendix
-%\renewcommand{\thechapter}{\alph{chapter}}
 \cleardoublepage
 \part{Appendix}
 \chapter{Contributions}
@@ -277,8 +264,4 @@ Our project can be seen at \footnote{\url{https://youtu.be/X0lIZpOK1Qk}}. It is 
 %*******************************************************
 \cleardoublepage\include{FrontBackmatter/Bibliography}
 \cleardoublepage\include{FrontBackmatter/Declaration}
-% ********************************************************************
-% Game Over: Restore, Restart, or Quit?
-%*******************************************************
 \end{document}
-% ********************************************************************
