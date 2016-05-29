@@ -8,15 +8,10 @@ this capability comes with some significant limitations however;
 \newline
 
 % Songs and Metadata
-The supported music filetypes differ greatly from eachother internally; 
-their audio codings can be different, their metadata can be different,
-and even the way they are rendered and treated by the browsers can differ.
-To make matters even worse, 
-creators of music files are free to exclude or falsify metadata, and can even leave it out entirely.
-Clearly, some kind of common abstraction is needed to encapsulate the uncertain terrain of music.
-\newline
+
 
 % LocalStorage vs LocalForage
+\section{Fixing Browser Storage}
 To have persistency in user sessions, we needed a way of storing data to the disk. There are several standard ways to store data in web browsers, but all of these have their own drawbacks.
 
 Traditional browser cookies can store up to 4KB of data, 
@@ -49,6 +44,7 @@ Seperating the generated metadata object and song binary before placing the in s
 seemed to solve this issue.
 \newline
 
+\section{Torrent Design}
 % Granularity of torrents
 A torrent is capable of containing one or many files of any format, 
 it could contain single music files, whole albums or an artists entire discography.

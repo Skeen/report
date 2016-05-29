@@ -1,4 +1,5 @@
 % Audio Tag capabilities
+\section{HTML5 Audio Tag}
 Adding support for music file types not already supported by the browser 
 would be an major undertaking, 
 and would not contribute much towards the goals of this project, 
@@ -21,19 +22,35 @@ and Internet Explorer and Microsoft Edge does not support anything other than Mp
 Google chrome notably supports all the above formats.
 \newline
 
+%\includegraphics{gfx/audioTag}
+\begin{figure}[h]
+  \centering
+    \includegraphics[scale=0.5]{gfx/audioTag.jpg}
+  \caption{A picture of Audio Tag GUI in Firefox}
+  \label{fig:audiotag}
+\end{figure}
+
 The audio tag itself offers a very simplistic yet very inflexible GUI to the user, 
 it includes the usual progress bar, volume, play+pause buttons in its interface, 
-these elements cannot be easily changed, but can be disabled entirely, 
+these elements cannot be easily changed, but can be disabled and hidden entirely, 
 which lets the audio playback be controlled by javascript code instead.
 \newline
 
 % Song Information
-
+\section{Music Filetypes}
+The supported music filetypes differ greatly from eachother internally; 
+their audio codings can be different, their metadata can be different,
+and even the way they are rendered and treated by the browsers can differ.
+To make matters even worse creators of music files are free to exclude or falsify metadata, 
+and can even leave it out entirely.
+Clearly, some kind of common abstraction is needed to encapsulate the uncertain terrain of music files.
+\newline
 
 % WebRTC limitations
 
 
 % LocalStorage
+\section{Storage}
 Ensuring availability of content and robustness in a bittorrent network requires persistant offline data storage:
 without persistant data storage, if all users were to leave the network and return later, all content on the 
 network would be lost.
@@ -75,5 +92,14 @@ which allows browser-side javascript to access a local database on the host mach
 It should be noted that WebTorrent, 
 an essential library in our project, 
 only officially supports Firefox and Chrome 
-and both of these do support IndexedDB.
+both of which do support IndexedDB.
 \newline
+
+%bep
+BitTorrent enhencement proposals is a place where users of BitTorrent can come with proposals to improve the protocol.
+One of these proposals focuses on http seeding \citep{httpSeed}.
+This is relevant in our work, because we focus on how we can make streaming work in the browser. The proposal is about changing the metadata file to include a httpseeds key. This key would refer to a list of web adresses where the torrent data can be downloaded from.
+If support for http seeds would be added to the Bittorrent protocol it would mean that there is more uptime of seeds because the ftp and http server would always be up.
+
+In another proposal \citep{metadata} it is proposed to make it possible for clients to join a swarm and complete a download without having to download a .torrent file first, from an info hash contained in magnet links. The gains from using magnet links over torrents are that informations about the torrent can be downloaded directly from other peers. Regular torrent files needs to be placed upon a webserver where it takes up space. The server must be up and running for the users to get information about the torrent, and that is not needed with using magnet links.
+Now users can just share a link instead of sharing a file on a server. 
