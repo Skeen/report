@@ -128,10 +128,10 @@ while the already established connections can continue regardless of whether the
 \section{gnutella}
 Gnutella is a purely decentrilized peer-to-peer network from 2000 it was developed by Justin Frankel and Tom Pepper of Nullsoft. Gnutella was removed from the servers the day after because of legal conserns, but the protocol was reversed engineered by the community and open source clones began to appear.
 The users in Gnutella is called servants, and the protocol consists of a set of descriptors for communication between servants:
-\begin{enummerate}
+\begin{enumerate}
 \item Ping: This is used to actively discover hosts on the network. A servent recieving a ping descriptor is expected to respond with one or more Pong descriptors.
 \item Pong: This is a response to a Ping. It includes the IP address and port number of the reponding host and information of how much data it is making available to the network (number and size of the files being shared).
 \item Query: The primary tool to search for information in the network. A servent recieving a Query will respond with a QueryHit if a match is found in its local dataset. It contains a search string and the minimum speed requirements of the responding host.
 \item QueryHit: It is a response to a query. It contains the IP adress and port, and bandwidth speed of the responding host. It also contains the number of matching files found and their indexed result set.
 \item Push: This mechanism allows a firewalled servant to push file-based data to the network.
-\end{enummerate}
+\end{enumerate}
