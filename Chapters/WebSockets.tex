@@ -1,10 +1,18 @@
-% TODO: Was it html5?
-WebSockets are a transport layer technology introduced in HTML5, it enables BSD
-socket-like data transfers between the browser and a web-socket enabled backend
-server. That is; a single open bi-directional connection, over which multiple
-messages may be transmitted.
+WebSocket is a transport protocol prodiving full-duplex communication channels,
+over a single TCP connection. The technology thus enables BSD-socket like data
+transfers between the browser and a web-socket enabled backend server. That is;
+a single open bi-directional connection, over which multiple messages may be
+transmitted.
+\newline\newline
+It is an independent TCP-based protocol, which only relationship with HTTP is
+that the handshake for the protocol is implemented as a HTTP Upgrade request
+(see \citep{RFC6455}).
 
-% TODO: How does it work?
-A WebSocket connection is intialized by a HTTP request, bla bla bla.
-
-% TODO: more
+The stated purpose of the protocol is;
+\begin{displayquote}
+To provide a mechanism for browser-based applications that need two-way
+communication with servers that does not rely on opening multiple HTTP
+connections (e.g., using XMLHttpRequest or <iframe>s and long polling).
+\end{displayquote}
+The protocol is supported by most major browsers, including; Google Chrome,
+Internet Explorer, Firefox, Safari and Opera. 
