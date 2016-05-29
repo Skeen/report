@@ -20,17 +20,24 @@ Html5 also implements local storage. This makes it possible to store content loc
 The storage limit it larger than when using cookies (at least 5mb) and the data is stored locally so it does not need to be sent to a server.
 
 \section{WebRTC}
-WebRTC is an API drafted by W3C that supports browser-to-browser connections,
-which focuses on peer-to-peer connections instead of traditional
-client-server networks like WebSockets, AJAx and Server Sent Events.
-Traditional networks suffer from high latencies and require dedicated servers to do the heavy lifting, 
-as browsers cannot listen for connections with WebSockets.
+WebRTC is a javascript API drafted by W3C that establishes support for browser-to-browser connections,
+instead of traditional client-server connections like WebSockets, AJAX and Server Sent Events.
+These client-server networks suffer from high latency, and do not allow browsers to act as a server,
+as browsers cannot listen for WebSocket connections.
+
+It was originally intended to support real-time-communication (RTC) 
+and allow browsers to easily establish audio and video teleconferencing and telecommunications
+using its three primary APIs: MediaStream, RTCPeerConnection and RTCDataConnection.
+The RTCDataConnection part of the API is particularely interesting
+as it allows arbitrary application data to be sent betweeen browsers,
+allowing a myriad of peer-to-peer techniques to be implemented as WebRTC code for browsers.
 
 Before WebRTC, establishing direct peer-to-peer connections in the browser required
 additional plugins in the browser such as Flash or Java, which would then download and
 execute the networking code,
 these plugins did not come with most browsers,
 which means many users did not have them available.
+\newline
 
 % TODO: write about peerconnection requiring central server to establish connection
 \label{webrtc-connection-server}
