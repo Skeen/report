@@ -61,8 +61,16 @@ so we can more easily search for related works in the DHT.
 \newline
 
 % WebTorrent
-WebTorrent provides seed and download methods using MagnetURI,
-and also contains a torrent object that makes relevant information available about active torrents
+WebTorrent provides seed and download methods using MagnetURI.
+Individual downloads and seeds are controlled through a Torrent object provided by WebTorrent,
+which contains all the relevant information about progress, 
+speed, amount uploaded, number of peers, contained files and so on.
+These torrent objects are provided by callbacks at events
+and after each called WebTorrent function completes.
+The encapsulating torrent.ts class gives access to seed and download methods of webtorrent, 
+but only for our Song Objects, which emphasises the projects intent of being a music streaming service 
+rather than generic file sharing applicatin, 
+it also provides the WebTorrent torrent object through callbacks to other sections of our code.
 \newline
 
 % Storage
