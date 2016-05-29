@@ -1,8 +1,8 @@
+\section{Overall Architecture}
 % Code Architecture
 Due to the size of the projects codebase and large number of libraries with different \acs{API}s, 
 it was necessary to create different object classes with seperated concerns,
 and a consistent way to use them.
-\newline
 
 The code base is seperated into a backend with code parts that are not visible to the user,
 and a front end with each class having an associated \acs{GUI} element.
@@ -31,6 +31,7 @@ Our \acs{GUI} elements consist of a music player interface, a playlist, download
 and show information about local content and seeding.
 \newline
 
+\section{How we use Browserify}
 % Browserify and why we use it
 The project contains a large amount of NodeJS module libraries, 
 many of which are designed for NodeJS and not for use in browsers.
@@ -46,6 +47,7 @@ Browserify allows our projects end result to consist only of a html page and one
 so this seems like an ideal setup, and is what we make use of.
 \newline
 
+\section{Song handling}
 % How we handle music and music metadata
 The program encapsulates the highly inconsistant music files using a Song object,
 which contains optional fields corresponding to commonly used metadata, 
@@ -60,6 +62,7 @@ we have also created objects to hold information about an album or an artist,
 so we can more easily search for related works in the \acs{DHT}.
 \newline
 
+\section{Torrenting}
 % WebTorrent
 WebTorrent provides seed and download methods using MagnetURI.
 Individual downloads and seeds are controlled through a Torrent object provided by WebTorrent,
@@ -73,11 +76,13 @@ rather than generic file sharing applicatin,
 it also provides the WebTorrent torrent object through callbacks to other sections of our code.
 \newline
 
+\section{LocalContent \& Storage}
 % Storage
 The object-blob seperation behavior and use of localforage,
 needed to be constistent throughout the project, 
 so we created a Storage class which uses localforage and handles the data seperation implicitly when its storage methods are called.
-We have also disallowed the direct use of localforage anywhere else: all other sections of the project should save and get data through using the Storage class to ensure consistent behavior. 
+We have also disallowed the direct use of localforage anywhere else:
+all other sections of the project should save and get data through using the Storage class to ensure consistent behavior. 
 This was done by removing any inclusion of the localforage library outside of the Storage class file.
 
 As local content should also be visible in the \acs{GUI}, 
