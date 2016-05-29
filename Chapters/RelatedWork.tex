@@ -56,9 +56,9 @@ application first. This has several implications, amongst others;
 \item Limited access to hardware
 \item Limited connection layer technologies
     \begin{itemize}
-        \item WebRTC
-        \item WebSockets
         \item HTTP
+        \item WebSockets
+        \item WebRTC
     \end{itemize}
 \item Limited access to persistent storage
     \begin{itemize}
@@ -83,6 +83,9 @@ Additionally browserify handles multiple target arcitectures; I.e. the browser,
 and the node.js desktop environment. We originally envisioned creating both a 
 web-interface and a more technical desktop client, but due to time constaints,
 we've limited ourselves to the desktop client.
+
+\section{WebSocket}
+\input{Chapters/WebSockets}
 
 \section{Web-RTC}
 WebRTC is a javascript API drafted by W3C that establishes support for browser-to-browser connections,
@@ -117,9 +120,6 @@ this means having a centralized server that the browser contacts and asks to hav
 The signaling service does not need to be involved after the connection has been established,
 it can free up its resources to focus on signaling for new peers, 
 while the already established connections can continue regardless of whether the signalling service has quit.
-
-\section{Websockets}
-\input{Chapters/WebSockets}
 
 %% FRAMEWORKS
 \input{Chapters/Framework}
