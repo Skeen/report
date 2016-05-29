@@ -1,11 +1,10 @@
 % TODO: This goes after an introduction to the architecture of the system.
 \section{Libraries}
-
 In our implementation we've utilized serveral third-party libraries, primarily
 provided by the node package mananger \verb|npm|. The lists below are excluding
 polyfill libraries (i.e. libraries which enable running our code on older
-platforms).
-
+platforms), and tiny insignificant libraries.
+\newline\newline
 For our webinterface, we've utilized;
 \begin{itemize}
 \item render-media: Which takes \verb|node| audio and video streams, and
@@ -28,15 +27,13 @@ For our webinterface, we've utilized;
         the HTML5 File object.
 \end{itemize}
 \end{itemize}
-% TODO: Fix these refs
-Of these libraries, we've developed patches for 'music-metadata' to add support
-for node streams (see \ref{}), and for localforage to add support for node (see
-\ref{}).
-
-% TODO: Fix link here
-Additionally our webinterface utilizes our own library 'music-streamer-library',
-which has been uploaded to the npm repository (see \href{}).
-
+% TODO: Handle long urls, line break:
+% http://tex.stackexchange.com/questions/54946/how-to-break-long-url-in-an-item
+We've developed a patch for 'music-metadata' to add support for node streams
+(see \ref{sec:appendix-music-streamer-library}), additionally our webinterface
+utilizes our own library 'music-streamer-library', which has been uploaded to
+the npm repository (see \url{https://www.npmjs.com/package/music-streamer-library}).
+\newline\newline
 For our music-streamer-library, we've utilized;
 \begin{itemize}
 \item bittorrent-tracker: A sub-project of WebTorrent, which enables querying 
@@ -52,20 +49,24 @@ For our music-streamer-library, we've utilized;
 \item Additionally; Our library utilizes some of the same libraries as our
         webinterface, namely: musicmetadata and render-media.
 \end{itemize}
-
-% TODO: Fix this ref
+Of these, we've developed a patch for 'localforage' to add support for node
+(see \ref{subsec:appendix-localforage}), and helped debug a blocking issue for
+running WebTorrent under headless linux configurations (see
+\ref{subsec:appendix-electron-eval}).
+\newline\newline
 Our music-streamer-library, contains an interface for a distributed hash table,
 for which we have worked on creating multiple implementations. Our intial one,
 was a simple centralized lookup table server, utilized to get the rest of the 
-project going. For more information about the DHT implementations we've 
-investigated, please refer to \ref{}.
+project going. We gave this sub-project the innovative name; \verb|fake-dht|.
 
-% TODO: Fix this ref
-% TODO: Better word than richer
-The DHT implementation utilized in the demo (see \ref{}), is a richer version
-of our initial lookup table server implementation, we've named this; 'fake-dht'.
+For more information about the DHT implementations we've investigated, please
+refer to section \ref{sec:dht}.
+\newline\newline
+The DHT implementation utilized in the demo (see \ref{subsec:running-remotely}),
+is a richer version of our initial lookup table server implementation, namely
+one which implements a prefix hash-trie; we've named this; \verb|fake-pht|.
 
-For our fake-dht centralized lookup / searching server, we've utilized;
+For our \verb|fake-pht| centralized lookup / searching server, we've utilized;
 \begin{itemize}
 \item express: A HTTP web-server framework, which enabled rapid prototyping and
         development, by easing the definition and implementation of HTTP endpoints.

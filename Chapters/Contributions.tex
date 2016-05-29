@@ -1,5 +1,3 @@
-\label{sec:appendix-contributions}
-
 Throughout the project, we have developed in total 3 sub-projects;
 \begin{itemize}
 \item Angular2-interface: Our graphic user interface
@@ -29,6 +27,7 @@ removals by group members.
 \includegraphics[width=\linewidth]{gfx/Angular-interface}
 
 \section{music-streamer-library}
+\label{sec:appendix-music-streamer-library}
 This repository contains our library, which underlies our Angular2-interface,
 the motivation for splitting the project, is that the library can be utilized 
 by multiple interfaces or clients, as we originally inteded to develop both a
@@ -107,6 +106,7 @@ Group member Emil Madsen reported this issue to the upstream developer in a
 after which the pull request was reverted.
 
 \subsection{Kad-WebRTC}
+\label{subsec:appendix-kad-webrtc}
 While experimenting with 'Kad-WebRTC' we ran the provided examples, 
 unfortunatly all of these ran within the same browser tab, and as such we were
 not convinced that the library would work across multiple browsers (or tabs).
@@ -121,6 +121,7 @@ the upstream developer, after a bit of ping-pong regarding the details of the
 pull request.
 
 \subsection{localforage}
+\label{subsec:appendix-localforage}
 A \href{https://github.com/mozilla/localForage/pull/551}{pull request} to add 
 node.js support to the Mozilla project localforage (A unified interface for 
 the browser-based persistant storage technologies) has been submitted to the
@@ -138,6 +139,7 @@ develop a proof-of-concept 'node.js' client using our music-streamer-library
 (which in turn utilizes localforage for persistant storage).
 
 \subsection{electron-eval}
+\label{subsec:appendix-electron-eval}
 A \href{https://github.com/mappum/electron-eval/issues/29}{bug report} and 
 debugging assistence been provided to the upstream developer, to get the project
 running in headless linux environments (docker for our use-case).

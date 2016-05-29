@@ -1,62 +1,103 @@
-% TODO: Describe our DHT interface
-\section{DHT}
-
 % This goes after the libraries section
-As previously mentioned, we've implemented an interface for our distributed
-hash table implementations. The current implementation fulfills the interface
-by utilizing a centralized component, this is sub-optimal in what is declared
-as a distributed system, below is an argumentation as of why this is the case.
+\section{DHT}
+\label{sec:dht}
+
+As previously mentioned, our \verb|music-streamer-library| features an
+interface for distributed hash tables. This interface is simple, and features
+just two methods; namely:
+\begin{itemize}
+    \item get: Which given a hash looks up the responsible node, and gets the 
+        stored information.
+    \item set: Which given a hash and a value, looks up the the responsible
+        node, and asks it to store the value.
+\end{itemize}
+This interface was by design created to resembles a non-distrbuted hash table,
+as the distributivity of the underlying implementation is to be considered an 
+implementation detail.
+
+Evindence for the feasability of just leaving this as an implementation detail,
+is provided as the authors of this report has previously implemented this exact
+interface, on top of a Chord overlay network (see \citep{Skeen:Chord}).
+Additionally, the creators of Chord suggest exactly a DHT as one of the example
+applications of their network (see \citep{Brunskill:Chord}).
+
+This even through Chord does only support a single operation in it's public 
+interface, namely: \verb|lookup|, which lookup the node responsible for a
+specific hash / ID (for details about Chord, see \citep{Stoica:Chord}).
+\newline\newline
+Our current implementation fulfills the above interface by utilizing a
+centralized server component, this is clearly sub-optimal in what is declared
+as a distributed system; below is an argumentation as of why this is the case.
 
 During our project development, we've investigated a few different WebRTC-based
 distributed hash table implementations, namely;
 \begin{itemize}
-\item WebRTC-explorer
-\item WebRTC-chord
-\item Kad-WebRTC
+    \item WebRTC-explorer (see \citep{diasdavid:webrtc-explorer})
+    \item WebRTC-chord (see \citep{diasdavid:webrtc-chord})
+    \item Kad-WebRTC (see \citep{kadtools:kad-webrtc})
 \end{itemize}
+As we found none of these systems, fulfilled our expectations, we ended up 
+considering other alternatives; A discussion of these additional alternatives,
+is emitted directly after a discussion of the above systems.
 
 \subsection{WebRTC-explorer}
-Our experiments with WebRTC-explorer was mostly demotivation, the project does
-not implement the usual DHT interface, but rather a network overlay structure,
-upon which the (single) developer suggests that one can implement a DHT network.
+Our experiments with WebRTC-explorer were generally demotivating, the project
+does not implement the usual DHT interface, but rather a Chord-like
+\verb|lookup| network overlay structure interface, as with Chord it's suggested
+that one can implement a DHT upon this overlay network interface.
+\newline
+The project is currently in development, by a single masters student; It is our
+verdict that the quality, and stability of the project seems to propagate this.
 
-The project is currently in development, by a masters student and the quality,
-and stability of the project seems to propagate this.
+The instability of the project, combined with time-constaints of the project
+had us drop this as a possible DHT implementation.
 
 \subsubsection{WebRTC-chord}
-This project is created as a precursor for WebRTC-explorer, and was through was
-a direct implementation of the chord network, using WebRTC, however during 
+This project is created as a precursor for WebRTC-explorer, and was through as
+a direct implementation of the chord network, using WebRTC. However during 
 development the above mentioned masters student found that implementing chord,
 requires a lot of (WebRTC) connections, i.e. for successor lists and
-finger-tables, and as such he hit the connection limit imposed by the browser.
+finger-tables, and as such he hit the connection limit imposed by the browser;
 
-This was in essence the issue, which caused him to develop a new network
-overlay structure; the one utilized by WebRTC-explorer. As a result, this 
-project has remained unmaintained for over two years.
+\begin{displayquote}
+    DISCLAIMER: Implementing a full Chord algorithm proved to be an unviable option
+    (due to the high number of data-channels that had to be open inside a browser),
+    in order to overcome this, I've come up with webrtc-explorer, and adaptable
+    Chord like implementation. I'll no longer support this module \\ \medskip
+    --- David Dias
+\end{displayquote}
+Due to this, and the fact that the project has now remained unmaintained for
+over two years, we decided against using this as our DHT implementation.
+\newline\newline
+The same developer has previously created a project called \verb|webrtc-ring|
+(see \citep{diasdavid:webrtc-ring}), it's deprecated like WebRTC-chord in favor
+of WebRTC-explorer, we have therefore not been investigating this project
+further.
 
 \subsection{Kad-WebRTC}
-% TODO: Fix these refs
 Where's the previous two projects are standalone, this is no more than a 
-transportations layer plugin for the Kad project (see \ref{}). As such it 
-has the same interface as the Kad project for desktops, which is indeed the 
-expected DHT interface. The WebRTC transport layer utilizes a centralized 
-component to setup the WebRTC connections (see \ref{}), during our experiments
-this was somewhat easy to set up and get running, but no interactive example
-was present in the project.
+transportations layer plugin for the Kad project (see \citep{kadtools:kad}).
+As such it has the same interface as the Kad project for desktops, which is
+indeed the  expected DHT interface. The WebRTC transport layer utilizes a
+centralized component to setup the WebRTC connections (see
+\ref{webrtc-connection-server}), during our experiments this was somewhat easy
+to set up and get running, but no interactive example was present in the
+project.
 
 We've developed an interactive example for Kad-WebRTC as a part of our
 experimententation, and pushed this upstream, such that it is now included in 
-the official repository, see \ref{} for details.
+the official repository (see \ref{subsec:appendix-kad-webrtc} for details).
 
-% TODO: Document UDP for Kademlia
-While this project did indeed fulfill our expectations, and implements the DHT
+While this project did indeed fulfill our expectations, and implements our DHT
 interface, it is not without it's problems. In truth, we did not expect the 
 project to actually run, as the Chord WebRTC implemtation mentioned above hits
 the limit for WebRTC connections, and since Kademlia generally utilizes a huge
-amount of of connections (Kademlia is usually implemented using UDP).
+amount of of connections (The official paper on Kademlia, suggests using UDP
+(see \citep{Maymounkov:Kademlia})).
 
-When we investigated this further, we found that this WebRTC transport layer,
-is simply used as a plug-in replacement for UDP, and as such is connectionless.
+This sparked our interest, as to how this project could avoid the limit, and as
+we investigated this further, we found that this WebRTC transport layer, is
+simply used as a plug-in replacement for UDP, and as such is connectionless.
 Whenever a connection is required, a new one is spawned, this obviously
 overcomes the browser limitations on the number of WebRTC connections, but 
 instead it establishes new connections constantly.
@@ -69,18 +110,24 @@ conflicts with our needs, and as such we deemed this project unfeasible for
 our choice of DHT.
 
 \subsection{Alternatives}
-At this point we discussed alternatives for how to implement our lookup /
-searching;
+At this point; we were close to given up our search for a WebRTC DHT
+implementation, and thus we discussed several alternatives for how to
+implement our lookup / searching;
 \begin{itemize}
 \item Centralized searching
 \item Searching in unstructured networks
-\item Look for more DHTs?
+\item Continue searching for DHTs, or write our own?
 \end{itemize}
 
+\subsubsection{Centralized searching}
 Utilizing a centralized searching component would eliminiate the purpose of our
 project, as our project would only prove the feasibility of using BitTorrent as
 a data transfer technology under a content distribution network, which has been
 proven rigiously before, by the common adaptation of BitTorrent.
+
+As such we abandoned this idea again quite quickly.
+
+\subsubsection{Searching in unstructured networks}
 
 % TODO: Cite gnutella
 % TODO: inscalable??
