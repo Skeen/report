@@ -3,9 +3,13 @@
 
 % Audio Tag and limitations
 Modern browsers already support native playback of audio files through the Audio HTML5 tag, 
-this capability comes with some significant limitations however; 
+this capability comes with some limitations however.
+The audio tag can be provided with a Src property, which defines the file to be played by the browser,
+it also comes with a inflexible user interface, provided by the browser.
+Ideally, our system would support playback of music files while they are still being downloaded, 
+meaning streaming support. 
+HTML5 Audio only supports 
 \newline
-
 % Songs and Metadata
 
 
@@ -27,7 +31,7 @@ implementation varies greatly between browsers,
 and can in some cases be wiped after reaching only 5 megabytes, 
 hardly enough for our purposes.
 
-Some browsers have also added support for database storage, via IndexedDB and MySQL, 
+Some browsers have also added support for database storage, via IndexedDB and WeSQL \citep{websql}, 
 but this is not supported in every browser. 
 For the sake of not excluding any browser that might work with WebTorrent, but not with IndexedDB,
 it seemed like we needed a better solution.
