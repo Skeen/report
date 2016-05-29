@@ -69,15 +69,15 @@ application first. This has several implications, amongst others;
 \item Limited access to hardware
 \item Limited connection layer technologies
     \begin{itemize}
-        \item WebRTC
-        \item WebSockets
         \item HTTP
+        \item WebSockets (see \citep{RFC6455})
+        \item WebRTC (see \citep{WebRTC})
     \end{itemize}
 \item Limited access to persistent storage
     \begin{itemize}
-        \item LocalStorage
-        \item IndexedDB
-        \item WebSQL
+        \item LocalStorage (see \citep{WebStorage})
+        \item IndexedDB (see \citep{IndexedDB})
+        \item WebSQL (no longer maintained, see \citep{WebSQL})
     \end{itemize}
 \end{itemize}
 We are aware of the fact, that these limitations will make it harder for us to
@@ -96,6 +96,9 @@ Additionally browserify handles multiple target arcitectures; I.e. the browser,
 and the node.js desktop environment. We originally envisioned creating both a 
 web-interface and a more technical desktop client, but due to time constaints,
 we've limited ourselves to the desktop client.
+
+\section{WebSocket}
+\input{Chapters/WebSockets}
 
 \section{Web-RTC}
 WebRTC is a javascript API drafted by W3C that establishes support for browser-to-browser connections,
@@ -131,8 +134,6 @@ The signaling service does not need to be involved after the connection has been
 it can free up its resources to focus on signaling for new peers, 
 while the already established connections can continue regardless of whether the signalling service has quit.
 
-\section{Websockets}
-\input{Chapters/WebSockets}
-
 %% FRAMEWORKS
 \input{Chapters/Framework}
+\label{sec:gnutella}
