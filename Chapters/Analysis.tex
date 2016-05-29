@@ -1,4 +1,5 @@
 % Audio Tag capabilities
+\section{HTML5 Audio Tag}
 Adding support for music file types not already supported by the browser 
 would be an major undertaking, 
 and would not contribute much towards the goals of this project, 
@@ -21,19 +22,40 @@ and Internet Explorer and Microsoft Edge does not support anything other than Mp
 Google chrome notably supports all the above formats.
 \newline
 
+%\includegraphics{gfx/audioTag}
+\begin{figure}[h]
+  \centering
+    \includegraphics[scale=0.5]{gfx/audioTag.jpg}
+  \caption{A picture of Audio Tag GUI in Firefox}
+  \label{fig:audiotag}
+\end{figure}
+
 The audio tag itself offers a very simplistic yet very inflexible GUI to the user, 
 it includes the usual progress bar, volume, play+pause buttons in its interface, 
-these elements cannot be easily changed, but can be disabled entirely, 
+these elements cannot be easily changed, but can be disabled and hidden entirely, 
 which lets the audio playback be controlled by javascript code instead.
 \newline
 
 % Song Information
-
+\section{Music Filetypes}
+The supported music filetypes differ greatly from eachother internally; 
+their audio codings can be different, their metadata can be different,
+and even the way they are rendered and treated by the browsers can differ.
+To make matters even worse creators of music files are free to exclude or falsify metadata, 
+and can even leave it out entirely.
+Clearly, some kind of common abstraction is needed to encapsulate the uncertain terrain of music files.
+\newline
 
 % WebRTC limitations
+WebTorrent relies heavily on WebRTC and particularely on WebRTCs dataChannels.
+DataChannels are not supported in the Internet Explorer and Safari browsers, 
+so these cannot support WebTorrent either.
 
+Creating a data channel is a performance intensive task, 
+unlike websockets that make use of well defined HTTP handshake mechanisms, 
 
 % LocalStorage
+\section{Storage}
 Ensuring availability of content and robustness in a bittorrent network requires persistant offline data storage:
 without persistant data storage, if all users were to leave the network and return later, all content on the 
 network would be lost.
@@ -67,6 +89,9 @@ Google chrome originally supported unlimited localstorage in version 18, dropped
 5MB in version 36 and 4.75MB in version 46. 
 Internet Explorer allows 10MB, 
 and Firefox allows by default 5MB, but can be set to anything including 0 by the user agent.
+Google have attempted to implement a 'qouta api', 
+which allows websites to ask user agents to increase localstorage limitations, 
+this has not been adopted by the other browsers, so we had to look for something else.
 \newline
 
 In addition to the Web Storage standard, W3C is also working on a standard for IndexedDB in browsers, 
@@ -75,7 +100,7 @@ which allows browser-side javascript to access a local database on the host mach
 It should be noted that WebTorrent, 
 an essential library in our project, 
 only officially supports Firefox and Chrome 
-and both of these do support IndexedDB.
+both of which do support IndexedDB.
 \newline
 
 %bep

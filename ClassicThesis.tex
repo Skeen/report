@@ -42,7 +42,6 @@
 % Bibliographies
 %*******************************************************
 \addbibresource{Bibliography.bib}
-\addbibresource[label=ownpubs]{AMiede_Publications.bib}
 \makeatletter
 \def\blx@maxline{77}
 \makeatother
@@ -148,7 +147,6 @@ forming the foundation of the next.}
 
 \chapter{Analysis}
 \label{cha:analysis}
-
 \input{Chapters/Analysis}
 
 %% TODO: Move this about
@@ -170,7 +168,6 @@ forming the foundation of the next.}
 
 \chapter{Design}
 \label{cha:design}
-
 \input{Chapters/Design}
 
 %% TODO: Move this about
@@ -201,7 +198,6 @@ forming the foundation of the next.}
 %whether the required hypotheses are valid. If they are not, the design
 %must be reconsidered, and there is only one way to test them, namely
 %through implementation, and subsequent evaluation.
-
 
 \chapter{Implementation}
 \label{cha:implementation}
@@ -244,48 +240,9 @@ forming the foundation of the next.}
 %Having built the equivalent of a experimental setup, it is time to use
 %the implementation to test the hypotheses.
 
-%This is usually broken down in stages and subquestions.
-
-%A structured approach to performing and reporting on experiments is
-%to follow this pattern for every single experiment:
-
-%\begin{enumerate}
-%\item What is the purpose of the experiment?
-%\item What is the expected outcome?
-%\item What are the parameters under which the experiment takes place?
-%\item What are the results?
-%\item How do the results align with the expected outcome? If they do
-%  not align, why is that so?
-%\end{enumerate}
-
-%Results should be presented summarised in tables and graphs.  Remember
-%to note the number of times experiments were repeated, as well as
-%averages, and standard deviations (in percent of the mean).  There is
-%much more to the proper evaluation of experimental data than can be
-%expounded upon here, but I turn the reader's attention to
-%\citep{Downey2011:TSPASFP2011}, which is freely available.
-
-
 \chapter{Conclusion}
 \label{cha:conclusion}
-
-This, then is the grand summary of what you have accomplished.  You
-may well imagine that many readers will read your Introduction, and
-then skip to the Conclusion, and if, and only if, those two parts are
-interesting, might be tempted to read the rest. A consequence is that
-you should ensure that the reader will gain a good overall
-understanding of what you have done by reading only the conclusion.
-Thus, this is a place to summarise all that has gone before, before
-finally concluding on the results of your experiments and the validity
-of your hypotheses. It is also important to ensure that the
-Introduction (which in all likelihood was written first) still aligns
-closely with the conclusions reached.
-
-If you so desire, this is also where you might add a section on Future
-Work, where you point in the directions that should be followed to
-complete the work you have already accomplished.
-
-
+% TODO: Write conclusion
 
 \part{Demo}
 \label{part:manual}
@@ -308,9 +265,11 @@ Our project can be seen at \footnote{\url{https://youtu.be/X0lIZpOK1Qk}}. It is 
 \cleardoublepage
 \part{Appendix}
 \chapter{Contributions}
+\label{sec:appendix-contributions}
 \input{Chapters/Contributions}
 
 \chapter{Accepted project proposal}
+\label{sec:appendix-project}
 \input{Chapters/ProjectProposal}
 
 %********************************************************************
