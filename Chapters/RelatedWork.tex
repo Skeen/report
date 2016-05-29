@@ -1,10 +1,11 @@
 %BitTorrent
-BitTorrent is a peer-to-peer protocol for file sharing designed by Bram Cohen in 2001.
+\section{bittorrent}
+BitTorrent \citep{bittorrent:bep03} is a peer-to-peer protocol for file sharing designed by Bram Cohen in 2001.
 The protocol is responsible for around 30 percent of the data uploaded to the internet.
 The traditional way to ose the bittorrent protocol is to use a BitTorrent desktop client. That is a computer program that implements the BitTorrent protocol.
 The .torrent files comes with a metadata file that includes a trackerlist. The bittorrent tracker is a server that contains information about what peers are interested in a given torrent. The tracker can connect a peer to other peers with the same torrent so the first peer can download and upload torrent data from and to those peers.
 
-\section{file sharing}
+\section{File sharing}
 Torrents is a very popular and easy method to share large files, because every user providing bandwidth i.e. the seeding of the torrents.
 The payload of the server that initially shared the file does not have to be big, because the user will share the file with other users instead of overloading the server.
 %tracker hash forbinde folk 
@@ -16,39 +17,51 @@ Html5 also implements local storage. This makes it possible to store content loc
 The storage limit it larger than when using cookies (at least 5mb) and the data is stored locally so it does not need to be sent to a server.
 
 \section{WebRTC}
-WebRTC is an API drafted by W3C that supports browser-to-browser connections,
-which focuses on peer-to-peer connections instead of traditional
-client-server networks like WebSockets, AJAx and Server Sent Events.
-Traditional networks suffer from high latencies and require dedicated servers to do the heavy lifting, 
-as browsers cannot listen for connections with WebSockets.
+WebRTC is a javascript API drafted by W3C that establishes support for browser-to-browser connections,
+instead of traditional client-server connections like WebSockets, AJAX and Server Sent Events.
+These client-server networks suffer from high latency, and do not allow browsers to act as a server,
+as browsers cannot listen for WebSocket connections.
+
+It was originally intended to support real-time-communication (RTC) 
+and allow browsers to easily establish audio and video teleconferencing and telecommunications
+using its three primary APIs: MediaStream, RTCPeerConnection and RTCDataConnection.
+The RTCDataConnection part of the API is particularely interesting
+as it allows arbitrary application data to be sent betweeen browsers,
+allowing a myriad of peer-to-peer techniques to be implemented as WebRTC code for browsers.
 
 Before WebRTC, establishing direct peer-to-peer connections in the browser required
 additional plugins in the browser such as Flash or Java, which would then download and
-execute the networking code.
+execute the networking code,
+these plugins did not come with most browsers,
+which means many users did not have them available.
+\newline
 
 % TODO: write about peerconnection requiring central server to establish connection
 \label{webrtc-connection-server}
-WebRTC does not allow directly creating a connection between two browsers, 
-the connection has to be established by a central server.
+When using WebRTC, we must first notify the remote peer of our intention
+to open a peer-to-peer connection, so it can start listening for incoming packet,
+we also have to establish the necessary routing paths to each other peer on both sides,
+and relay this information,
+and finally establish the intended parameters: protocols, encoding used, and so on.
 Browser clients establish a WebSocket connection the server, 
 asks to have peer-to-peer connections established,
-and then receives an established connection to other peers.
+and then receives established connections to other peers.
 As the server only establised the peer-to-peer connection, 
 it does not have to bear much workload on its perhaps limited resources,
 and is much less likely to become a bottleneck of the system.
 Peers can continue their connection even if the server is shut down later.
 
-\section{browserify}
+\section{Browserify}
 Browserify is a tool that makes it possible to use modules created to node.js in the browser. It also includes the 'require' functionallity in the browser code. That means code like this:
 %\begin{verbatim}
 %var EventEmitter = require('events').EventEmitter;
 %\end{verbatim}
 will make sense in javascript now.
 
-\chapter{Popular music streamers}
+\section{Popular music streamers}
 The are many music-streamers already reseased and we will let us get inspired by some of the most popular and give a walktrough of them below.
 
-\section{spotify}
+\subsection{spotify}
 Spotify is the most popular online music streamer. The program was released in 2006 and was developed in Sweeden Stockholm by Daniel Ek and Martin Lorentzon. Now their main office is placed in Luxemborg and they have devisions in Stockholm and Göteborg. Their buisness model is that customers can listen to music in exchange for listening to commercials between tracks, or they can pay a monthly fee to be premium members.
 The music is placed on servers controlled by spotify in contrast to the peer-to-peer music streamer we will develop.
 \begin{figure}[p]
@@ -60,13 +73,13 @@ The music is placed on servers controlled by spotify in contrast to the peer-to-
 As seen in \ref{fig:spotify} the music player is placed in the buttom of the application, there is a menu at the left of the screen where your personal playlists can be accessed, and where it is possible to browse for new music and listen to a radio channel.
 Spotify now have over 75 mission active users, both from Europe, America and Asia. Spotify both have clients for desktops and mobiles.
 
-\section{Napster}
+\subsection{Napster}
 Napster was when it was released in 1999 a peer-to-peer file sharing service that focussed on audio files. Napster was co-founded by Shawn Fanning, John Fanning, and Sean Parker The Napster site was only operational untill 2001 because it was sued by Metallica for sharing music illigally. It was then brought down by court order. Metallica learned that their song "I dissapear" was avaiable on Napster before it was released witch also led to it be played on radios. Napster peaked at 25 million users in january 2001 On March 13, 2000 Metallica filed a lawsuit against Napster. Many  In addition to the Napster weppage, a desktop client was developed both to windows and later to MAC OS.
 Napster had to pay 36\$ in royalties to various music companies and had to declare itselves bankrupt. Roxio bought the assets of Napster to relaunch it as a online music store, where users had to pay money for each track. In may 2006 Roxio launched a free verion of Napster where users where able to stream full length tracks, where the service was powered by adds. They had the limit that each song could only be streamed 3 times each by every user, but they had 8million songs to choose from.
 The free Napster service was discontinued in March 2010, because Napster was sold to Best Buy in January 2010.
 Rapsody (another streaming and download service) bought Napster in 2011 and transformed it into a subscription based streaming client for desktop or phones.
 
-\section{popcorn-time}
+\subsection{popcorn-time}
 Popcorn-time is a multi-platform bittorrent client for streaming videos. The popcorn-time interface is much simillar to that of Netflix. It presents the user with thumbnail immages of the movies and when the user selects a picture the movie is then downloaded with the bittorrent protocol, and played in the build-in player.
  When a download starts the movie is also seeded to other peers in the network. The seeding continues until the content i deleated with usually happens when the application closes.
  In 2014 developers made popcorn-time available on android, and support for Chromecast and Apple TV.

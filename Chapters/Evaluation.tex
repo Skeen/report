@@ -1,0 +1,35 @@
+%* Analysis results - Morten
+%	- Capabilities compared to existing systems
+%	- Is it useful/not useful?
+%	- What does our system prove from research standpoint?
+\section{results}
+
+%not implemented
+Because this project had a limited timeframe there is a couple of things we thing could be a good idea to have in the 
+music streamer, but we did not have the time to implement.
+
+\section{Seeder eviction}
+When the storage capacity of a peer is full and the user want to get more songs, we need a strategy for what content we can throw away to get room for more.
+An obvious choice is to run through the content we got from the bad health list and scrape it to see is all of those song are still at bad health. If there are many seeds on one of those songs we can throw the content away if we are not using it.
+Another choice is to rn through all the songs we have downloaded and see if some of them is at good health but is seldomly played that could be thrown away.
+
+\section{resource limitations}
+If we run of storage while downloading a song we need to handle that problem.
+
+%* What did we not implement? - Morten
+%	- Seeder eviction
+%	- Eviction strategies
+%	- Resource limitations
+%	- Bad Health supported properly?
+%	- Missing features on GUI (why there are unused GUI source code)
+%	- Fake DHT impl, what problems it causes
+%	- Missing trackerless feature
+%	- Could DHT and trackerless be implemented with more work?
+
+%* Quantifiable Tests (Reproducible) (performance, robustness) - Morten
+%	- CPU utilization when using/not using parts of project?
+%	- LocalStorage performance degredation?
+%	- Memory use?
+%	- Comparison with spotify/others
+%	- Reported traffic by webtorrent
+%		Is it correct+complete?
