@@ -1,5 +1,5 @@
 % This goes after the libraries section
-\section{\acs{DHT}}
+\section{DHT}
 \label{sec:dht}
 
 As previously mentioned, our \verb|music-streamer-library| features an
@@ -11,6 +11,15 @@ just two methods; namely:
     \item set: Which given a hash and a value, looks up the the responsible
         node, and asks it to store the value.
 \end{itemize}
+\begin{lstlisting}[caption={TypeScript DHT HashTable interface}]
+export interface HashTable
+{
+    // Put a keyset into the HashTable, callback when done
+    put(key:string, value:string, callback?:DHTCallback) : void;
+    // Get a value from the HashTable, callback when done
+    get(key:string, callback?:DHTCallback) : void;
+}
+\end{lstlisting}
 This interface was by design created to resembles a non-distrbuted hash table,
 as the distributivity of the underlying implementation is to be considered an 
 implementation detail.
