@@ -6,23 +6,23 @@ Throughout the project, we have developed in total 3 sub-projects;
 \item music-streamer-library: A library utilized by our interface
 \item fake-dht: A fake implementation of a \acs{DHT} network
 \end{itemize}
-In our implementation we've utilized serveral third-party libraries, primarily
-provided by the node package mananger \verb|npm|. The lists below are excluding
+In our implementation we've utilized several third-party libraries, primarily
+provided by the node package manager \verb|npm|. The lists below are excluding
 polyfill libraries (i.e. libraries which enable running our code on older
 platforms), and tiny insignificant libraries.
 \newline\newline
-For our webinterface, we've utilized;
+For our web-interface, we've utilized;
 \begin{itemize}
 \item render-media: Which takes \verb|node| audio and video streams, and
         creates / renders to \acs{HTML}5 audio/video tags.
 \item music-metadata: Which takes \verb|node| audio streams, and extracts
-        meta-data, such as, but not limited to; artist information, ablum 
+        meta-data, such as, but not limited to; artist information, album 
         information and song title.
 \item express: A \acs{HTTP} web-server framework, which enabled rapid prototyping and
         development, by easing the definition and implementation of \acs{HTTP} endpoints.
 \item body-parser: A middleware plugin to the express framework, which enables 
-        easy access to POST endcoded information.
-\item triejs: A pure javascript implementation of a trie datastructure, which 
+        easy access to POST encoded information.
+\item triejs: A pure JavaScript implementation of a trie data-structure, which 
         enables easy substring lookups.
 \item A varity of \acs{GUI} libraries, in summary:
     \begin{itemize}
@@ -36,7 +36,7 @@ For our webinterface, we've utilized;
 % TODO: Handle long urls, line break:
 % http://tex.stackexchange.com/questions/54946/how-to-break-long-url-in-an-item
 We've developed a patch for 'music-metadata' to add support for node streams
-(see \ref{sec:appendix-music-streamer-library}), additionally our webinterface
+(see \ref{sec:appendix-music-streamer-library}), additionally our web-interface
 utilizes our own library 'music-streamer-library', which has been uploaded to
 the npm repository (see \url{https://www.npmjs.com/package/music-streamer-library}).
 \newline\newline
@@ -44,7 +44,7 @@ For our music-streamer-library, we've utilized;
 \begin{itemize}
 \item bittorrent-tracker: A sub-project of WebTorrent, which enables querying 
         the (WebSocket) tracker for seeder and leecher count.
-\item localforage: Which is a unified adapter ontop of the varying \acs{HTML}5
+\item localforage: Which is a unified adapter on top of the varying \acs{HTML}5
         storage backends, such as: LocalStorage, IndexedDB and WebSQL.
 \item magnet-uri: Which parses magnet URIs and output \acs{JSON} objects containing
         the information from within the magnet URI.
@@ -53,15 +53,15 @@ For our music-streamer-library, we've utilized;
 \item WebTorrent: A full BitTorrent client, implemented using WebRTC as the 
         transport layer. This is used for the actual data transfer.
 \item Additionally; Our library utilizes some of the same libraries as our
-        webinterface, namely: musicmetadata and render-media.
+        web-interface, namely: musicmetadata and render-media.
 \end{itemize}
 Of these, we've developed a patch for 'localforage' to add support for node
 (see \ref{subsec:appendix-localforage}), and helped debug a blocking issue for
-running WebTorrent under headless linux configurations (see
+running WebTorrent under headless Linux configurations (see
 \ref{subsec:appendix-electron-eval}).
 \newline\newline
 Our music-streamer-library contains an interface for a distributed hash table,
-for which we have worked on creating multiple implementations. Our intial one,
+for which we have worked on creating multiple implementations. Our initial one,
 was a simple centralized lookup table server, utilized to get the rest of the 
 project going. We gave this sub-project the innovative name; \verb|fake-dht|.
 
@@ -77,7 +77,7 @@ For our \verb|fake-pht| centralized lookup / searching server, we've utilized;
 \item express: A \acs{HTTP} web-server framework, which enabled rapid prototyping and
         development, by easing the definition and implementation of \acs{HTTP} endpoints.
 \item body-parser: A middleware plugin to the express framework, which enables 
-        easy access to POST endcoded information.
-\item triejs: A pure javascript implementation of a trie datastructure, which 
-        enables easy substring lookups.
+        easy access to POST encoded information.
+\item triejs: A pure JavaScript implementation of a trie data-structure, which 
+        enables easy sub-string lookups.
 \end{itemize}
