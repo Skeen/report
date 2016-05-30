@@ -6,8 +6,8 @@ Abstract
 
 Intro - What is this shit? - Emil
 
-* Motivation
-* Well documented case problem
++ Motivation
++ Well documented case problem
 
 Related Works - All the stuff we found and looked at
 
@@ -157,5 +157,5 @@ The Showcase - Show the project - Morten
 
 Appendix
 
-* Contributions - Emil
++ Contributions - Emil
 + Project Proposal - Emil: DONE
