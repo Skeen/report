@@ -6,9 +6,9 @@ and would not contribute much towards the goals of this project,
 so we have decided to make use of existing browser capabilities.
 \newline
 
-Most modern browsers support the HTML5 standard Audio tag,
-also called HTML5 Audio and WebAudio,
-which presents a simple GUI and audio playback to the user.
+Most modern browsers support the \acs{HTML}5 standard Audio tag,
+also called \acs{HTML}5 Audio and WebAudio,
+which presents a simple \acs{GUI} and audio playback to the user.
 Browsers also support a similar Video tag, 
 which could also be used for audio playback purposes.
 The audio and video tags support both files and streams, 
@@ -30,7 +30,7 @@ Google chrome notably supports all the above formats.
   \label{fig:audiotag}
 \end{figure}
 
-The audio tag itself offers a very simplistic yet very inflexible GUI to the user, 
+The audio tag itself offers a very simplistic yet very inflexible \acs{GUI} to the user, 
 it includes the usual progress bar, volume, play+pause buttons in its interface, 
 these elements cannot be easily changed, but can be disabled and hidden entirely, 
 which lets the audio playback be controlled by javascript code instead.
@@ -60,7 +60,7 @@ and finally agree on protocols, encodings and so on.
 RTC datachannels have a large overhead when being established,
 but can perform low latency communications once established, 
 thus we would like to retain datachannels for as long as possible to avoid this overhead.
-Many DHT, like kademlia, will establish and discard connections frequently,
+Many \acs{DHT}, like kademlia, will establish and discard connections frequently,
 and might suffer major overhead when implemented in WebRTC over the datachannel.`
 
 % LocalStorage
@@ -138,11 +138,11 @@ Now users can just share a link instead of sharing a file on a server.
 Private torrents is another feature in Bittorrent \citep{bittorrent:bep27}. They idea is that users can define a torrent to be private by setting 'private=1' in the metainfo (.torrent) file. Private trackers can be used to control what users are allowed to download a torrent. The tracker is a server with a list of the peers that contain pieces of the torrent and a list of users allowed to get the specific torrent.
 The tracker will refuse to provide a seedlist to those not allowed to get that torrent.
 
-%Storing arbitrary data in the DHT
-In a proposal \citep{bittorrent:bep44} it is suggested that the DHT of Bittorrent is extended with the possibility of storing arbitrary data instead of just storing valuespairs with hashes and associated ip-addresses.
-With this change the DHT could be used to store infomation about the torrent e.g. song length, author, file size, ect.
+%Storing arbitrary data in the \acs{DHT}
+In a proposal \citep{bittorrent:bep44} it is suggested that the \acs{DHT} of Bittorrent is extended with the possibility of storing arbitrary data instead of just storing valuespairs with hashes and associated ip-addresses.
+With this change the \acs{DHT} could be used to store infomation about the torrent e.g. song length, author, file size, ect.
 
 %Scraping
 \section{Scraping}
 Scraping is a request to the tracker to get information about a torrent, such as how many seeders and leachers it has, how many times it has been downloaded, the status of the tracker (OK or offline), the reason it is offline, ect.
-Scraping can be used to find the torrents with bad health and add them to a list. Each peer can then get the list from the DHT and seed the torrents on the list.
+Scraping can be used to find the torrents with bad health and add them to a list. Each peer can then get the list from the \acs{DHT} and seed the torrents on the list.

@@ -10,7 +10,7 @@ Torrents is a very popular and easy method to share large files, because every u
 The payload of the server that initially shared the file does not have to be big, because the user will share the file with other users instead of overloading the server.
 %tracker hash forbinde folk 
 
-\section{HTML5}
+\section{\acs{HTML}5}
 Html 5 is the latest markup language for writing web applications is was relaesed in 2014. Some of the new tags introduced is video and audio tags wich makes it possiple to play video and audio in the player build into html5.
 
 Html5 also implements local storage. This makes it possible to store content locally in the browsers rather than use cookies, to store the data.
@@ -25,7 +25,7 @@ The music is placed on servers controlled by spotify in contrast to the peer-to-
 \begin{figure}[h]
   \centering
     \includegraphics[width=0.9\textwidth]{gfx/Spotify_desktop.jpg}
-  \caption{A picture of the GUI in the Spotify desktop application}
+  \caption{A picture of the \acs{GUI} in the Spotify desktop application}
   \label{fig:spotify}
 \end{figure}
 As seen in \ref{fig:spotify} the music player is placed in the buttom of the application, there is a menu at the left of the screen where your personal playlists can be accessed, and where it is possible to browse for new music and listen to a radio channel.
@@ -69,7 +69,7 @@ application first. This has several implications, amongst others;
 \item Limited access to hardware
 \item Limited connection layer technologies
     \begin{itemize}
-        \item HTTP
+        \item \acs{HTTP}
         \item WebSockets (see \citep{RFC6455})
         \item WebRTC (see \citep{WebRTC})
     \end{itemize}
@@ -101,15 +101,15 @@ we've limited ourselves to the desktop client.
 \input{Chapters/WebSockets}
 
 \section{Web-RTC}
-WebRTC is a javascript API drafted by W3C that establishes support for browser-to-browser connections,
+WebRTC is a javascript \acs{API} drafted by W3C that establishes support for browser-to-browser connections,
 instead of traditional client-server connections like WebSockets, AJAX and Server Sent Events.
 These client-server networks suffer from high latency, and do not allow browsers to act as a server,
 as browsers cannot listen for WebSocket connections.
 
 It was originally intended to support real-time-communication (RTC) 
 and allow browsers to easily establish audio and video teleconferencing and telecommunications
-using its three primary APIs: MediaStream, RTCPeerConnection and RTCDataConnection.
-The RTCDataConnection part of the API is particularely interesting
+using its three primary \acs{API}s: MediaStream, R\acs{TCP}eerConnection and RTCDataConnection.
+The RTCDataConnection part of the \acs{API} is particularely interesting
 as it allows arbitrary application data to be sent betweeen browsers,
 allowing a myriad of peer-to-peer techniques to be implemented as WebRTC code for browsers.
 
