@@ -8,7 +8,7 @@ contact with peers within the network. Several bootstrap mechanisms are exist;
 \end{itemize}
 The simplest model is that the user provide a number of peers, which are
 already within the overlay network. These peers can then by used to further
-bootstrap the network (see \citep{bittorrent:bep11}). These preknown peers
+bootstrap the network (see \citep{bittorrent:bep11}). These pre-known peers
 can either be peers connected in the last session (and initially provided by
 the software), or found by some means outside the network.
 
@@ -20,11 +20,11 @@ client is able to contact the peers.
 The trackerless model utilizes a \acs{DHT} network for acquiring the initial list of 
 peers. The client joins the \acs{DHT} network (by knowing a peer(s) within the network),
 and once inside the \acs{DHT} network, it can lookup topics (aka. hashes), and ask
-the node responsable for the topic for the peer list.
+the node responsible for the topic for the peer list.
 \newline
 - The known peer(s) required to join the \acs{DHT} network, are usually provided by
 the \verb|.torrent| file for the download. A reference join node is presented
-by bittorrent, at \url{router.bittorrent.com}, but they recommand running your
+by BitTorrent, at \url{router.bittorrent.com}, but they recommend running your
 own \citep{bittorrent:bep05}.
 
 \subsection{Result}
@@ -49,7 +49,7 @@ swarm.
 - A content distributor might like to have this capability, to do data
 processing on popular content, or otherwise track the swarm.
 
-While a tracker-based solution utilizes a centralized compontents, it is not
+While a tracker-based solution utilizes a centralized components, it is not
 limited to just using one. Our solution utilizes the 4 default trackers
 provided by WebTorrent, but it's trivial to run your own tracker and add it to
 the resources in the network.

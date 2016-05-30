@@ -18,13 +18,13 @@ known as Angular.io), this interface was developed during the Angular-Attack
 hackathon event (May 14-15).
 \newline\newline
 % TODO: Update LOC
-The repository contains 2477 lines of code, at handin time, and has undergone 
+The repository contains 2477 lines of code, at hand-in time, and has undergone 
 several refactoring during and after the hackathon.
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\linewidth]{gfx/Angular-interface}
-  \caption{A graph from Github laying out contributions by group members. - Angular2-interface}
+  \caption{A graph from GitHub laying out contributions by group members. - Angular2-interface}
   \label{fig:angular-interface}
 \end{figure}
 
@@ -32,43 +32,43 @@ several refactoring during and after the hackathon.
 \label{sec:appendix-music-streamer-library}
 This repository contains our library, which underlies our Angular2-interface,
 the motivation for splitting the project, is that the library can be utilized 
-by multiple interfaces or clients, as we originally inteded to develop both a
+by multiple interfaces or clients, as we originally intended to develop both a
 web-interface client and a node.js client.
 \newline\newline
 % TODO: Update LOC
 To version of the library exists; the stripped version and the unstripped
-version. The stripped version contains 949 lines of code, at handin time, while
+version. The stripped version contains 949 lines of code, at hand-in time, while
 the unstripped version contains 1942 lines of code.
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\linewidth]{gfx/Music-streamer-library}
-    \caption{A graph from Github laying out contributions by group members. - Music-streamer-library (stripped version)}
+    \caption{A graph from GitHub laying out contributions by group members. - Music-streamer-library (stripped version)}
   \label{fig:music-stramer-library}
 \end{figure}
 
 \section{fake-dht}
-This repository contains our faked dht implementation, which fulfills the \acs{DHT}
+This repository contains our faked \acs{DHT} implementation, which fulfills the \acs{DHT}
 interface within our music-streamer-library by utilizing a centralized server.
 \newline
 Two different version have been developed, one which fakes a traditional \acs{DHT}
 and one which fakes a \acs{PHT} running on top of a \acs{DHT}.
 \newline\newline
 % TODO: Update LOC
-The \acs{DHT} fake contains 101 lines of code, at handin time, while the \acs{PHT} fake 
+The \acs{DHT} fake contains 101 lines of code, at hand-in time, while the \acs{PHT} fake 
 contains 99 lines of code. The two versions utilize different libraries.
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\linewidth]{gfx/dht-fake}
-    \caption{A graph from Github laying out contributions by group members. - dht-fake}
+    \caption{A graph from GitHub laying out contributions by group members. - dht-fake}
   \label{fig:music-stramer-library}
 \end{figure}
 
 \begin{figure}[H]
   \centering
     \includegraphics[width=\linewidth]{gfx/pht-fake}
-    \caption{A graph from Github laying out contributions by group members. - pht-fake}
+    \caption{A graph from GitHub laying out contributions by group members. - pht-fake}
   \label{fig:music-stramer-library}
 \end{figure}
 
@@ -76,9 +76,9 @@ contains 99 lines of code. The two versions utilize different libraries.
 In addition to these contributions, we've made several pull requests for the
 libraries we depend on; namely to:
 \begin{itemize}
-\item music-metadata: A library to parse out metadata from music files.
-\item Kad-WebRTC: A transportation layer for the 'Kad' kademlia implementation.
-\item localforage: A unified interface library for persistant browser-storage
+\item music-metadata: A library to parse out meta-data from music files.
+\item Kad-WebRTC: A transportation layer for the 'Kad' Kademlia implementation.
+\item localforage: A unified interface library for persistent browser-storage
     technologies.
 \item electron-eval: A library to execute code within a headless browser
     (electron).
@@ -114,7 +114,7 @@ after which the pull request was reverted.
 \subsection{Kad-WebRTC}
 \label{subsec:appendix-kad-webrtc}
 While experimenting with 'Kad-WebRTC' we ran the provided examples, 
-unfortunatly all of these ran within the same browser tab, and as such we were
+unfortunately all of these ran within the same browser tab, and as such we were
 not convinced that the library would work across multiple browsers (or tabs).
 
 In order to confirm the operability of the library under these circumstances,
@@ -130,7 +130,7 @@ pull request.
 \label{subsec:appendix-localforage}
 A \href{https://github.com/mozilla/localForage/pull/551}{pull request} to add 
 node.js support to the Mozilla project localforage (A unified interface for 
-the browser-based persistant storage technologies) has been submitted to the
+the browser-based persistent storage technologies) has been submitted to the
 upstream developers: the patch adds 5664 lines of code (of which 5001 are 
 generated by the built system), as such 663 lines of code has been written.
 Additionally 3 lines of code has been removed.
@@ -142,18 +142,18 @@ due to the quality of the utilized libraries.
 
 The created patch do however fulfill our own use-case; that is to enable us to 
 develop a proof-of-concept 'node.js' client using our music-streamer-library
-(which in turn utilizes localforage for persistant storage).
+(which in turn utilizes localforage for persistent storage).
 
 \subsection{electron-eval}
 \label{subsec:appendix-electron-eval}
 A \href{https://github.com/mappum/electron-eval/issues/29}{bug report} and 
-debugging assistence been provided to the upstream developer, to get the project
-running in headless linux environments (docker for our use-case).
+debugging assistance been provided to the upstream developer, to get the project
+running in headless Linux environments (docker for our use-case).
 \newline\newline
 As a part of this process, several docker images has been created and shared
 with the upstream developer, whom has patched the library. This patch combined
 with a mapping of the missing external dependencies, has resulted in a
-successful recipe for running the project in a headless linux setting.
+successful recipe for running the project in a headless Linux setting.
 
 The upstream developer considers patching the library further to ease future 
 debugging of missing external dependencies. A duplicate of this issue has been

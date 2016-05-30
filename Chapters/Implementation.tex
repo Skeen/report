@@ -1,15 +1,15 @@
 \section{Overall Architecture}
 % Code Architecture
-Due to the size of the projects codebase and large number of libraries with different \acs{API}s, 
-it was necessary to create different object classes with seperated concerns,
+Due to the size of the projects code-base and large number of libraries with different \acs{API}s, 
+it was necessary to create different object classes with separated concerns,
 and a consistent way to use them.
 
-The code base is seperated into a backend with code parts that are not visible to the user,
+The code base is separated into a backend with code parts that are not visible to the user,
 and a front end with each class having an associated \acs{GUI} element.
-We also needed main classes to coordinate these responsibilies, handle overall flow,
-and serve as a container for anything we did not have time to place in a seperate class:
+We also needed main classes to coordinate these responsibilities, handle overall flow,
+and serve as a container for anything we did not have time to place in a separate class:
 these classes are lib.ts in the backend,
-and app.component.ts in the frontend to hold \acs{GUI} elements.
+and app.component.ts in the front-end to hold \acs{GUI} elements.
 
 Many of the libraries used have slow, non-blocking IO operations
 and make use of callbacks to execute code after the IO operations complete.
@@ -44,14 +44,14 @@ which are driven mostly by user actions and the music player.
 \newline
 
 % \acs{GUI} (Angular)
-The \acs{GUI} needed databindings to show torrent information, allow changing songs
+The \acs{GUI} needed data-bindings to show torrent information, allow changing songs
 and implement a music player \acs{GUI}. 
 Angular 2 lets us create \acs{GUI} elements as new \acs{HTML} tags, 
 and bootstrap provides generic \acs{GUI} elements and stylesheets for angular, 
 they were the easiest way to fill our needs for the \acs{GUI},
 so that is what we have used.
 
-Our \acs{GUI} elements consist of a music player interface, a playlist, downloading information 
+Our \acs{GUI} elements consist of a music player interface, a play-list, downloading information 
 and show information about local content and seeding.
 \newline
 
@@ -63,24 +63,24 @@ We needed some way to use these libraries, and to insure that they are properly 
 In NodeJS, modules are loaded and made available by calling the require method 
 and assigning the result to a field variable, which can then be used to access the libraries functions.
 This capability is not supported natively in browsers, so a tool was needed to provide it.
-The Browserify tool takes javascript code written for NodeJS, 
-transforms it into regular javascript code, 
+The Browserify tool takes JavaScript code written for NodeJS, 
+transforms it into regular JavaScript code, 
 handles all the requires, 
-and emits the new javascript code as a single easily distributed file called Bundle.js.
-Browserify allows our projects end result to consist only of a html page and one javascript file, 
+and emits the new JavaScript code as a single easily distributed file called Bundle.js.
+Browserify allows our projects end result to consist only of a \acs{HTML} page and one JavaScript file, 
 so this seems like an ideal setup, and is what we make use of.
 \newline
 
 \section{Song handling}
 % How we handle music and music metadata
-The program encapsulates the highly inconsistant music files using a Song object,
-which contains optional fields corresponding to commonly used metadata, 
+The program encapsulates the highly inconsistent music files using a Song object,
+which contains optional fields corresponding to commonly used meta-data, 
 such as title, name of artist, genre and album. 
-The Song object also contains information relevant for the bittorrent system; 
+The Song object also contains information relevant for the BitTorrent system; 
 it contains the magnetURI it was retrieved from or is being seeded to, 
 it holds the binary file once it is fully available, 
 or a reference to the music stream when it is still being downloaded.
-This Song object presents all other sections of the project with a uniform way to access metadata and audio, 
+This Song object presents all other sections of the project with a uniform way to access meta-data and audio, 
 while retaining relational information about which albums or artists the song belongs to. In addition to this, 
 we have also created objects to hold information about an album or an artist, 
 so we can more easily search for related works in the \acs{DHT}.
@@ -94,17 +94,17 @@ which contains all the relevant information about progress,
 speed, amount uploaded, number of peers, contained files and so on.
 These torrent objects are provided by callbacks at events
 and after each called WebTorrent function completes.
-The encapsulating torrent.ts class gives access to seed and download methods of webtorrent, 
-but only for our Song Objects, which emphasises the projects intent of being a music streaming service 
-rather than generic file sharing applicatin, 
+The encapsulating torrent.ts class gives access to seed and download methods of WebTorrent, 
+but only for our Song Objects, which emphasis the projects intent of being a music streaming service 
+rather than generic file sharing application, 
 it also provides the WebTorrent torrent object through callbacks to other sections of our code.
 \newline
 
 \section{LocalContent \& Storage}
 % Storage
-The object-blob seperation behavior and use of localforage,
-needed to be constistent throughout the project, 
-so we created a Storage class which uses localforage and handles the data seperation implicitly when its storage methods are called.
+The object-blob separation behavior and use of localforage,
+needed to be consistent throughout the project, 
+so we created a Storage class which uses localforage and handles the data separation implicitly when its storage methods are called.
 We have also disallowed the direct use of localforage anywhere else:
 all other sections of the project should save and get data through using the Storage class to ensure consistent behavior. 
 This was done by removing any inclusion of the localforage library outside of the Storage class file.
@@ -112,6 +112,6 @@ This was done by removing any inclusion of the localforage library outside of th
 As local content should also be visible in the \acs{GUI}, 
 be seeded and be capable of being added to the playing,
 we created another class called LocalContent,
-which retrieves all songs from the disk at startup,
+which retrieves all songs from the disk at start-up,
 begins to seed them, making them available for other users in the network to download,
 and presents a \acs{GUI} element to the user.
