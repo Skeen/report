@@ -35,6 +35,18 @@ With a distributed \acs{DHT}, we would not be vulnerable to losing our server be
 It is not possible to make trackerless torrenting using Web-RTC see \ref{sec:trackerless}. EVen though it would have been a nice feature to request a torrent only using the \acs{DHT}, it would mean that we would need to use another technology than Web-RTC. 
 
 %	- Could \acs{DHT} and trackerless be implemented with more work?
+\section{Tests}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{gfx/streamerIdle}
+	\caption{The resources spend while running the music streamer}
+	\label{fig:streamer-idle}
+\end{figure}
+The figure \ref{fig:streamer-idle} shows how many resources are spend when running the musicstreamer in Google Chrome.
+
+The Spotify desktop application uses 52-53 mb memory compared to running our music-streamer, but having songs in the localstorage of the browser increses the memory used. In Mozilla Firefox having two songs stored in the local storage and running the music streamer uses 370mb memory.
+
+The differance is that we need to use the local storage of the browser to save the songs, but Spotify have their servers where the music is stored, but we need each peer to store its own music.
 
 %TODO
 %* Quantifiable Tests (Reproducible) (performance, robustness) - Morten
