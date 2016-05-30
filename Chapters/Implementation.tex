@@ -21,22 +21,22 @@ which performs the necessary functionality, through the other classes when relev
 \begin{table}[h]
 	\centering
 	\begin{tabular}{l | l}
-		changing\_song   & User selected a different song to be played \\
-		nextSong         & User clicked the next song button \\
-		prevSong         & User clicked the previous song button \\
-		song\_ended      & Song has ended and in line next should be played \\
-		downloaded       & Song has finished downloading \\
-		ready-for-seed   & Song is ready to be seeded \\
-		add-song         & Song added to playlist (from downloads) \\
-		add-song         & Song added to playlist (from localcontent) \\
-		drop-down-select & User clicked a search result \\
+	    \verb|changing_song|    & User selected a different song to be played \\
+		\verb|nextSong|         & User clicked the next song button \\
+		\verb|prevSong|         & User clicked the previous song button \\
+		\verb|song_ended|       & Song has ended and in line next should be played \\
+		\verb|downloaded|       & Song has finished downloading \\
+		\verb|ready-for-seed|   & Song is ready to be seeded \\
+		\verb|add-song|         & Song added to playlist (from downloads) \\
+		\verb|add-song|         & Song added to playlist (from localcontent) \\
+		\verb|drop-down-select| & User clicked a search result \\
 	\end{tabular}
 	\caption{Events used in Streamy}
 	\label{table:events}
 \end{table}
 
 When the system is started by the browser,
-Angular loads the GUI elements and then calls ngAfterViewInit in app.component.
+Angular loads the \acs{GUI} elements and then calls ngAfterViewInit in app.component.
 ngAfterViewInit performs event bindings, and starts localcontent seeding.
 Localcontent retrieves songs stored on the disk, and starts seeding them afterwards using a callback.
 All other system functionality is triggered via these events, 
