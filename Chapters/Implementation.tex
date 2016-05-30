@@ -17,6 +17,30 @@ and make use of callbacks to execute code after the IO operations complete.
 Most \acs{GUI} actions result in an event rather than an immediate code execution, 
 these events are then caught by app.component
 which performs the necessary functionality, through the other classes when relevant.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l | l}
+		changing\_song   & User selected a different song to be played \\
+		nextSong         & User clicked the next song button \\
+		prevSong         & User clicked the previous song button \\
+		song\_ended      & Song has ended and in line next should be played \\
+		downloaded       & Song has finished downloading \\
+		ready-for-seed   & Song is ready to be seeded \\
+		add-song         & Song added to playlist (from downloads) \\
+		add-song         & Song added to playlist (from localcontent) \\
+		drop-down-select & User clicked a search result \\
+	\end{tabular}
+	\caption{Events used in Streamy}
+	\label{table:events}
+\end{table}
+
+When the system is started by the browser,
+Angular loads the GUI elements and then calls ngAfterViewInit in app.component.
+ngAfterViewInit performs event bindings, and starts localcontent seeding.
+Localcontent retrieves songs stored on the disk, and starts seeding them afterwards using a callback.
+All other system functionality is triggered via these events, 
+which are driven mostly by user actions and the music player.
 \newline
 
 % \acs{GUI} (Angular)
