@@ -1,20 +1,21 @@
 \section{WebTorrent}
-
 WebTorrent is one of the two primary technology used within our project (along 
 side with the \acs{DHT}), and as such it deserves it's own treatment, within the 
 report.
-
+\newline\newline
 WebTorrent is as previously mented a full fledged BitTorrent implementation, 
 utilizing WebRTC as the underlying transportation layer techonlogy. While it 
 does in fact implement both the usual and the WebRTC transportation layers,
 we'll only discuss the WebRTC part, as that's what's interresting for our
 use-case.
-
-WebTorrent provides a somewhat simple interface, with the main methods being;
-% TODO: Look-up and write
+\newline
+WebTorrent provides a somewhat simple interface, with the two main methods being;
 \begin{itemize}
-\item leech
-\item seed
+    \item add; Which takes a \verb|torrentID| (i.e. a torrent file or magnetURI),
+        and starts downloading it's content; firing a callback once metadata has
+        been acquired.
+    \item seed; Which takes a \verb|File|, and starts seeding it; firing a
+        callback once it's seeding.
 \end{itemize}
-
-% TODO: Information about Blobs, file information, ect.
+WebTorrent supports steaming of torrent, and this is automatically enabled, if 
+one accesses the file of a torrent via. read stream (see \citep{WebTorrent:api}).
