@@ -56,7 +56,10 @@ The users in Gnutella is called servants, and the protocol consists of a set of 
 \item QueryHit: It is a response to a query. It contains the IP adress and port, and bandwidth speed of the responding host. It also contains the number of matching files found and their indexed result set.
 \item Push: This mechanism allows a firewalled servant to push file-based data to the network.
 \end{itemize}
-When a new servant connects to the network its neighborhood list is empty. The neighborhood is the list of known servants.
+When a new servant joins the network by connecting to servants found in databases such as \url{http://gnutellahosts.com} its neighborhood list is empty. The neighborhood is the list of nodes a servant knows. A servant sends a ping message to all the servants it is connected to, those nodes then sends back a pong message, and they also forwards the ping message to their neighbors.
+Since the network is unstructured the only way of locating a file is nonderterministic. The original gnutella network used a flooding mechanism where each node forwards the request to its neighbors recursively. The response to a query will be routed back the way it came so the reciever of a query stores information about the servant it recieved the query from until the query has timed out. Each message header contains a time-to-live(TTL) field. At each hop the value of the TTL is decremented, and when it reaches zero the message is dropped. In Gnutella each node have a routing table to keep track of the messages it recieves. The servants stores message identifiers and node adresses. Since the response messages contains the same id as the original messages the host knows from which servant it got the message from.
+Once a node recieves a QueryHit message it initiates a dirrect connection between the node that replied back and the servant asking for the file.
+%TODO: add gnutella papers to bibtex and finish Gnutella
 
 \section{Browser versus desktop}
 The above mentioned systems are either implemented via. a web-browser +
@@ -136,4 +139,3 @@ while the already established connections can continue regardless of whether the
 
 %% FRAMEWORKS
 \input{Chapters/Framework}
-\label{sec:gnutella}
