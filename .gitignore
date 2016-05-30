@@ -1,6 +1,6 @@
 output/
 *.aux
-
+*.bak
 *.swp
 *.swo
 *~

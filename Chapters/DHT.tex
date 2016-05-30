@@ -11,7 +11,7 @@ just two methods; namely:
     \item set: Which given a hash and a value, looks up the the responsible
         node, and asks it to store the value.
 \end{itemize}
-\begin{lstlisting}[caption={TypeScript DHT HashTable interface}]
+\begin{lstlisting}[caption={TypeScript DHT Hash-Table interface}]
 export interface HashTable
 {
     // Put a keyset into the HashTable, callback when done
@@ -20,11 +20,11 @@ export interface HashTable
     get(key:string, callback?:DHTCallback) : void;
 }
 \end{lstlisting}
-This interface was by design created to resembles a non-distrbuted hash table,
+This interface was by design created to resembles a non-distributed hash table,
 as the distributivity of the underlying implementation is to be considered an 
 implementation detail.
 
-Evindence for the feasability of just leaving this as an implementation detail,
+Evidence for the feasibility of just leaving this as an implementation detail,
 is provided as the authors of this report has previously implemented this exact
 interface, on top of a Chord overlay network (see \citep{Skeen:Chord}).
 Additionally, the creators of Chord suggest exactly a \acs{DHT} as one of the example
@@ -58,7 +58,7 @@ that one can implement a \acs{DHT} upon this overlay network interface.
 The project is currently in development, by a single masters student; It is our
 verdict that the quality, and stability of the project seems to propagate this.
 
-The instability of the project, combined with time-constaints of the project
+The instability of the project, combined with time-constraints of the project
 had us drop this as a possible \acs{DHT} implementation.
 
 \subsubsection{WebRTC-chord}
@@ -85,7 +85,7 @@ further.
 
 \subsection{Kad-WebRTC}
 Where's the previous two projects are standalone, this is no more than a 
-transportations layer plugin for the Kad project (see \citep{kadtools:kad}).
+transportation's layer plugin for the Kad project (see \citep{kadtools:kad}).
 As such it has the same interface as the Kad project for desktops, which is
 indeed the  expected \acs{DHT} interface. The WebRTC transport layer utilizes a
 centralized component to setup the WebRTC connections (see
@@ -94,26 +94,26 @@ to set up and get running, but no interactive example was present in the
 project.
 
 We've developed an interactive example for Kad-WebRTC as a part of our
-experimententation, and pushed this upstream, such that it is now included in 
+experimentation, and pushed this upstream, such that it is now included in 
 the official repository (see \ref{subsec:appendix-kad-webrtc} for details).
 
 While this project did indeed fulfill our expectations, and implements our \acs{DHT}
 interface, it is not without it's problems. In truth, we did not expect the 
-project to actually run, as the Chord WebRTC implemtation mentioned above hits
+project to actually run, as the Chord WebRTC implementation mentioned above hits
 the limit for WebRTC connections, and since Kademlia generally utilizes a huge
 amount of of connections (The official paper on Kademlia, suggests using \acs{UDP}
 (see \citep{Maymounkov:Kademlia})).
 
 This sparked our interest, as to how this project could avoid the limit, and as
 we investigated this further, we found that this WebRTC transport layer, is
-simply used as a plug-in replacement for \acs{UDP}, and as such is connectionless.
+simply used as a plug-in replacement for \acs{UDP}, and as such is connection-less.
 Whenever a connection is required, a new one is spawned, this obviously
 overcomes the browser limitations on the number of WebRTC connections, but 
 instead it establishes new connections constantly.
 
 As previously described WebRTC connections are setup using a centralized server,
 and each connection requires in the order of 10 messages total to set up.
-Additionally we've found that resyncronization of key-value pairs takes a lot
+Additionally we've found that resynchronization of key-value pairs takes a lot
 of time, as Kad is implemented upon the concept of eventual consistency. This
 conflicts with our needs, and as such we deemed this project unfeasible for
 our choice of \acs{DHT}.
@@ -129,10 +129,10 @@ implement our lookup / searching;
 \end{itemize}
 
 \subsubsection{Centralized searching}
-Utilizing a centralized searching component would eliminiate the purpose of our
+Utilizing a centralized searching component would eliminate the purpose of our
 project, as our project would only prove the feasibility of using BitTorrent as
 a data transfer technology under a content distribution network, which has been
-proven rigiously before, by the common adaptation of BitTorrent.
+proven rigorously before, by the common adaptation of BitTorrent.
 
 As such we abandoned this idea again quite quickly.
 
@@ -141,7 +141,7 @@ We looked into searching in unstructured peer-2-peer networks, there are
 several options for implementing this, amongst the first ones is flooding
 popularized by the Gnutella network (see \ref{sec:gnutella}).
 
-Flooding does ensure that if a piece of informating is contained within the 
+Flooding does ensure that if a piece of information is contained within the 
 network it will be found, however it does not scale well and searching 
 generates a lot of traffic (see \citep{Lv:Searching}).
 \newline
@@ -162,7 +162,7 @@ compared to the naive flooding (see \citep{Lv:Searching}), and therefore it is
 a lot more scalable, and could be a feasible solution; indeed if it was
 combined with replication.
 \newline\newline
-Due to time constaints we decided against looking further into using an
+Due to time constraints we decided against looking further into using an
 unstructured peer-2-peer network for searching. In retrospective, we should
 have been more open-minded towards different network structures before deciding
 upon using a distributed hash table interface.
@@ -170,47 +170,47 @@ upon using a distributed hash table interface.
 The Gia paper (see \citep{Chawathe:Gia}) contains an excellent discussion about
 unstructured peer-2-peer network vs. structured ones in regards to searching,
 the main points being; \acs{DHT}s generally have a harder time in regards to dealing
-with churn and handling keyword seaches (\acs{DHT}s generally implement exact match
+with churn and handling keyword searches (\acs{DHT}s generally implement exact match
 lookup only).
 
 \subsubsection{Continue searching for \acs{DHT}s}
 As we rejected the idea of using an unstructured peer-2-peer network for
 searching, we decided to continue our search for WebRTC enabled \acs{DHT}s. Which
 brought us to BitTorrent \acs{BEP}44 (see \citep{bittorrent:bep44}). In summary, this
-protocol extension enables using the trackerless BitTorrent \acs{DHT} for storing
+protocol extension enables using the tracker-less BitTorrent \acs{DHT} for storing
 arbitrary data. While WebTorrent does implement this protocol on desktop (i.e.
 in node using \acs{UDP}/\acs{TCP}), it does not implement the protocol using WebRTC, and as
 such cannot be used within the context of the web browser, and by extension
 within our application.
 \newline\newline
-Within the given time constaints we have not been able to find a WebRTC enabled
+Within the given time constraints we have not been able to find a WebRTC enabled
 \acs{DHT} implementation, which fulfills our requirements and expectations, and since
 this very same time-frame limits us from implementing one ourselves, we've been
 forced to stick with our fake implementation.
 
 \subsection{\acs{DHT}-/\acs{PHT}-fake}
-As mentioned in the previos section, we've been forced to stick with our faked
+As mentioned in the previous section, we've been forced to stick with our faked
 implementation, that is we've been forced to use a centralized server component,
 to justify this in regards to our hypothesis; we've limited ourselves by the 
 following rules;
 \begin{itemize}
 \item The centralized server component cannot have a richer interface than a 
     normal distributed hash table.
-\item Everything our fake does, should be implmentable using a WebRTC-based \acs{DHT}.
+\item Everything our fake does, should be implementable using a WebRTC-based \acs{DHT}.
 \end{itemize}
 As such, throughout most of our project, we've been relying solely on
 exact-match lookup, i.e. as described as a limitation of \acs{DHT}s by the Gia paper
-(see \citep{Chawathe:Gia}). We did however stuble upon a paper implementing 
+(see \citep{Chawathe:Gia}). We did however stumble upon a paper implementing 
 sub-string searching on top of \acs{DHT}s, by implementing a hash-based trie (\acs{PHT})
 (see \citep{Ramabhadran:PHT}).
 
 During our continued investigation of the literature within the domain, we 
 found another paper, which claims to have improved upon the \acs{PHT} paper, by 
-minimizing the maintainance cost of the trie structure by up to 75\%. Their
+minimizing the maintenance cost of the trie structure by up to 75\%. Their
 paper introduces a new data structure called a \ac{LHT},
-which alike the \acs{PHT} is built ontop of \acs{DHT}s (see \citep{Tang:LHT}).
+which alike the \acs{PHT} is built on top of \acs{DHT}s (see \citep{Tang:LHT}).
 
 The publishers of these papers does not release their implementation, and as
 such we've not been able to verify their claims, but assuming they do hold the
 \acs{PHT} / \acs{LHT} seems fit for our use-case. As such we've expanded our \verb|dht-fake|,
-to become a \verb|pht-fake|, i.e. to support substring searching.
+to become a \verb|pht-fake|, i.e. to support sub-string searching.

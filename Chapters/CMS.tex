@@ -9,10 +9,10 @@ Whenever a song is uploaded, the following take place:
 \item We add the song to the \acs{DHT}, with the key being the sha1 hash of it's title.
 \item We check if the songs album is already within the \acs{DHT};
 \begin{itemize}
-\item If it is, we check if the artists are in correspondance, i.e. between
+\item If it is, we check if the artists are in correspondence, i.e. between
     this song, and the \acs{DHT} content, if it is not, we update the information.
     Additionally, we add this song to the list of songs for the album.
-\item If it is not, we add a new entry in the DHt, with the artists of this
+\item If it is not, we add a new entry in the \acs{DHT}, with the artists of this
     song, and add this song as the only song of the album.
 \end{itemize}
 \item We check if each of the artist(s) from the song, exists in the \acs{DHT}.
@@ -37,10 +37,10 @@ responsible for the song, album and artists respectively).
 
 Additionally the network would have to be protected against malicious updates.
 We deem this outside the scope of our implementation, and as such we do not
-provide a solution to this, but point towards assymmetric cryptography for a 
+provide a solution to this, but point towards asymmetric cryptography for a 
 solutions.
 
-A disclaimer has to be made; we (as previosly mentioned) currently fake the 
+A disclaimer has to be made; we (as previously mentioned) currently fake the 
 prefix hash trie implementation, as such we actually do some lookups which
 bypasses the \acs{DHT} interface. In order to utilize the same interface, we've
 prefixed all sha1 hashes in the network with 'sha1:', and all queries that does
