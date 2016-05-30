@@ -6,8 +6,7 @@ Adding support for music file types not already supported by the browser
 would be an major undertaking, 
 and would not contribute much towards the goals of this project, 
 so we have decided to make use of existing browser capabilities.
-\newline
-
+\newline\newline
 Most modern browsers support the \acs{HTML}5 standard Audio tag,
 also called \acs{HTML}5 Audio and WebAudio,
 which presents a simple \acs{GUI} and audio playback to the user.
@@ -36,7 +35,6 @@ The audio tag itself offers a very simplistic yet very inflexible \acs{GUI} to t
 it includes the usual progress bar, volume, play+pause buttons in its interface, 
 these elements cannot be easily changed, but can be disabled and hidden entirely, 
 which lets the audio playback be controlled by JavaScript code instead.
-\newline
 
 % Song Information
 \section{Music File-types}
@@ -46,7 +44,6 @@ and even the way they are rendered and treated by the browsers can differ.
 To make matters even worse creators of music files are free to exclude or falsify meta-data, 
 and can even leave it out entirely.
 Clearly, some kind of common abstraction is needed to encapsulate the uncertain terrain of music files.
-\newline
 
 \section{WebRTC limitations}
 % WebRTC limitations
@@ -70,17 +67,13 @@ and might suffer major overhead when implemented in WebRTC over the datachannel.
 Ensuring availability of content and robustness in a BitTorrent network requires persistent offline data storage:
 without persistent data storage, if all users were to leave the network and return later, all content on the 
 network would be lost.
-\newline
-
+\newline\newline
 Until recently the only way to have data persistency through browsers has been cookies, 
 which allows saving up to 4KB in each cookie, and can hold at least 50 cookies per domain, 
 which allows for a total of 200KB of guaranteed available storage, possibly more depending on the browser.
-\newline
-
+\newline\newline
 Seeing the need for larger amounts of persistent data, browsers now implement Web Storage 
-(also known as DOM storage),
-a new standard by W3C
-TODO: ref w3.org/TR/webstorage 
+(also known as DOM storage), a new standard by W3C (see \citep{WebStorage})
 which consists of sessionStorage and localStorage.
 
 Mozilla also defines a globalStorage for their Firefox browser, 
@@ -91,8 +84,7 @@ even if the user agent has not requested it, making it also unsuited for this pr
 
 Data stored using LocalStorage is only wiped when explicitly requested by the user agent or 
 by some security policy specified by the user agent beforehand.
-\newline
-
+\newline\newline
 The current Web Storage specification draft is somewhat ambiguous, 
 it suggests that browsers implement support for at least 5MB of storage of each kind per domain,
 but the actual support varies wildly even between versions of the same browser:
@@ -100,6 +92,7 @@ but the actual support varies wildly even between versions of the same browser:
 \begin{table}[h]
 	\centering
 	\begin{tabular}{l | r}
+        Browser   & Storage limit \\ \hline
 		Chrome 18 & No limit  \\
 		Chrome 19 & 1    MB   \\
 		Chrome 36 & 5    MB   \\
@@ -116,8 +109,7 @@ Additionally, Firefox allows the user to specify any LocalStorage maximum size, 
 Google have attempted to implement a quota \acs{API}, 
 which allows websites to ask user agents to increase localstorage limitations,
 this has not been adopted by the other browsers, so we had to look for something else.
-\newline
-
+\newline\newline
 In addition to the Web Storage standard, W3C is also working on a standard for IndexedDB in browsers, 
 which allows browser-side JavaScript to access a local database on the host machine.
 
@@ -125,7 +117,6 @@ It should be noted that WebTorrent,
 an essential library in our project, 
 only officially supports Firefox and Chrome 
 both of which do support IndexedDB.
-\newline
 
 \section{BEP - BitTorrent Enhancement Proposals}
 %bep
