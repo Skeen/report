@@ -131,11 +131,29 @@ we also have to establish the necessary routing paths to each other peer on both
 and relay this information,
 and finally establish the intended parameters: protocols, encoding used, and so on.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{gfx/webrtc-connect}
+	\caption{Overview of WebRTC - Courtesy of HTML5rocks.com}
+	\label{fig:webrtc-connect}
+\end{figure}
+
 For the purposes of notifying the remote peer, a signaling service is necessary,
 this means having a centralized server that the browser contacts and asks to have a connection created.
 The signaling service does not need to be involved after the connection has been established,
 it can free up its resources to focus on signaling for new peers, 
 while the already established connections can continue regardless of whether the signalling service has quit.
+It is also necessary to create routing information:
+real-life users are often behind one or many layers of firewalls, 
+and need to arrange the necessary open ports.
+Each browser also needs to discover its own IP address on the public web, 
+and this information may be obscured by the OS or local intranet.
+WebRTC makes use of a STUN server on the public internet, 
+which will return messages sent to it and provide the connecting IP address to the sender.
+WebRTC also makes use of a TURN server backup mechanism in case direct peer-to-peer connectivity fails,
+TURN servers are used to relay actual data nd not signaling data, they have public addresses, 
+so they can be contacted even from behind a firewall.
+\newline
 
 %% FRAMEWORKS
 \input{Chapters/Framework}
