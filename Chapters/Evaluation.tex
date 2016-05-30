@@ -1,21 +1,23 @@
 %* Analysis results - Morten
 %	- Capabilities compared to existing systems
+%\section{Comparision to other systems}
+
 %	- Is it useful/not useful?
 %	- What does our system prove from research standpoint?
 \section{results}
 
 %not implemented
+\section{Not implemented}
 Because this project had a limited timeframe there is a couple of things we thing could be a good idea to have in the 
 music streamer, but we did not have the time to implement.
 
-\section{Seeder eviction}
+\subsection{Seeder eviction}
 When the storage capacity of a peer is full and the user want to get more songs, we need a strategy for what content we can throw away to get room for more.
 An obvious choice is to run through the content we got from the bad health list and scrape it to see is all of those song are still at bad health. If there are many seeds on one of those songs we can throw the content away if we are not using it.
-Another choice is to rn through all the songs we have downloaded and see if some of them is at good health but is seldomly played that could be thrown away.
+Another choice is to run through all the songs we have downloaded and see if some of them is at good health but is seldomly played that could be thrown away.
 
-\section{resource limitations}
+\subsection{resource limitations}
 If we run of storage while downloading a song we need to handle that problem.
-
 %* What did we not implement? - Morten
 %	- Seeder eviction
 %	- Eviction strategies
@@ -23,9 +25,18 @@ If we run of storage while downloading a song we need to handle that problem.
 %	- Bad Health supported properly?
 %	- Missing features on \acs{GUI} (why there are unused \acs{GUI} source code)
 %	- Fake \acs{DHT} impl, what problems it causes
+\subsection{Fake \acs{DHT}}
+We did not implement a DHT, because we could not find a mature system already implemented we could use, and we did not have time to implement one ourselves.
+Our focus was elsewhere.
+With a fake \acs{DHT} all the information about what peers have a torrent is on the server. This is a central point of failure, so if our server is taken down our system is not working anymore.
+With a distributed \acs{DHT}, we would not be vulnerable to losing our server because the code could just be cached in a browser and run from anywhere.
 %	- Missing trackerless feature
+\subsection{trackerless torrenting}
+It is not possible to make trackerless torrenting using Web-RTC see \ref{sec:trackerless}. EVen though it would have been a nice feature to request a torrent only using the \acs{DHT}, it would mean that we would need to use another technology than Web-RTC. 
+
 %	- Could \acs{DHT} and trackerless be implemented with more work?
 
+%TODO
 %* Quantifiable Tests (Reproducible) (performance, robustness) - Morten
 %	- CPU utilization when using/not using parts of project?
 %	- LocalStorage performance degredation?
