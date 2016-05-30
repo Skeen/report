@@ -6,20 +6,20 @@ Abstract
 
 Intro - What is this shit? - Emil
 
-* Motivation
-* Well documented case problem
++ Motivation
++ Well documented case problem
 
 Related Works - All the stuff we found and looked at
 
-* BitTorrent - Morten
-* WebRTC - Rasmus
-* WebSockets - Emil
-* Browserify/NodeJS (less important) - Morten
-* HTML5 - Morten
++ BitTorrent - Morten
++ WebRTC - Rasmus
++ WebSockets - Emil
++ Browserify/NodeJS (less important) - Morten
++ HTML5 - Morten
 	- Only relevant parts
 	- LocalStorage
 	- audio tag
-* Libraries - Emil
++ Libraries - Emil
 	- render-media (create audio tag from code)
 	- music-metadata
 	- localforage
@@ -28,10 +28,10 @@ Related Works - All the stuff we found and looked at
 	- readable-blob-stream
 	- magnet-uri
 	- GUI elements (angular2, font-awesome, bootstrap, dragdrop)
-* DHT - Emil
++ DHT - Emil
 	- Different DHT systems found
 		(WebRTC-explorer, WebRTC-chord, Kad-WebRTC)
-* Popular music/media distribution systems - Morten
++ Popular music/media distribution systems - Morten
 	- Spotify
 	- Napster
 	- Popcorn-time
@@ -40,24 +40,24 @@ Related Works - All the stuff we found and looked at
 
 Frameworks - Indepth about unusual libraries we used
 
-* WebTorrent - Emil
-* Browser vs desktop based (what is the difference?) - Morten
++ WebTorrent - Emil
++ Browser vs desktop based (what is the difference?) - Morten
 
 Analysis - What we learned from looking at related works, 
 	why were some were excluded?
 
-* audio tag support and capabilities - Rasmus
++ audio tag support and capabilities - Rasmus
 * Why we use browser torrents - Morten
 	- Compared to other technologies?
-* Song information - Rasmus
-* WebRTC limitations - Rasmus
-* Tracker vs Trackerless - Emil
-* BitTorrent BEPs (BEP9, 17, 19, 27, 44) - Morten
++ Song information - Rasmus
++ WebRTC limitations - Rasmus
++ Tracker vs Trackerless - Emil
++ BitTorrent BEPs (BEP9, 17, 19, 27, 44) - Morten
 * Scraping - Morten
-* LocalStorage - Rasmus
++ LocalStorage - Rasmus
 	- Why not cookies
 	- Why not IndexedDB/mysql
-* DHT - Emil
++ DHT - Emil
 	- Mocking vs fake-dht
 	- Tested DHT systems
 	- WebRTC-Explorer (issues with)
@@ -73,12 +73,12 @@ Design - About issues we ran into and how we got around them
 * WebTorrent - Rasmus
 	- Is it standard?
 	- Can use TCP, WebRTC or utp connections
-* Libraries - Emil
++ Libraries - Emil
 	- Problems?
 	- Patches, fixes?
-* Song encodings and metadata - Rasmus
++ Song encodings and metadata - Rasmus
 * Audio tag limitations and workarounds - Rasmus
-* LocalForage vs LocalStorage - Rasmus
++ LocalForage vs LocalStorage - Rasmus
 	- LocalStorage limitations
 	- Issues with LocalForage (blob vs buffer vs arraybuffer)
 	- Workaround for localForage (save seperately)
@@ -86,30 +86,32 @@ Design - About issues we ran into and how we got around them
 	- Issues with DHT on WebRTC
 	- Why was it necessary to use faked dht?
 		
-* Granularity of torrents - Rasmus
++ Granularity of torrents - Rasmus
 	- download song, album or discography?
 
 Implementation - About actual current codebase
 
-* Browserify and why we use it. - Rasmus
++ Browserify and why we use it. - Rasmus
 	- Creates bundles
 	- Pack nodejs and browser modules (unifies nodejs and browser)
-* How we handle music and music metadata - Rasmus
++ How we handle music and music metadata - Rasmus
 	- Hidden audio-tag
-* WebTorrent - Rasmus
++ WebTorrent - Rasmus
 	- When download?
 	- When seed?
 	- How is 
 * Code Architecture - Rasmus
 	- flow diagrams
+		- When download?
+		- When Seed?
 	- file responsibility overview
 	- Block Diagram
 	- Seperation of concerns?
-* Content Management System (Fake DHT implementation) - Emil
++ Content Management System (Fake DHT implementation) - Emil
 	- How we store songs (sha1 hash)
 	- How we store other things (sha1:name)
 	- How we maintain DHT content
-* User Interface (Angular) - Rasmus
++ User Interface (Angular) - Rasmus
 
 Evaluation - what did we learn from our project
 
@@ -142,18 +144,18 @@ Conclusion - what can the content of this report be used for?
 
 Manual - Emil
 
-* Running remote (digitalocean server)
-* Running local (docker, src)
-* How to install
-* How to run
-* How to use
++ Running remote (digitalocean server)
++ Running local (docker, src)
++ How to install
++ How to run
++ How to use
 
 The Showcase - Show the project - Morten
 
-* Video Demo
-* Screenshots
++ Video Demo
++ Screenshots
 
 Appendix
 
-* Contributions - Emil
-* Project Proposal - Emil: DONE
++ Contributions - Emil
++ Project Proposal - Emil: DONE
