@@ -142,7 +142,12 @@ The tracker will refuse to provide a seedlist to those not allowed to get that t
 In a proposal \citep{bittorrent:bep44} it is suggested that the \acs{DHT} of Bittorrent is extended with the possibility of storing arbitrary data instead of just storing valuespairs with hashes and associated ip-addresses.
 With this change the \acs{DHT} could be used to store infomation about the torrent e.g. song length, author, file size, ect.
 
+%Why browser torrents
+\section{Browser torrents}
+The smart thing about torrents in the brower is that we are not dependent of a server to serve the files, and users does not have to download and install a client to use our solution.
+
 %Scraping
 \section{Scraping}
 Scraping is a request to the tracker to get information about a torrent, such as how many seeders and leachers it has, how many times it has been downloaded, the status of the tracker (OK or offline), the reason it is offline, ect.
 Scraping can be used to find the torrents with bad health and add them to a list. Each peer can then get the list from the \acs{DHT} and seed the torrents on the list.
+This can be used to get the health of a torrent i.e. how many seeds it has, and if it at bad health we can add it to a list, and use that list so nodes in the network can download and seed those torrents in the list and help ensure availability of the less popular content.

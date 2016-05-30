@@ -47,13 +47,13 @@ Analysis - What we learned from looking at related works,
 	why were some were excluded?
 
 + audio tag support and capabilities - Rasmus
-* Why we use browser torrents - Morten
++ Why we use browser torrents - Morten
 	- Compared to other technologies?
 + Song information - Rasmus
 + WebRTC limitations - Rasmus
 + Tracker vs Trackerless - Emil
 + BitTorrent BEPs (BEP9, 17, 19, 27, 44) - Morten
-* Scraping - Morten
++ Scraping - Morten
 + LocalStorage - Rasmus
 	- Why not cookies
 	- Why not IndexedDB/mysql
