@@ -12,7 +12,7 @@ Because this project had a limited timeframe there is a couple of things
 we thought could be a good idea to have in the
 music streamer, but we did not have the time to implement.
 
-\subsection{Seeder eviction}
+\subsection{Resource Management}
 When the storage capacity of a peer is full and the user want to get more songs,
 we need a strategy for what content we can throw away to create room for more.
 An obvious choice is to iterate through the content we have from the bad health list,
@@ -27,9 +27,13 @@ We might also implement active resource management, which checks how often songs
 and find those songs that are rarely used but in good health, and either remove them,
 or replace them with a stub containing a magnetURI, 
 that the program could automatically redownload on demand.
+An active resource management creates additional overhead both on the local machine,
+but also on the network, as it would need to break existing peer connections.
+Replacing existing content with stubs would be extra costly,
+as it would be necessary to create new WebRTC connections,
+when the user wishes to listen to a song that was previously downloaded and stored,
+but had since been removed by resource management.
 
-\subsection{resource limitations}
-If we run out of storage space while downloading a song we, need to handle that problem.
 %* What did we not implement? - Morten
 %	- Seeder eviction
 %	- Eviction strategies
