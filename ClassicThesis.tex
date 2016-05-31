@@ -39,6 +39,21 @@
 %*******************************************************
 \input{classicthesis-config}
 
+%% Left intentionally blank
+\newcommand*{\blankpage}{%
+\vspace*{\fill}
+\reflectbox{\centerline{\includegraphics{gfx/blank}}}
+\centerline{This page is intentionally left blank.}
+\centerline{\includegraphics{gfx/blank}}
+\vspace{\fill}}
+\makeatletter
+\renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+\blankpage
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
 %********************************************************************
 % Bibliographies
 %*******************************************************
