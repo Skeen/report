@@ -59,7 +59,6 @@ The users in Gnutella is called servants, and the protocol consists of a set of 
 When a new servant joins the network by connecting to servants found in databases such as \url{http://gnutellahosts.com} its neighborhood list is empty. The neighborhood is the list of nodes a servant knows. A servant sends a ping message to all the servants it is connected to, those nodes then sends back a pong message, and they also forwards the ping message to their neighbors.
 Since the network is unstructured the only way of locating a file is non-deterministic. The original Gnutella network used a flooding mechanism where each node forwards the request to its neighbors recursively. The response to a query will be routed back the way it came so the receiver of a query stores information about the servant it received the query from until the query has timed out. Each message header contains a time-to-live(TTL) field. At each hop the value of the TTL is decremented, and when it reaches zero the message is dropped. In Gnutella each node have a routing table to keep track of the messages it receives. The servants stores message identifiers and node addresses. Since the response messages contains the same id as the original messages the host knows from which servant it got the message from.
 Once a node receives a QueryHit message it initiates a direct connection between the node that replied back and the servant asking for the file.
-%TODO: add gnutella papers to bibtex
 
 \section{Browser versus desktop}
 The above mentioned systems are either implemented via. a web-browser +
@@ -123,7 +122,6 @@ these plugins did not come with most browsers,
 which means many users did not have them available.
 \newline
 
-% TODO: write about peerconnection requiring central server to establish connection
 \label{webrtc-connection-server}
 When using WebRTC, we must first notify the remote peer of our intention
 to open a peer-to-peer connection, so it can start listening for incoming packet,
@@ -153,7 +151,3 @@ which will return messages sent to it and provide the connecting IP address to t
 WebRTC also makes use of a TURN server backup mechanism in case direct peer-to-peer connectivity fails,
 TURN servers are used to relay actual data nd not signaling data, they have public addresses, 
 so they can be contacted even from behind a firewall.
-\newline
-
-%% FRAMEWORKS
-%\input{Chapters/Framework}
