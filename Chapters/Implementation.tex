@@ -54,6 +54,13 @@ and found a desired song, and then clicked the download button.
 	\label{fig:downloadsong}
 \end{figure}
 
+The event created in \ref{downloadedsong} is then spread by the events library,
+and handled in app.component, 
+which gives the new song from the event to localcontents addSong() method.
+Localcontent adds the new song to its list of seeding content, 
+begins seeding it using TorrentClients seed method,
+and causes it to appear on the \acs{GUI} using angular databindings.
+\newline
 
 % \acs{GUI} (Angular)
 The \acs{GUI} needed data-bindings to show torrent information, allow changing songs

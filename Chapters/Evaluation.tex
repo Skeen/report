@@ -8,16 +8,28 @@
 
 %not implemented
 \section{Not implemented}
-Because this project had a limited timeframe there is a couple of things we thing could be a good idea to have in the 
+Because this project had a limited timeframe there is a couple of things
+we thought could be a good idea to have in the
 music streamer, but we did not have the time to implement.
 
 \subsection{Seeder eviction}
-When the storage capacity of a peer is full and the user want to get more songs, we need a strategy for what content we can throw away to get room for more.
-An obvious choice is to run through the content we got from the bad health list and scrape it to see is all of those song are still at bad health. If there are many seeds on one of those songs we can throw the content away if we are not using it.
-Another choice is to run through all the songs we have downloaded and see if some of them is at good health but is seldomly played that could be thrown away.
+When the storage capacity of a peer is full and the user want to get more songs,
+we need a strategy for what content we can throw away to create room for more.
+An obvious choice is to iterate through the content we have from the bad health list,
+scrape it to see if any of those songs are in good health,
+and then remove them.
+If there are already many active seeds on one of those songs,
+we can throw the content away if we are not using it.
+Another choice is to run through all the songs we have downloaded,
+and see if some of them are in good health but are seldomly played so they could be deleted.
+
+We might also implement active resource management, which checks how often songs are used,
+and find those songs that are rarely used but in good health, and either remove them,
+or replace them with a stub containing a magnetURI, 
+that the program could automatically redownload on demand.
 
 \subsection{resource limitations}
-If we run of storage while downloading a song we need to handle that problem.
+If we run out of storage space while downloading a song we, need to handle that problem.
 %* What did we not implement? - Morten
 %	- Seeder eviction
 %	- Eviction strategies
