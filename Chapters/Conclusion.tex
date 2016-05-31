@@ -5,17 +5,14 @@ with a distributed data sharing network, such as BitTorrent,
 and thus produce a system
 with the qualities of both the centralized and the distributed systems.
 \newline\newline
-
 As we have not been able to construct a completely distributed system,
 given the constraints of our operating environment
 (the context of a web-browser, and WebRTC),
 we do not believe we can confirm our hypothesis.
-
 We do however provide our system as evidence for our hypothesis, since we have
 succesfully created such a system, by utilizing a centralized server component,
 with an interface which is provably implementable using distributed techniques.
 \newline\newline
-
 Due to time constaints, 
 we never managed to implement replication seeding, 
 and as such,
@@ -26,17 +23,17 @@ for storage removing songs from localstorage.
 \newline\newline
 We did however conduct experiments on the scalability and performance of the 
 system in terms of memory and CPU usage.
-
 We've found that our memory usage scales linearily in the number of songs added
 to the client, as such we conclude that our system is scalable with regards to
 local memory usage. In order to verify the linearity in real world use cases,
 we have tested and confirmed that songs of different sizes adhere to the same
 overhead factor of about $\sim6.5$.
 \newline\newline
-
 In conclusion; our system is completely usable and performs well,
 and while it does lack a few features for completeness,
+and we would need external services to provide signaling and STUN servers for WebRTC
+in its current implementation,
 we believe that simply replacing our our faked \acs{PHT}
 implemenation with a fully distributed one,
-would suffice for confirming our hypothesis; 
-this is however, due to time constraints, left as future work.
+would suffice for confirming our hypothesis;
+This is however, due to time constraints, left as future work.
