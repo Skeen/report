@@ -1,0 +1,9 @@
+seqdiag {
+  User -->> DropArea [label = "User dragged a file into the dragdrop area"];
+  DropArea ->> metadata-library [label = "parse music file"];
+  DropArea <- metadata-library [label = "callback"];
+  DropArea -> DropArea [label = "create Song object"];
+  DropArea -> DropArea [label = "'ready-for-seed' event"];
+  DropArea ->> DHT [label = "Add Song to DHT"];
+  DropArea ->> DHT [label = "Update Artist, Album"];
+}
