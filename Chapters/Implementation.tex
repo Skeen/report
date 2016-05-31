@@ -43,14 +43,31 @@ All other system functionality is triggered via these events,
 which are driven mostly by user actions and the music player.
 \newline
 
-Let us consider an example: The user has searched for, 
-and found a desired song, and then clicked the download button.
+Let us consider some examples: 
+
+The user is searching for a song, and is typing into the search field.
+
+\begin{figure}[H]
+	\centerline{
+	\includegraphics[width=1.5\linewidth]{gfx/searchsong.png}
+	}
+	\caption{A chart showing the searching process}
+	\label{fig:searchsong}
+\end{figure}
+
+The event mentioned in \ref{fig:searchsong} will be spread by the Events library,
+and is reacted to by eventlisteners in app.component, 
+it then updates one of its field variables,
+which are then shown to the user via Angular databinding.
+
+After the user has searched for and found a desired song,
+and then clicked the download button.
 
 \begin{figure}[H]
 	\centerline{
 	\includegraphics[width=1.5\linewidth]{gfx/downloadsong.png}
 	}
-	\caption{A chart show the download process}
+	\caption{a chart showing the download process}
 	\label{fig:downloadsong}
 \end{figure}
 
@@ -60,6 +77,18 @@ which gives the new song from the event to localcontents addSong() method.
 Localcontent adds the new song to its list of seeding content, 
 begins seeding it using TorrentClients seed method,
 and causes it to appear on the \acs{GUI} using angular databindings.
+
+\begin{figure}[H]
+	\centerline{
+	\includegraphics[width=1.5\linewidth]{gfx/dragdrop.png}
+	}
+	\caption{a chart showing the Drag Drop process}
+	\label{fig:dragdrop}
+\end{figure}
+
+The DHT update mentioned in \ref{fig:dragdrop} ensures that DHT entries for relevant artists and albums,
+contain a reference to this song,
+and all the songs it previously referenced.
 \newline
 
 % \acs{GUI} (Angular)
