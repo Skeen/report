@@ -12,19 +12,15 @@
 Most mainstream multimedia content distribution networks and system, utilize
 the traditional client-server architecture; as such scalability is by means of
 larger and larger global datacenters, with ever increasing operation costs.
-
 We've set forth the hypothesis that a fully decentralized multimedia content 
 distribution network, with the properties of centralized ones is both feasible
 and achiveable using modern software components.
-
 Additionally we've limited ourselves to the somewhat limited execution
 environment presented by the context of modern web-browsers, as we believe this
 is the multimedia content distribution platform of the future.
-
 We've developed a decentralized system for this platform, which utilizes a WebRTC
 enabled BitTorrent implementation for low-level data transmission, and a 
 (currently) faked prefix hash-trie for content indexing and searching.
-
 We found that no proper prefix hash-trie (or even distributed hash table)
 implementations which utilize WebRTC exists, and as such; we've been forced to
 utilize a faked component for this (faked by centralization). As a result,
@@ -35,24 +31,20 @@ provide our system as evidence towards the validity of it.
 
 \pdfbookmark[1]{Sammenfatning}{Sammenfatning}
 \chapter*{Sammenfatning}
-De fleste populære multimedie indholdsfordelings-systemer og netværk,
+De fleste populære multimedie indholdsfordelingssystemer og netværk,
 benytter den traditionelle klient-server arkitektur, hvormed systemet
 udelukkende kan skaleres ved at bygge større og større globale data-centre
 med evigt stigende udgifter til følge.
-
 Vi har fremsat hypotesen at et fuldkomment decentraliseret multimedia 
-indholdsfordelings-system med egenskaberne fra et centraliseret system er både
+indholdsfordelingssystem med egenskaberne fra et centraliseret system er både
 realistisk og opnåeligt ved brug af moderne software komponenter.
-
 Vi har begrænset os selv til at vores kode skal eksekveres i en moderne
 browser, da vi vurdere dette som fremtidens multimedia indholdsfordelings
 platform.
-
 Vi har udviklet et decentraliseret system for denne platform. Systemet benytter
 en BitTorrent implementering med et WebRTC transportlag for alle data
 transmissioner, samt et (i øjeblikket forloren) prefix hash-trie for
 indeksering og søgning efter indhold.
-
 Da vi ikke har været i stand til at finde en ordenlig prefix hash-trie (eller
 blot distributeret hash tabel) implementering, som benytter WebRTC har vi været
 nødsaget til at benytte vores centralisered fake komponent. Dette betyder 
