@@ -9,5 +9,40 @@ Spotify have a social aspect where you can login, save your playlist, see your f
 Spotify have ordered their music into genres and top charts.
 In Spotify there is a radio function where music is played based on artist or genres.
 A radio function would be a good function in our system, because it would make users want to discover new music.
-Our system could have a navigation pane in the left side, where it could be possible to see what music your friends are listening to, browse the top 50 charts with mixed music and for a given genre.
+Our system could have a navigation pane in the left side,
+ where it could be possible to see what music your friends are listening to,
+  browse the top 50 charts with mixed music and for a given genre.
 Users could be given suggestions based on their recently played music.
+
+\section{Planned System}
+The system should support music file sharing using WebTorrent,
+searching for content in a DHT system,
+and playback of music in the browser.
+We plan the following features:
+A radio function would be a good function in our system, because it would make users want to discover new music.
+\begin{itemize}
+	\item Users can add music to the network
+	\item Users can search for content, artists and albums
+	\item Users can get music from peers
+	\item Users can see ongoing downloads
+	\item Users can see seeding content
+	\item Users can see local content
+	\item Users can play local content
+	\item Users can play downloading content
+	\item Peers retrieve and seed bad health content
+	\item Peers use intelligent downloading strategy
+	\item Peers persistantly store content
+	\item Peers retrieve content from storage
+	\item Peers seed local content
+\end{itemize}
+
+Searching for content should be handled by a Content Management System,
+which should be a \acs{DHT} if one is available.
+The \acs{GUI} has to be impressive enough to show that our system
+could feasibly run behind a large, real-life, popular music service.
+
+With the time limits of a quarter year,
+we have limited the scope of our system compared to Spotify,
+particularely in the areas of the \acs{GUI}, and development of subprojects.
+In case we cannot find a reliable, functioning \acs{DHT} system developed for WebRTC,
+we will instead make use of a faked \acs{DHT}.
