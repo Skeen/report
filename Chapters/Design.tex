@@ -1,3 +1,34 @@
 
+\section{Planned System}
+The system should support music file sharing using WebTorrent,
+searching for content in a DHT system,
+and playback of music in the browser.
+We plan the following features:
 
+\begin{itemize}
+	\item Users can add music to the network
+	\item Users can search for content, artists and albums
+	\item Users can get music from peers
+	\item Users can see ongoing downloads
+	\item Users can see seeding content
+	\item Users can see local content
+	\item Users can play local content
+	\item Users can play downloading content
+	\item Peers retrieve and seed bad health content
+	\item Peers use intelligent downloading strategy
+	\item Peers persistantly store content
+	\item Peers retrieve content from storage
+	\item Peers seed local content
+\end{itemize}
+
+Searching for content should be handled by a Content Management System,
+which should be a \acs{DHT} if one is available.
+The \acs{GUI} has to be impressive enough to show that our system
+could feasibly run behind a large, real-life, popular music service.
+
+With the time limits of a quarter year,
+we have limited the scope of our system compared to Spotify,
+particularely in the areas of the \acs{GUI}, and development of subprojects.
+In case we cannot find a reliable, functioning \acs{DHT} system developed for WebRTC,
+we will instead make use of a faked \acs{DHT}.
 
