@@ -53,13 +53,21 @@ but had since been removed by resource management.
 %	- Missing features on \acs{GUI} (why there are unused \acs{GUI} source code)
 %	- Fake \acs{DHT} impl, what problems it causes
 \subsection{Fake \acs{DHT}}
-We did not implement a DHT, because we could not find a mature system already implemented we could use, and we did not have time to implement one ourselves.
+We did not implement a DHT, 
+because we could not find a mature system already implemented we could use, 
+and we did not have time to implement a reliable DHT system for WebRTC ourselves.
 Our focus was elsewhere.
-With a fake \acs{DHT} all the information about what peers have a torrent is on the server. This is a central point of failure, so if our server is taken down our system is not working anymore.
-With a distributed \acs{DHT}, we would not be vulnerable to losing our server because the code could just be cached in a browser and run from anywhere.
+With a fake \acs{DHT} all the information about what peers have a torrent is on the server. 
+This is a central point of failure, so if our server is taken down our system is not working anymore.
+With a distributed \acs{DHT}, 
+we would not be vulnerable to losing our server, 
+because the code could just be cached in a browser and run from anywhere.
 %	- Missing trackerless feature
+
 \subsection{trackerless torrenting}
-It is not possible to make trackerless torrenting using Web-RTC see \ref{sec:trackerless}. Even though it would have been a nice feature to request a torrent only using the \acs{DHT}, it would mean that we would need to use another technology than Web-RTC. 
+It is not possible to make trackerless torrenting using Web-RTC (see \ref{sec:trackerless}). 
+Even though it would have been a nice feature to request a torrent only using the \acs{DHT},
+it would mean that we would need to use another technology than Web-RTC.
 
 %	- Could \acs{DHT} and trackerless be implemented with more work?
 \section{Tests}
@@ -69,12 +77,19 @@ It is not possible to make trackerless torrenting using Web-RTC see \ref{sec:tra
 	\caption{The resources spend while running the music streamer}
 	\label{fig:streamer-idle}
 \end{figure}
-The figure \ref{fig:streamer-idle} shows how many resources are spend when running the musicstreamer in Google Chrome.
 
-The Spotify desktop application uses 52-53 mb memory compared to running our music-streamer, but having songs in the localstorage of the browser increses the memory used. In Mozilla Firefox having two songs stored in the local storage and running the music streamer uses 370mb memory.
+The figure \ref{fig:streamer-idle} shows how many resources are used,
+when running the music streamer in Google Chrome.
 
-The difference is that we need to use the local storage of the browser to save the songs.
-Spotify have their servers where the music is stored, but we need each peer to store its own music.
+The Spotify desktop application uses 52-53 mb memory compared to running our music-streamer,
+but having songs in the localstorage of the browser increses the memory used. 
+In Mozilla Firefox having two songs stored in the local storage,
+and running the music streamer uses 370mb memory.
+
+The difference is that we need to use the storage of the browser to save all the songs.
+Spotify have their servers where the music is stored and can be streamed from,
+but we need each peer to store its own music.
+
 %\begin{table}[]
 %\centering
 %\caption{The amount of memory spend by the music-streamer while adding more songs}
