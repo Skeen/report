@@ -95,23 +95,42 @@ Spotify have their servers where the music is stored, but we need each peer to s
 %\end{tabular}
 %\end{table}
 
-We have used heap snapshots in Google Chrome to get a picture of how much memory the streamer is using when idle and when we add songs to it. In /ref{fig:memUsage} we have made an experiment where we add the same song to the streamer ten times to see if the memory increase is deterministic.
+We have used heap snapshots in Google Chrome to get a picture,
+of how much memory the streamer is using when idle and when we add songs to it. 
+In \ref{fig:memUsage} we have made an experiment,
+where we add the same song to the streamer ten times,
+to see if the memory increase is deterministic.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.9]{gfx/memoryUsage}
 	\caption{A graph over the memory usage when adding a song 10 times to the streamer}
 	\label{fig:memoryUsage}
 \end{figure}
+
 As can be seen on the figure that is the case, and the memory is increasing lineary.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.9]{gfx/memoryDiffSize}
 	\caption{The memory spend when adding 10 different sized songs}
 	\label{fig:memoryDiffSizes}
 \end{figure}
-Figure \ref{fig:memoryDiffSizes} show an experiment where we upload a song tothe streamer and reset the storage before we upload another different song. The experiment shows how much space takes on the disk and how much it takes in the music-streamer. As we can see each song takes about six times more space in the music-streamer, but an important thing to notice is that the songs are stored derterministic so storing 1 MB of data alway takes around 6 MB of data on the server for all the songs.
 
-We have run the experiments a couple of times to make sure the result was not just random, but was following a general trend. In the graphs we used the av
+Figure \ref{fig:memoryDiffSizes} shows an experiment where we upload a song to the streamer. 
+We then reset the browser storage manually and repeated the experiment with a different song.
+The experiment shows how much space a song takes on the disk,
+and how much it takes in the music-streamer.
+
+As we can see in the results \ref{fig:memoryDiffSizes},
+each song takes about six times more space in the music-streamer, 
+but an important thing to notice is that the memory use is deterministic,
+so storing 1 MB of data alway takes around 6 MB of data in memory for all the songs.
+
+We have repeated the experiments a couple of times to make sure the result was not just random, 
+but was following a general trend. 
+
+In the graphs we used the av
 %TODO
 %* Quantifiable Tests (Reproducible) (performance, robustness) - Morten
 %	- CPU utilization when using/not using parts of project?
