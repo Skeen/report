@@ -7,14 +7,14 @@
 
 %not implemented
 \section{Not implemented}
-Because this project had a limited timeframe there is a couple of things
+Because this project had a limited time-frame there is a couple of things
 we thought could be a good idea to have in the
 music streamer, but we did not have the time to implement.
 
 \subsection{Bad Health List}
 A robust and distributed system needs some way to keep content on the network in good health,
 meaning that there are sufficiently many peers hosting it.
-We wanted to maintain a list on the DHT containing the various songs which need additonal peers seeding it,
+We wanted to maintain a list on the DHT containing the various songs which need additional peers seeding it,
 and make each peer seed at least 5 of such bad health items.
 Each peer should periodically choose some songs from the bad health list,
 scrape them to see the number of active seeds, 
@@ -37,7 +37,7 @@ and see if some of them are in good health but are seldomly played so they could
 We might also implement active resource management, which checks how often songs are used,
 and find those songs that are rarely used but in good health, and either remove them,
 or replace them with a stub containing a magnetURI, 
-that the program could automatically redownload on demand.
+that the program could automatically re-download on demand.
 An active resource management creates additional overhead both on the local machine,
 but also on the network, as it would need to break existing peer connections.
 Replacing existing content with stubs would be extra costly,
@@ -80,10 +80,10 @@ it would mean that we would need to use another technology than WebRTC.
 
 The figure \ref{fig:streamer-idle} shows how many resources are used,
 when running the music streamer in Google Chrome, Internet Explorer, Safari, Opera and Mozilla Firefox.
-The application was not running properly in Internet Explorer and Safari, because those browsers does not support Web-RTC connections.
+The application was not running properly in Internet Explorer and Safari, because those browsers does not support WebRTC connections.
 
 The Spotify desktop application uses 52-53 MB memory compared to running our music-streamer,
-but having songs in the localstorage of the browser increses the memory used. 
+but having songs in the localstorage of the browser increases the memory used. 
 In Mozilla Firefox having two songs stored in the local storage,
 and running the music streamer uses 370 MB memory.
 
@@ -140,7 +140,7 @@ Song count & Cumulative memory usage & Memory usage \\ \hline
 10 & 240  & 22   \\
 11 & 263  & 23   \\ \hline
 \end{tabular}
-\caption{The amount of memory spend by the music-streamer while contionusly adding more songs}
+\caption{The amount of memory spend by the music-streamer while continuously adding more songs}
 \label{tab_memUsage}
 \end{table}
 
@@ -176,7 +176,7 @@ to see if the memory increase is deterministic.
 	\label{fig:memoryUsage}
 \end{figure}
 \noindent
-As can be seen on the figure that is the case, and the memory is increasing lineary.
+As can be seen on the figure that is the case, and the memory is increasing linearly.
 
 \begin{figure}[H]
 	\centering
@@ -193,7 +193,7 @@ and how much it takes in the music-streamer.
 As we can see in the results \ref{fig:memoryDiffSizes},
 each song takes about six times more space in the music-streamer, 
 but an important thing to notice is that the memory use is deterministic,
-so storing $1$ MB of data alway takes around $\sim6.5$ MB of data in memory for all the songs.
+so storing $1$ MB of data always takes around $\sim6.5$ MB of data in memory for all the songs.
 
 We have repeated the experiments a couple of times to make sure the result was not just random, 
 but was following a general trend. 
