@@ -72,25 +72,45 @@ The Spotify desktop application uses 52-53 mb memory compared to running our mus
 
 The difference is that we need to use the local storage of the browser to save the songs.
 Spotify have their servers where the music is stored, but we need each peer to store its own music.
-%\begin{table}[]
-%\centering
-%\caption{The amount of memory spend by the music-streamer while adding more songs}
-%\label{tab_memUsage}
-%\begin{tabular}{lllll}
-%0 & 14,9  \\
-%1 & 35 \\
-%2 & 57,9 \\
-%3 & 81,3 \\
-%4 & 104 \\
-%5 & 126\\
-%6 & 149\\
-%7 & 172\\
-%8 & 195\\
-%9 & 218\\
-%10 & 240\\
-%11 & 263\\
-%\end{tabular}
-%\end{table}
+\begin{table}[]
+\centering
+\caption{The amount of memory spend by the music-streamer while adding more songs}
+\label{tab_memUsage}
+\begin{tabular}{lll}
+Song number & Cumulative memory & memory
+0 & 14,9 & 14,9\\
+1 & 35 & 20,1\\
+2 & 57,9 & 22,9\\
+3 & 81,3 & 23,4\\
+4 & 104 & 22,7\\
+5 & 126 & 22\\
+6 & 149 & 23\\
+7 & 172 & 23\\
+8 & 195 & 23\\
+9 & 218 & 23\\
+10 & 240 & 22\\
+11 & 263 & 23\\
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The amount of memory spend by the music-streamer while adding more songs}
+\label{tab_memUsage}
+\begin{tabular}{llll}
+Song number & Memory on disk & Additional memory & Overhead factor
+1 & 1,37 & 7,72 & 5,635036496\\
+2 & 3,21 & 21,02 & 6,548286604\\
+3 & 3,59 & 23,32 & 6,495821727\\
+4 & 3,32 &  21,72 & 6,542168675\\
+5 & 3,52 & 23,62 & 6,710227273 \\
+6 & 4,73 & 31,32 & 6,621564482\\
+7 & 4,86 & 32,92 & 6,773662551\\
+8 & 3,43 & 21,92 & 6,390670554\\
+9 & 4,13 & 26,92 & 6,518159806\\
+10 & 4,45 & 29,22 & 6,566292135 \\
+\end{tabular}
+\end{table}		
 
 We have used heap snapshots in Google Chrome to get a picture of how much memory the streamer is using when idle and when we add songs to it. In /ref{fig:memUsage} we have made an experiment where we add the same song to the streamer ten times to see if the memory increase is deterministic.
 \begin{figure}[H]
