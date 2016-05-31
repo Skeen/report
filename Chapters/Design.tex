@@ -15,7 +15,11 @@ Our system could have a navigation pane in the left side,
 Users could be given suggestions based on their recently played music.
 
 \section{Planned System}
-The system should support music file sharing using WebTorrent,
+Given unlimited development time and resources; we would have build the above
+mentioned system, however given the constraints of the project, we've been
+forced to limit our scope, as such our planned system should:
+
+Support music file sharing using WebTorrent,
 searching for content in a DHT system,
 and playback of music in the browser.
 We plan the following features:
@@ -28,9 +32,12 @@ A radio function would be a good function in our system, because it would make u
 	\item Users can see seeding content
 	\item Users can see local content
 	\item Users can play local content
-	\item Users can play downloading content
-	\item Peers retrieve and seed bad health content
-	\item Peers use intelligent downloading strategy
+    \item Users can play downloading content (stream it)
+    \item Users can set a storage / resource quota for the site
+	\item Peers will automatically replicate bad health content
+    \item Peers will utilize an intelligent eviction strategy, once their
+        storage quota has been reached.
+	\item Peers will use intelligent downloading strategy
 	\item Peers persistantly store content
 	\item Peers retrieve content from storage
 	\item Peers seed local content
@@ -41,8 +48,11 @@ which should be a \acs{DHT} if one is available.
 The \acs{GUI} has to be impressive enough to show that our system
 could feasibly run behind a large, real-life, popular music service.
 
-With the time limits of a quarter year,
-we have limited the scope of our system compared to Spotify,
-particularely in the areas of the \acs{GUI}, and development of subprojects.
+To sum up: Given the time constraints we have limited the scope of our system,
+in particularely in the areas of the \acs{GUI}, and development of subprojects.
 In case we cannot find a reliable, functioning \acs{DHT} system developed for WebRTC,
 we will instead make use of a faked \acs{DHT}.
+
+\section{Implemented System}
+The following chapter sums up the implemented system, and Section~
+\ref{sec:not-implemented} sums up the parts that we've not been able to implement.

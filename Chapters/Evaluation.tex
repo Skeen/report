@@ -7,6 +7,7 @@
 
 %not implemented
 \section{Not implemented}
+\label{sec:not-implemented}
 Because this project had a limited time-frame there is a couple of things
 we thought could be a good idea to have in the
 music streamer, but we did not have the time to implement.
@@ -45,13 +46,10 @@ as it would be necessary to create new WebRTC connections,
 when the user wishes to listen to a song that was previously downloaded and stored,
 but had since been removed by resource management.
 
-%* What did we not implement? - Morten
-%	- Seeder eviction
-%	- Eviction strategies
-%	- Resource limitations
-%	- Bad Health supported properly?
-%	- Missing features on \acs{GUI} (why there are unused \acs{GUI} source code)
-%	- Fake \acs{DHT} impl, what problems it causes
+\subsection{Searching}
+It is currently only possible to search for content by 'title', not by artist
+or albums as we originally envisioned.
+
 \subsection{DHT}
 We did not implement a DHT, 
 because we could not find a mature system already implemented we could use, 
@@ -62,14 +60,12 @@ This is a central point of failure, so if our server is taken down our system is
 With a distributed \acs{DHT}, 
 we would not be vulnerable to losing our server, 
 because the code could just be cached in a browser and run from anywhere.
-%	- Missing trackerless feature
 
 \subsection{trackerless torrenting}
 It is not possible to make trackerless torrenting using WebRTC (see \ref{sec:trackerless}). 
 Even though it would have been a nice feature to request a torrent only using the \acs{DHT},
 it would mean that we would need to use another technology than WebRTC.
 
-%	- Could \acs{DHT} and trackerless be implemented with more work?
 \section{Tests}
 \begin{figure}[H]
 	\centering
@@ -90,38 +86,6 @@ and running the music streamer uses 370 MB memory.
 The difference is that we need to use the storage of the browser to save all the songs.
 Spotify have their servers where the music is stored and can be streamed from,
 but we need each peer to store its own music.
-
-%\begin{table}[H]
-%	\centering
-%	\begin{tabular}{l | r}
-%		0 & 14,9  \\
-%		1 & 35 \\
-%		2 & 57,9 \\
-%		3 & 81,3 \\
-%		4 & 104 \\
-%		5 & 126\\
-%		6 & 149\\
-%		7 & 172\\
-%		8 & 195\\
-%		9 & 218\\
-%		10 & 240\\
-%		11 & 263\\
-%	\end{tabular}
-%	\caption{The amount of memory spend by the music-streamer while adding more songs}
-%	\label{table:memUsage}
-%\end{table}
-
-%\begin{table}[H]
-%	\centering
-%	\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
-%		\hline
-%		14,9 & 35 & 57,9 & 81,3 & 104 & 126 & 149 & 172 & 195 & 218 & 240 & 263 \\
-%		0	 & 1  &  2   &   3  &  4  &  5  &  6  &  7  &  8  &  9  &  10 &  11 \\
-%		\hline
-%	\end{tabular}
-%	\captiob{The amount of memory used by Streamy with n copies of the same song.}
-%	\label{table:memUsage}
-%\end{table}
 
 \begin{table}[]
 \centering
