@@ -4,11 +4,10 @@
 
 %	- Is it useful/not useful?
 %	- What does our system prove from research standpoint?
-\section{results}
 
 %not implemented
 \section{Not implemented}
-Because this project had a limited timeframe there is a couple of things we thing could be a good idea to have in the 
+Because this project had a limited timeframe, there is a couple of things we think could be a good idea to have in the 
 music streamer, but we did not have the time to implement.
 
 \subsection{Seeder eviction}
@@ -38,7 +37,7 @@ It is not possible to make trackerless torrenting using Web-RTC see \ref{sec:tra
 \section{Tests}
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{gfx/streamerIdle}
+	\includegraphics[scale=0.8]{gfx/streamerIdle}
 	\caption{The resources spend while running the music streamer}
 	\label{fig:streamer-idle}
 \end{figure}
@@ -46,7 +45,8 @@ The figure \ref{fig:streamer-idle} shows how many resources are spend when runni
 
 The Spotify desktop application uses 52-53 mb memory compared to running our music-streamer, but having songs in the localstorage of the browser increses the memory used. In Mozilla Firefox having two songs stored in the local storage and running the music streamer uses 370mb memory.
 
-The differance is that we need to use the local storage of the browser to save the songs, but Spotify have their servers where the music is stored, but we need each peer to store its own music.
+The difference is that we need to use the local storage of the browser to save the songs.
+Spotify have their servers where the music is stored, but we need each peer to store its own music.
 %\begin{table}[]
 %\centering
 %\caption{The amount of memory spend by the music-streamer while adding more songs}
@@ -66,18 +66,24 @@ The differance is that we need to use the local storage of the browser to save t
 %11 & 263\\
 %\end{tabular}
 %\end{table}
+
+We have used heap snapshots in Google Chrome to get a picture of how much memory the streamer is using when idle and when we add songs to it. In /ref{fig:memUsage} we have made an experiment where we add the same song to the streamer ten times to see if the memory increase is deterministic.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.9]{gfx/memoryUsage}
 	\caption{A graph over the memory usage when adding a song 10 times to the streamer}
 	\label{fig:memoryUsage}
 \end{figure}
+As can be seen on the figure that is the case, and the memory is increasing lineary.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.9]{gfx/memoryDiffSize}
 	\caption{The memory spend when adding 10 different sized songs}
 	\label{fig:memoryDiffSizes}
 \end{figure}
+Figure \ref{fig:memoryDiffSizes} show an experiment where we upload a song tothe streamer and reset the storage before we upload another different song. The experiment shows how much space takes on the disk and how much it takes in the music-streamer. As we can see each song takes about six times more space in the music-streamer, but an important thing to notice is that the songs are stored derterministic so storing 1 MB of data alway takes around 6 MB of data on the server for all the songs.
+
+We have run the experiments a couple of times to make sure the result was not just random, but was following a general trend. In the graphs we used the av
 %TODO
 %* Quantifiable Tests (Reproducible) (performance, robustness) - Morten
 %	- CPU utilization when using/not using parts of project?
