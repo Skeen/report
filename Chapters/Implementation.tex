@@ -120,34 +120,6 @@ we have also created objects to hold information about an album or an artist,
 so we can more easily search for related works in the \acs{DHT}.
 \newline
 
-\section{Torrenting}
-% WebTorrent
-WebTorrent provides seed and download methods using MagnetURI.
-Individual downloads and seeds are controlled through a Torrent object provided by WebTorrent,
-which contains all the relevant information about progress, 
-speed, amount uploaded, number of peers, contained files and so on.
-These torrent objects are provided by callbacks at events
-and after each called WebTorrent function completes.
-The encapsulating torrent.ts class gives access to seed and download methods of WebTorrent, 
-but only for our Song Objects, which emphasis the projects intent of being a music streaming service 
-rather than generic file sharing application, 
-it also provides the WebTorrent torrent object through callbacks to other sections of our code.
-\newline
-
-% Granularity of torrents
-A torrent is capable of containing one or many files of any format, 
-it could contain single music files, whole albums or an artists entire discography.
-Our system does not make use of existing torrents made by other applications,
-so we are free to choose any granularity best suited for our purposes.
-Most music services focus on individual songs, 
-as users rarely wish to listen to multiple songs concurrently.
-This seems to be the best choice for our project as well, 
-but the practicality of what to include in each of our torrents 
-could also consider the performance of WebTorrent,
-whether it can more efficiently make use of fewer torrents with more included files, 
-or if this makes no difference.
-\newline
-
 \section{Audio tag limitations}
 % Audio Tag and limitations
 Modern browsers already support native playback of audio files through the Audio \acs{HTML}5 tag, 
@@ -215,6 +187,34 @@ we created another class called LocalContent,
 which retrieves all songs from the disk at start-up,
 begins to seed them, making them available for other users in the network to download,
 and presents a \acs{GUI} element to the user.
+\newline
+
+\section{Torrenting}
+% WebTorrent
+WebTorrent provides seed and download methods using MagnetURI.
+Individual downloads and seeds are controlled through a Torrent object provided by WebTorrent,
+which contains all the relevant information about progress, 
+speed, amount uploaded, number of peers, contained files and so on.
+These torrent objects are provided by callbacks at events
+and after each called WebTorrent function completes.
+The encapsulating torrent.ts class gives access to seed and download methods of WebTorrent, 
+but only for our Song Objects, which emphasis the projects intent of being a music streaming service 
+rather than generic file sharing application, 
+it also provides the WebTorrent torrent object through callbacks to other sections of our code.
+\newline
+
+% Granularity of torrents
+A torrent is capable of containing one or many files of any format, 
+it could contain single music files, whole albums or an artists entire discography.
+Our system does not make use of existing torrents made by other applications,
+so we are free to choose any granularity best suited for our purposes.
+Most music services focus on individual songs, 
+as users rarely wish to listen to multiple songs concurrently.
+This seems to be the best choice for our project as well, 
+but the practicality of what to include in each of our torrents 
+could also consider the performance of WebTorrent,
+whether it can more efficiently make use of fewer torrents with more included files, 
+or if this makes no difference.
 \newline
 
 \section{How we use Browserify}
