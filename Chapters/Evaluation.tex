@@ -47,7 +47,37 @@ The figure \ref{fig:streamer-idle} shows how many resources are spend when runni
 The Spotify desktop application uses 52-53 mb memory compared to running our music-streamer, but having songs in the localstorage of the browser increses the memory used. In Mozilla Firefox having two songs stored in the local storage and running the music streamer uses 370mb memory.
 
 The differance is that we need to use the local storage of the browser to save the songs, but Spotify have their servers where the music is stored, but we need each peer to store its own music.
-
+%\begin{table}[]
+%\centering
+%\caption{The amount of memory spend by the music-streamer while adding more songs}
+%\label{tab_memUsage}
+%\begin{tabular}{lllll}
+%0 & 14,9  \\
+%1 & 35 \\
+%2 & 57,9 \\
+%3 & 81,3 \\
+%4 & 104 \\
+%5 & 126\\
+%6 & 149\\
+%7 & 172\\
+%8 & 195\\
+%9 & 218\\
+%10 & 240\\
+%11 & 263\\
+%\end{tabular}
+%\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{gfx/memoryUsage}
+	\caption{A graph over the memory usage when adding a song 10 times to the streamer}
+	\label{fig:memoryUsage}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{gfx/memoryDiffSize}
+	\caption{The memory spend when adding 10 different sized songs}
+	\label{fig:memoryDiffSizes}
+\end{figure}
 %TODO
 %* Quantifiable Tests (Reproducible) (performance, robustness) - Morten
 %	- CPU utilization when using/not using parts of project?
