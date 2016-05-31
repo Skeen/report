@@ -18,7 +18,7 @@ Most \acs{GUI} actions result in an event rather than an immediate code executio
 these events are then caught by app.component
 which performs the necessary functionality, through the other classes when relevant.
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{l | l}
 	    \verb|changing_song|    & User selected a different song to be played \\
@@ -58,7 +58,7 @@ The user is searching for a song, and is typing into the search field.
 The event mentioned in \ref{fig:searchsong} will be spread by the Events library,
 and is reacted to by eventlisteners in app.component, 
 it then updates one of its field variables,
-which are then shown to the user via Angular databinding.
+which are then shown to the user via Angular data-binding.
 
 After the user has searched for and found a desired song,
 and then clicked the download button.
