@@ -90,7 +90,6 @@ The difference is that we need to use the storage of the browser to save all the
 Spotify have their servers where the music is stored and can be streamed from,
 but we need each peer to store its own music.
 
-<<<<<<< HEAD
 %\begin{table}[H]
 %	\centering
 %	\begin{tabular}{l | r}
@@ -123,10 +122,6 @@ but we need each peer to store its own music.
 %	\label{table:memUsage}
 %\end{table}
 
-We have used heap snapshots in Google Chrome to get a picture of how much memory the streamer is using,
-when idle and when we add songs to it.
-In \ref{fig:memUsage} we have made an experiment,
-=======
 \begin{table}[]
 \centering
 \caption{The amount of memory spend by the music-streamer while adding more songs}
@@ -165,12 +160,11 @@ Song number & Memory on disk & Additional memory & Overhead factor \\
 9 & 4,13 & 26,92 & 6,518159806\\
 10 & 4,45 & 29,22 & 6,566292135 \\
 \end{tabular}
-\end{table}		
+\end{table}
 
 We have used heap snapshots in Google Chrome to get a picture,
 of how much memory the streamer is using when idle and when we add songs to it. 
 In \ref{fig:memoryUsage} we have made an experiment,
->>>>>>> 6698c33c7a40189abd4bfcafbdd56d0d175676c5
 where we add the same song to the streamer ten times,
 to see if the memory increase is deterministic.
 
