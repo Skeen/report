@@ -9,30 +9,56 @@
 \let\cleardoublepage\relax
 
 \chapter*{Abstract}
-%Short summary of the contents in English\dots
-% TODO: correct for project, is just copy of proposal abstract now
+Most mainstream multimedia content distribution networks and system, utilize
+the traditional client-server architecture; as such scalability is by means of
+larger and larger global datacenters, with ever increasing operation costs.
 
-We purpose a modern peer-2-peer content distribution network, based around the
-somewhat unoriginal idea of distributing music files.
+We've set forth the hypothesis that a fully decentralized multimedia content 
+distribution network, with the properties of centralized ones is both feasible
+and achiveable using modern software components.
 
-Several systems alike what we purpose have previously been implemented, with 
-one of the first being Napster by Shawn Fanning. Napster utilized a centralized
-server to index the files of the network, and peer-2-peer sharing via. direct
-downloading.
+Additionally we've limited ourselves to the somewhat limited execution
+environment presented by the context of modern web-browsers, as we believe this
+is the multimedia content distribution platform of the future.
 
-Most popular music distribution networks utilize a far more traditional client-
-server architecture, examples are; Spotify, Apple Music, SoundCloud and Tidal.
+We've developed a decentralized system for this platform, which utilizes a WebRTC
+enabled BitTorrent implementation for low-level data transmission, and a 
+(currently) faked prefix hash-trie for content indexing and searching.
 
-We propose a fully decentralized architecture, which ensures high scalability,
-availability and robustness. A system in which peers work for each other to 
-share the content, with the possibility of centralized content management.
+We found that no proper prefix hash-trie (or even distributed hash table)
+implementations which utilize WebRTC exists, and as such; we've been forced to
+utilize a faked component for this (faked by centralization). As a result,
+we're unable to utilize the system to prove our hypothesis, and we can only
+provide our system as evidence towards the validity of it.
 
 \vfill
 
-%\pdfbookmark[1]{Sammenfatning}{Sammenfatning}
-%\chapter*{Sammenfatning}
-%Kort sammenfatning på dansk\dots
+\pdfbookmark[1]{Sammenfatning}{Sammenfatning}
+\chapter*{Sammenfatning}
+De fleste populære multimedie indholdsfordelings-systemer og netværk,
+benytter den traditionelle klient-server arkitektur, hvormed systemet
+udelukkende kan skaleres ved at bygge større og større globale data-centre
+med evigt stigende udgifter til følge.
 
+Vi har fremsat hypotesen at et fuldkomment decentraliseret multimedia 
+indholdsfordelings-system med egenskaberne fra et centraliseret system er både
+realistisk og opnåeligt ved brug af moderne software komponenter.
+
+Vi har begrænset os selv til at vores kode skal eksekveres i en moderne
+browser, da vi vurdere dette som fremtidens multimedia indholdsfordelings
+platform.
+
+Vi har udviklet et decentraliseret system for denne platform. Systemet benytter
+en BitTorrent implementering med et WebRTC transportlag for alle data
+transmissioner, samt et (i øjeblikket forloren) prefix hash-trie for
+indeksering og søgning efter indhold.
+
+Da vi ikke har været i stand til at finde en ordenlig prefix hash-trie (eller
+blot distributeret hash tabel) implementering, som benytter WebRTC har vi været
+nødsaget til at benytte vores centralisered fake komponent. Dette betyder 
+imidlertid at vi ikke kan benytte systemet direkte til at bekræfte vores 
+hypotese, men må nøjes med at fremstille systemet som evidens for korrektheden
+af denne.
 
 \endgroup			
 
