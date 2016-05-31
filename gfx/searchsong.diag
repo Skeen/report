@@ -3,8 +3,9 @@ seqdiag {
   User ->> Search [label = "User types into search field"];
   Search ->> DHT  [label = "Search queries DHT"];
   Search <<- DHT  [label = "Search recieves new results"];
-  User <<- Search [label = "Search displays new search-ahead results"];
+  User <<- Search [label = "Search displays new\n search-ahead results"];
   User ->> Search [label = "User clicks a search-ahead result"];
-  Search -> Search [label = "'drop-down-select' event with clicked search result"];
-  app.component -> app.component [label = "event seen, show DHT data in GUI"];
+  Search -> Search [label = "'drop-down-select'\nevent with clicked\nsearch result"];
+... Event\n propagates ...
+  app.component -> app.component [label = "event seen, show\nDHT data in GUI"];
 }

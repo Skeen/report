@@ -10,11 +10,57 @@ Torrents is a very popular and easy method to share large files, because every u
 The payload of the server that initially shared the file does not have to be big, because the user will share the file with other users instead of overloading the server.
 %tracker hash forbinde folk 
 
+\subsection{BEP - BitTorrent Enhancement Proposals}
+BitTorrent enhancement proposals is a place where users of BitTorrent can come with proposals to improve the protocol.
+One of these proposals focuses on \acs{HTTP} seeding \citep{bittorrent:bep17}.
+This is relevant in our work, because we focus on how we can make streaming work in the browser. The proposal is about changing the meta-data file to include a \acs{HTTP} seeds key. This key would refer to a list of web addresses where the torrent data can be downloaded from.
+If support for \acs{HTTP} seeds would be added to the BitTorrent protocol it would mean that there is more uptime of seeds because the ftp and \acs{HTTP} server would always be up.
+
+In another proposal \citep{bittorrent:bep09} it is proposed to make it possible for clients to join a swarm and complete a download without having to download a .torrent file first, from an info hash contained in magnet links. The gains from using magnet links over torrents are that information about the torrent can be downloaded directly from other peers. Regular torrent files needs to be placed upon a web-server where it takes up space. The server must be up and running for the users to get information about the torrent, and that is not needed with using magnet links.
+Now users can just share a link instead of sharing a file on a server.
+
+Private torrents is another feature in BitTorrent \citep{bittorrent:bep27}. They idea is that users can define a torrent to be private by setting 'private=1' in the meta-info (.torrent) file. Private trackers can be used to control what users are allowed to download a torrent. The tracker is a server with a list of the peers that contain pieces of the torrent and a list of users allowed to get the specific torrent.
+The tracker will refuse to provide a seed-list to those not allowed to get that torrent.
+
+%Storing arbitrary data in the \acs{DHT}
+In a proposal \citep{bittorrent:bep44} it is suggested that the \acs{DHT} of BitTorrent is extended with the possibility of storing arbitrary data instead of just storing key-value pairs with hashes and associated \acs{IP}-addresses.
+With this change the \acs{DHT} could be used to store information about the torrent e.g. song length, author, file size, etc.
+
 \section{HTML5}
 HTML5 is the latest markup language for writing web applications is was released in 2014. Some of the new tags introduced is video and audio tags which makes it possible to play video and audio in the player build into HTML5.
 
 HTML5 also implements local storage. This makes it possible to store content locally in the browsers rather than use cookies, to store the data.
 The storage limit it larger than when using cookies (at least 5MB) and the data is stored locally so it does not need to be sent to a server.
+
+\subsection{HTML5 Audio Tag}
+\label{sec:HTML5_audio_tag}
+Most modern browsers support the \acs{HTML}5 standard Audio tag,
+also called \acs{HTML}5 Audio and WebAudio,
+which presents a simple \acs{GUI} and audio playback to the user.
+Browsers also support a similar Video tag, 
+which could also be used for audio playback purposes.
+The audio and video tags support both files and streams, 
+allowing playback while a file is still being downloaded.
+\newline
+Supported audio codings differ greatly between browsers:
+Firefox and Opera do not support the proprietary formats Mp3, Mp4 or ADTS
+without additional software on the machine.
+Safari does not support the free open source formats WebM or Ogg,
+and Internet Explorer and Microsoft Edge does not support anything other than Mp3 and Mp4.
+Google chrome notably supports all the above formats.
+\newline
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{gfx/audioTag.jpg}
+    \caption{A picture of Audio Tag \acs{GUI} in Firefox}
+    \label{fig:audiotag}
+\end{figure}
+
+The audio tag itself offers a very simplistic yet very inflexible \acs{GUI} to the user, 
+it includes the usual progress bar, volume, play+pause buttons in its interface, 
+these elements cannot be easily changed, but can be disabled and hidden entirely, 
+which lets the audio playback be controlled by JavaScript code instead.
 
 \section{Popular content distributors}
 The are many music-streamers already released and we will let us get inspired by some of the most popular and give a walk-trough of them below.
@@ -28,7 +74,8 @@ The music is placed on servers controlled by Spotify in contrast to the peer-to-
   \caption{A picture of the \acs{GUI} in the Spotify desktop application}
   \label{fig:spotify}
 \end{figure}
-As seen in \ref{fig:spotify} the music player is placed in the bottom of the application, there is a menu at the left of the screen where your personal play-lists can be accessed, and where it is possible to browse for new music and listen to a radio channel.
+\noindent
+As seen in Figure~\ref{fig:spotify} the music player is placed in the bottom of the application, there is a menu at the left of the screen where your personal play-lists can be accessed, and where it is possible to browse for new music and listen to a radio channel.
 Spotify now have over 75 mission active users, both from Europe, America and Asia. Spotify both have clients for desktops and mobiles.
 
 \subsection{Napster}
@@ -99,10 +146,10 @@ and the node.js desktop environment. We originally envisioned creating both a
 web-interface and a more technical desktop client, but due to time constraints,
 we've limited ourselves to the desktop client.
 
-\section{WebSocket}
+\subsection{WebSocket}
 \input{Chapters/WebSockets}
 
-\section{WebRTC}
+\subsection{WebRTC}
 WebRTC is a JavaScript \acs{API} drafted by W3C that establishes support for browser-to-browser connections,
 instead of traditional client-server connections like WebSockets, AJAX and Server Sent Events.
 These client-server networks suffer from high latency, and do not allow browsers to act as a server,

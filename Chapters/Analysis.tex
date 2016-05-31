@@ -1,39 +1,9 @@
 % Audio Tag capabilities
 \section{HTML5 Audio Tag}
-\label{sec:HTML5_audio_tag}
-
 Adding support for music file types not already supported by the browser 
 would be an major undertaking, 
 and would not contribute much towards the goals of this project, 
 so we have decided to make use of existing browser capabilities.
-\newline\newline
-Most modern browsers support the \acs{HTML}5 standard Audio tag,
-also called \acs{HTML}5 Audio and WebAudio,
-which presents a simple \acs{GUI} and audio playback to the user.
-Browsers also support a similar Video tag, 
-which could also be used for audio playback purposes.
-The audio and video tags support both files and streams, 
-allowing playback while a file is still being downloaded.
-\newline
-Supported audio codings differ greatly between browsers:
-Firefox and Opera do not support the proprietary formats Mp3, Mp4 or ADTS
-without additional software on the machine.
-Safari does not support the free open source formats WebM or Ogg,
-and Internet Explorer and Microsoft Edge does not support anything other than Mp3 and Mp4.
-Google chrome notably supports all the above formats.
-\newline
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.5]{gfx/audioTag.jpg}
-    \caption{A picture of Audio Tag \acs{GUI} in Firefox}
-    \label{fig:audiotag}
-\end{figure}
-
-The audio tag itself offers a very simplistic yet very inflexible \acs{GUI} to the user, 
-it includes the usual progress bar, volume, play+pause buttons in its interface, 
-these elements cannot be easily changed, but can be disabled and hidden entirely, 
-which lets the audio playback be controlled by JavaScript code instead.
 
 % Song Information
 \section{Music File-types}
@@ -44,9 +14,12 @@ To make matters even worse creators of music files are free to exclude or falsif
 and can even leave it out entirely.
 Clearly, some kind of common abstraction is needed to encapsulate the uncertain terrain of music files.
 
+To handle false meta-data either an automatic system could be applied, or
+community driven verification.
+
 \section{WebRTC limitations}
 % WebRTC limitations
-WebTorrent relies heavily on WebRTC and particularly on WebRTCs dataChannels.
+WebTorrent (see \ref{sec:WebTorrent}) relies heavily on WebRTC and particularly on WebRTCs dataChannels.
 DataChannels are not supported in the Internet Explorer and Safari browsers, 
 so these cannot support WebTorrent either.
 
@@ -117,29 +90,3 @@ an essential library in our project,
 only officially supports Firefox and Chrome 
 both of which do support IndexedDB.
 
-\section{BEP - BitTorrent Enhancement Proposals}
-%bep
-BitTorrent enhancement proposals is a place where users of BitTorrent can come with proposals to improve the protocol.
-One of these proposals focuses on \acs{HTTP} seeding \citep{bittorrent:bep17}.
-This is relevant in our work, because we focus on how we can make streaming work in the browser. The proposal is about changing the meta-data file to include a \acs{HTTP} seeds key. This key would refer to a list of web addresses where the torrent data can be downloaded from.
-If support for \acs{HTTP} seeds would be added to the BitTorrent protocol it would mean that there is more uptime of seeds because the ftp and \acs{HTTP} server would always be up.
-
-In another proposal \citep{bittorrent:bep09} it is proposed to make it possible for clients to join a swarm and complete a download without having to download a .torrent file first, from an info hash contained in magnet links. The gains from using magnet links over torrents are that information about the torrent can be downloaded directly from other peers. Regular torrent files needs to be placed upon a web-server where it takes up space. The server must be up and running for the users to get information about the torrent, and that is not needed with using magnet links.
-Now users can just share a link instead of sharing a file on a server.
-
-Private torrents is another feature in BitTorrent \citep{bittorrent:bep27}. They idea is that users can define a torrent to be private by setting 'private=1' in the meta-info (.torrent) file. Private trackers can be used to control what users are allowed to download a torrent. The tracker is a server with a list of the peers that contain pieces of the torrent and a list of users allowed to get the specific torrent.
-The tracker will refuse to provide a seed-list to those not allowed to get that torrent.
-
-%Storing arbitrary data in the \acs{DHT}
-In a proposal \citep{bittorrent:bep44} it is suggested that the \acs{DHT} of BitTorrent is extended with the possibility of storing arbitrary data instead of just storing key-value pairs with hashes and associated \acs{IP}-addresses.
-With this change the \acs{DHT} could be used to store information about the torrent e.g. song length, author, file size, etc.
-
-%Why browser torrents
-\section{Browser torrents}
-The smart thing about torrents in the browser is that we are not dependent of a server to serve the files, and users does not have to download and install a client to use our solution.
-
-%Scraping
-\section{Scraping}
-Scraping is a request to the tracker to get information about a torrent, such as how many seeders and leachers it has, how many times it has been downloaded, the status of the tracker (OK or offline), the reason it is offline, etc.
-Scraping can be used to find the torrents with bad health and add them to a list. Each peer can then get the list from the \acs{DHT} and seed the torrents on the list.
-This can be used to get the health of a torrent i.e. how many seeds it has, and if it at bad health we can add it to a list, and use that list so nodes in the network can download and seed those torrents in the list and help ensure availability of the less popular content.

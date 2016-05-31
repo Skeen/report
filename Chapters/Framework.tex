@@ -2,7 +2,14 @@
 
 \input{Chapters/DHT}
 
+\section{Browser torrents}
+The smart thing about torrents in the browser is that we are not dependent of a server to serve the files, and users does not have to download and install a client to use our solution.
+
 \input{Chapters/WebTorrent}
 
 \input{Chapters/Tracker}
 
+\section{Scraping}
+Scraping is a request to the tracker to get information about a torrent, such as how many seeders and leachers it has, how many times it has been downloaded, the status of the tracker (OK or offline), the reason it is offline, etc.
+Scraping can be used to find the torrents with bad health and add them to a list. Each peer can then get the list from the \acs{DHT} and seed the torrents on the list.
+This can be used to get the health of a torrent i.e. how many seeds it has, and if it at bad health we can add it to a list, and use that list so nodes in the network can download and seed those torrents in the list and help ensure availability of the less popular content.

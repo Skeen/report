@@ -101,23 +101,9 @@ so that is what we have used.
 
 Our \acs{GUI} elements consist of a music player interface, a play-list, downloading information 
 and show information about local content and seeding.
-\newline
 
-\section{How we use Browserify}
-% Browserify and why we use it
-The project contains a large amount of NodeJS module libraries, 
-many of which are designed for NodeJS and not for use in browsers.
-We needed some way to use these libraries, and to insure that they are properly loaded.
-In NodeJS, modules are loaded and made available by calling the require method 
-and assigning the result to a field variable, which can then be used to access the libraries functions.
-This capability is not supported natively in browsers, so a tool was needed to provide it.
-The Browserify tool takes JavaScript code written for NodeJS, 
-transforms it into regular JavaScript code, 
-handles all the requires, 
-and emits the new JavaScript code as a single easily distributed file called Bundle.js.
-Browserify allows our projects end result to consist only of a \acs{HTML} page and one JavaScript file, 
-so this seems like an ideal setup, and is what we make use of.
-\newline
+\input{Chapters/CMS}
+\newline 
 
 \section{Song handling}
 % How we handle music and music metadata
@@ -231,32 +217,17 @@ begins to seed them, making them available for other users in the network to dow
 and presents a \acs{GUI} element to the user.
 \newline
 
-\section{Tracker Implementation}
-In our implementation, we've disregarded the manual peer input model, as it is
-not user friendly. As such we're left with tracker-based and trackerless, as 
-we've limited ourselves to the context of the browser, we're bound to using 
-WebRTC, and by extension we need a centralized component to bootstrap these
-connections. 
-
-We are however, in theory, free to pick whether we want to use a tracker, or 
-utilize a trackerless \acs{DHT} for bootstrapping peers, but only in theory as our
-WebRTC-based BitTorrent implementation (as previously mentioned here) does
-indeed not support trackerless, and as the provided WebSocket tracker for 
-WebTorrent fulfills both the role of bootstrapping WebRTC connections, and the
-role of the BitTorrent tracker.
-
-As previously mentioned, had we been able to utilize trackerless, we've been
-able to use the trackerless \acs{DHT} as our searching \acs{DHT}, however utilizing a
-tracker provides other unique capabilities, namely; centralized control of the
-swarm. 
-\newline
-- A content distributor might like to have this capability, to do data
-processing on popular content, or otherwise track the swarm.
-
-While a tracker-based solution utilizes a centralized components, it is not
-limited to just using one. Our solution utilizes the 4 default trackers
-provided by WebTorrent, but it's trivial to run your own tracker and add it to
-the resources in the network.
-\newline
-- A content provider may want to track how often it's content is downloaded,
-and could add the content to the network with just one tracker being their own.
+\section{How we use Browserify}
+% Browserify and why we use it
+The project contains a large amount of NodeJS module libraries, 
+many of which are designed for NodeJS and not for use in browsers.
+We needed some way to use these libraries, and to insure that they are properly loaded.
+In NodeJS, modules are loaded and made available by calling the require method 
+and assigning the result to a field variable, which can then be used to access the libraries functions.
+This capability is not supported natively in browsers, so a tool was needed to provide it.
+The Browserify tool takes JavaScript code written for NodeJS, 
+transforms it into regular JavaScript code, 
+handles all the requires, 
+and emits the new JavaScript code as a single easily distributed file called Bundle.js.
+Browserify allows our projects end result to consist only of a \acs{HTML} page and one JavaScript file, 
+so this seems like an ideal setup, and is what we make use of.
