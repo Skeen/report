@@ -1,0 +1,15 @@
+seqdiag {
+  //user starts download
+  User -->> app.component [label = "User clicks download button"];
+  app.component ->> downloads [label = "downloadSong()"];
+  
+  //TorrentClient called
+  downloads ->> TorrentClient [label = "download_song()"];
+  downloads <<- TorrentClient [label = "handleMusicStream(...)"];
+
+  downloads ->> metadata-library [label = "parse music file"];
+  downloads <<- metadata-library [label = "callback"];
+
+  downloads -> downloads [label = "create Song object"];
+  downloads -> downloads [label = "'downloaded' event with new Song"]
+}
