@@ -15,6 +15,10 @@ music streamer, but we did not have the time to implement.
 \subsection{Bad Health List}
 A robust and distributed system needs some way to keep content on the network in good health,
 meaning that there are sufficiently many peers hosting it.
+We wanted to maintain a list on the DHT containing the various songs which need additonal peers seeding it,
+and make each peer seed at least 5 of such bad health items.
+This bad health list system was implemented, but was we did not have enough time to properly test it,
+it was been left as a comment in the app.component file.
 
 
 \subsection{Resource Management}
